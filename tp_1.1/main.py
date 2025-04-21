@@ -30,8 +30,8 @@ def get_simulation_args():
     global number_of_batches
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--corridas", help="Valor del número de corridas (100 por defecto)", default=100)
-    parser.add_argument("-t", "--tiradas", help="Valor del número de tiradas por corrida (500 por defecto)", default=500)
+    parser.add_argument("-c", "--corridas", help="Valor del número de corridas (10 por defecto)", default=10)
+    parser.add_argument("-t", "--tiradas", help="Valor del número de tiradas por corrida (415 por defecto)", default=415)
     parser.add_argument("-n", "--numero", help="Valor del número a analizar (7 por defecto)", default=7)
 
     args, unknown = parser.parse_known_args()
@@ -104,7 +104,7 @@ def generate_subplot(title, subplot_number, x_axys_label, y_axys_label, data, ex
     plt.ylabel(y_axys_label)
 
   
-    data_with_zero = [0] + data 
+    data_with_zero = [0] + data
     plt.xlim(1, number_of_spins + 1)
     plt.plot(data_with_zero, label="Valor obtenido")
 
@@ -138,44 +138,26 @@ def run_simulation_batches(array_results_history):
 
 
 def main():
-    get_simulation_args()  
+    get_simulation_args()
     
     array_results_history = [{
         'frequency': [],
         'mean': [],
         'variance': [],
         'std': []
-    } for _ in range(number_of_batches)] 
+    } for _ in range(number_of_batches)]
 
-    run_simulation_batches(array_results_history)  
+    run_simulation_batches(array_results_history)
 
     simulation_results_history = {
         'frequency': [],
         'mean': [],
         'variance': [],
         'std': []
-    } 
+    }
     calcaulate_simulation_stadistics(array_results_history, simulation_results_history)
-    general_plot_batch_statistics(simulation_results_history) 
+    general_plot_batch_statistics(simulation_results_history)
 
 # Arranca el Programa
 if __name__ == "__main__":
     main()
-
-
-
-
-# # Crear el gráfico de barras
-# plt.figure(figsize=(12, 6))
-# plt.bar(numeros, frecuencias, color='royalblue', edgecolor='black')
-
-# # Agregar etiquetas
-# plt.title('Frecuencia de números en tiradas de ruleta europea')
-# plt.xlabel('Número de la ruleta')
-# plt.ylabel('Frecuencia')
-
-# # Mostrar el gráfico
-# plt.grid(axis='y', linestyle='--', alpha=0.7)
-# plt.xticks(numeros)  # Mostrar todos los números
-# plt.tight_layout()
-# plt.show()
