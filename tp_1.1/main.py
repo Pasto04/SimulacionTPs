@@ -23,6 +23,7 @@ expected_values = {
     'std': math.sqrt(((36 - 0 + 1) ** 2 - 1) / 12)  # desviación estándar de la distribución uniforme
 }
 
+
 def get_simulation_args():
     global chosen_number
     global number_of_spins
@@ -82,6 +83,7 @@ def calcaulate_simulation_stadistics(array_results_history, simulation_results_h
         simulation_results_history['variance'].append(spin_variance_mean)
         simulation_results_history['std'].append(spin_std_mean)
 
+
 def general_plot_batch_statistics(simulation_results_history):
     generate_subplot("Frecuencia Relativa", 1, "Número de tirada", "Frecuencia relativa", simulation_results_history["frequency"], expected_values["frequency"])
     generate_subplot("Promedio", 2, "Número de tirada", "Valor promedio", simulation_results_history["mean"], expected_values["mean"])
@@ -114,7 +116,6 @@ def generate_subplot(title, subplot_number, x_axys_label, y_axys_label, data, ex
     plt.plot()
 
 
-
 def plot_batch_statistics(batch_number, array_results_history, expected_values):
     generate_subplot("Frecuencia Relativa", 1, "Número de tirada", "Frecuencia relativa", array_results_history[batch_number]["frequency"], expected_values["frequency"])
     generate_subplot("Promedio", 2, "Número de tirada", "Valor promedio", array_results_history[batch_number]["mean"], expected_values["mean"])
@@ -133,7 +134,6 @@ def run_simulation_batches(array_results_history):
         result_batch = generate_batch(number_of_spins)
         calculate_batch_statistics(result_batch, chosen_number, batch_number, array_results_history)
         #plot_batch_statistics(batch_number, array_results_history, expected_values)
-
 
 
 def main():
