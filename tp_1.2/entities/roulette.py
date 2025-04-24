@@ -34,7 +34,7 @@ class Roulette:
             return sel
         raise ValueError(f"Invalid group bet: {selection!r}")
 
-    def spin(self, selected_bet: Union[int, str]) -> Tuple[int, bool]:
+    def spin(self, selected_bet: Union[int, str], bet: int) -> Tuple[bool, int]:
         """
         Spins the wheel (0-36) and returns (number, did_win).
         Assumes selected_bet has already passed through validate_selection().
@@ -42,34 +42,44 @@ class Roulette:
         number = random.randint(0, 36)
 
         if isinstance(selected_bet, int):
-            return number,  (selected_bet == number)
+            win = selected_bet == number
+            capital_variation = bet*35 if win else -bet
+            return win, capital_variation
 
         # Group bets (0 auto-loses)
         if number == 0:
-            return number, False
+            return False, -bet
 
         if selected_bet == 'red':
             win = number in self.RED
+            capital_variation = bet if win else -bet
         elif selected_bet == 'black':
             win = number in self.BLACK
+            capital_variation = bet if win else -bet
         elif selected_bet == 'even':
             win = (number % 2 == 0)
+            capital_variation = bet if win else -bet
         elif selected_bet == 'odd':
             win = (number % 2 == 1)
+            capital_variation = bet if win else -bet
         elif selected_bet == 'dozen1':
             win = 1 <= number <= 12
+            capital_variation = 2*bet if win else -bet
         elif selected_bet == 'dozen2':
             win = 13 <= number <= 24
+            capital_variation = 2*bet if win else -bet
         elif selected_bet == 'dozen3':
             win = 25 <= number <= 36
+            capital_variation = 2*bet if win else -bet
         elif selected_bet == 'column1':
             win = (number % 3 == 1)
+            capital_variation = 2*bet if win else -bet
         elif selected_bet == 'column2':
             win = (number % 3 == 2)
+            capital_variation = 2*bet if win else -bet
         else:  # 'column3'
             win = (number % 3 == 0)
+            capital_variation = 2*bet if win else -bet
 
-        return number, win
+        return win, capital_variation
 
-
-#TODO poner multiplicador

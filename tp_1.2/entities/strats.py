@@ -1,23 +1,31 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import List
 from entities.roulette import Roulette
+from entities.player import Player
 
 
 class Strat(ABC):
-    def __init__(self, roulette: Roulette, name = 'defaultName', description = 'defaultDescription'):
+    def __init__(self, roulette: Roulette, player: Player, name = 'defaultName', description = 'defaultDescription'):
         self.name =  name
         self.description = description
         self.min_bet = roulette.min_bet
         self.max_bet = roulette.max_bet
+        self.player = player
 
     def __str__(self):
         return f"Strat(name={self.name}, description={self.description}, min_bet={self.min_bet}, max_bet={self.max_bet})"
-    
+
+    def get_name(self):
+        return self.name
+
     @abstractmethod
     def CalcleNextBet (self, player_won: bool, bet: int):
         pass
 
     def ControlNextBet(self, desired_bet) -> int:
+        if (self.player.get_current_capital() < desired_bet):
+            desired_bet = self.player.get_current_capital()
+
         if (desired_bet > self.max_bet):
             return self.max_bet
 
@@ -35,8 +43,8 @@ class FibbonaciStrat(Strat):
     #Bet size = sequence[current_index] * min_bet
     '''
     
-    def __init__(self, roulette: Roulette) -> None:
-        super().__init__('Fibbonaci', 'Fibbonaci betting strategy', roulette.min_bet, roulette.max_bet)
+    def __init__(self, roulette: Roulette, player: Player) -> None:
+        super().__init__(roulette, player, 'Fibbonaci', 'Fibbonaci betting strategy')
         self.sequence: List[int] = [1, 1]
         self.current_index: int  = 0
 
@@ -59,8 +67,8 @@ class MartingalaStrat (Strat):
     - on a win, reset back to the base bet
     '''
 
-    def __init__(self, roulette: Roulette) -> None:
-        super().__init__(roulette, 'Martingala', 'Martingala betting strategy')
+    def __init__(self, roulette: Roulette, player: Player) -> None:
+        super().__init__(roulette, player, 'Martingala', 'Martingala betting strategy')
         self.loss_streak: int = 0
 
     def CalcleNextBet(self, player_won: bool, bet: int) -> int:
@@ -81,8 +89,8 @@ class DAlembertStrat (Strat):
       TODO: check if two validations are needed??
     '''
 
-    def __init__(self, roulette: Roulette) -> None:
-        super().__init__(roulette, "D'Alembert", "D'Alembert betting strategy")
+    def __init__(self, roulette: Roulette, player: Player) -> None:
+        super().__init__(roulette, player, "D'Alembert", "D'Alembert betting strategy")
         self.current_bet: int = roulette.min_bet
 
     def CalcleNextBet(self, player_won: bool, bet: int) -> int:
@@ -91,7 +99,7 @@ class DAlembertStrat (Strat):
         else:
             self.current_bet = min(self.current_bet + self.min_bet, self.max_bet)
 
-        return super.ControlNextBet(self.current_bet)
+        return super().ControlNextBet(self.current_bet)
 
 class ParoliStrat (Strat):
     '''
@@ -100,10 +108,10 @@ class ParoliStrat (Strat):
     - on a loss, reset back to the base bet
     '''
     
-    def __init__(self, roulette: Roulette, max_doubles: Optional[int] = 3) -> None:
-        super().__init__(roulette, 'Paroli', 'Paroli betting strategy')
+    def __init__(self, roulette: Roulette, player: Player) -> None:
+        super().__init__(roulette, player, 'Paroli', 'Paroli betting strategy')
         self.win_streak: int = 0
-        self.max_doubles: Optional[int] = max_doubles
+        self.max_doubles = 3
 
     def CalcleNextBet(self, player_won: bool, bet: int) -> int:
         if player_won:
