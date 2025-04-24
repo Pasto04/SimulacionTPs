@@ -15,29 +15,67 @@ import random
 from entities.strats import FibbonaciStrat, MartingalaStrat, DAlembertStrat, ParoliStrat
 from entities.player import Player
 from entities.roulette import Roulette
-from graphics import GenerateGraphics
+from entities.graphics import GenerateGraphics
 
 chosen_bet = number_of_spins = number_of_batches = initial_capital = 0
 chosen_strat = ''
+
+#TODO: Listas de colores y grupos de apuestas, estan aca por se necesitan en el tipo de apuestas, considerar mover a otro lado, pero por ahora es funcional.
+
+RED   = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36}
+BLACK = {2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35}
+GROUP_BETS = { 
+    'red', 'black', 'even', 'odd',
+    'dozen1', 'dozen2', 'dozen3',
+    'column1', 'column2', 'column3'
+}
+
+def valid_bet(value: str):
+    if value.isdigit():
+        ivalue = int(value)
+        if 0 <= ivalue <= 36:
+            return ivalue
+        raise argparse.ArgumentTypeError(f"Número fuera de rango: {ivalue} (permitido: 0–36)")
+
+    value_lower = value.lower()
+    if value_lower in GROUP_BETS:
+        return value_lower
+
+    raise argparse.ArgumentTypeError(
+        f"'{value}' no es una apuesta válida. Usa un número del 0 al 36 o uno de: {', '.join(GROUP_BETS)}"
+    )
+
+def valid_capital(value: str):
+    if value.lower() == 'i':
+        return 'i' #esto chequea si pusiste que sea infinto
+
+    try:
+        amount = int(value)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"'{value}' no es un número válido ni 'i' para infinito.")
+    
+    if amount < 2500:
+        raise argparse.ArgumentTypeError(f"Capital mínimo es 2500. Ingresaste: {amount}")
+    
+    return amount # aca te devuelve lo que ingresaste, sino no cumple no llega hasta aca
 
 
 def get_simulation_args():
     global chosen_bet, number_of_spins, number_of_batches, chosen_strat, initial_capital
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--tiradas", help="Valor del número de tiradas por corrida (100 por defecto)", default=100)
+    parser.add_argument("-t", "--tiradas",  default=100, help="Valor del número de tiradas por corrida (100 por defecto)")
     parser.add_argument('-c', '--corridas', default=15, type=int, help='Valor del número de corridas (Por defecto: %(default)s)')
-    parser.add_argument('-n', '--seleccion', default="red", help="Selección: un número, \"red\", \"black\", \"even\", \"odd\", \"dozen1\", \"dozen2\", \"dozen3\", \"column1\", \"column2\", \"column3\" (Por defecto: %(default)s)")
-    parser.add_argument('-s', '--estrategia', default='m', choices=['m','d','f','p'], help="Estrategia a utilizar: \"m\" - Martingala, \"d\" - D'Alemnert, \"f\" - Fibonacci, \"p\" - Paroli (Por defecto: %(default)s)", )
-    parser.add_argument('-a', '--capital', default=50000, help="Capital: \"i\" para infinito o el monto si es finito (Por defecto: %(default)s - Mínimo 2500)")
-    # TODO type=tipoSeleccion y type=tipoCapital,
+    parser.add_argument("-n", "--seleccion", default="red", type=valid_bet, help="Selección: un número, \"red\", \"black\", \"even\", \"odd\", \"dozen1\", \"dozen2\", \"dozen3\", \"column1\", \"column2\", \"column3\" (Por defecto: %(default)s)")
+    parser.add_argument('-s', '--estrategia', default='m', choices=['m','d','f','o'], help="Estrategia a utilizar: \"m\" - Martingala, \"d\" - D'Alemnert, \"f\" - Fibonacci, \"o\" - Paroli (Por defecto: %(default)s)", )
+    parser.add_argument('-a', '--capital', default=50000, type=valid_capital, help="Capital: \"i\" para infinito o el monto si es finito (Por defecto: %(default)s - Mínimo 2500)")
 
     args, unknown = parser.parse_known_args()
     number_of_batches = int(args.corridas)
     number_of_spins = int(args.tiradas)
     chosen_bet = args.seleccion
     chosen_strat = args.estrategia
-    initial_capital = args.capital # TODO validar
+    initial_capital = args.capital 
     
     print(f"Ejecutando simulación.")
 
@@ -89,7 +127,7 @@ def main():
         match(chosen_strat):
             case 'm': strat = MartingalaStrat(roulette, player)
             case 'd': strat = DAlembertStrat(roulette, player)
-            case 'p': strat = ParoliStrat(roulette, player)
+            case 'o': strat = ParoliStrat(roulette, player)
             case 'f': strat = FibbonaciStrat(roulette, player)
 
         player.set_strat(strat)
@@ -112,7 +150,7 @@ def main():
     generate_general_graphics(players)
 
 
-# Arranca el Programa
+# arranca el programa 
 if __name__ == "__main__":
     main()
 

@@ -41,6 +41,7 @@ class FibbonaciStrat(Strat):
     - on a loss, step forward in the sequence
     - on a win, step back two places (but never below the first)
     #Bet size = sequence[current_index] * min_bet
+    Source: https://blog.sportium.es/3-simples-estrategias-para-ganar-en-la-ruleta-que-cualquiera-puede-intentar/
     '''
     
     def __init__(self, roulette: Roulette, player: Player) -> None:
@@ -65,6 +66,7 @@ class MartingalaStrat (Strat):
     Implements the classic Martingale roulette progression:
     - on a loss, double your previous bet
     - on a win, reset back to the base bet
+    Source: https://blog.sportium.es/3-simples-estrategias-para-ganar-en-la-ruleta-que-cualquiera-puede-intentar/
     '''
 
     def __init__(self, roulette: Roulette, player: Player) -> None:
@@ -85,6 +87,7 @@ class DAlembertStrat (Strat):
     Implements the classic D’Alembert roulette progression:
     - on a loss, increase your bet by one unit (min_bet)
     - on a win, decrease your bet by one unit, but never below min_bet
+    Source: https://blog.sportium.es/3-simples-estrategias-para-ganar-en-la-ruleta-que-cualquiera-puede-intentar/
     
       TODO: check if two validations are needed??
     '''
@@ -106,6 +109,7 @@ class ParoliStrat (Strat):
     Implements the classic Paroli (reverse-Martingale) roulette progression:
     - on a win, double your previous bet (up to a cap)
     - on a loss, reset back to the base bet
+    Source: https://blog.sportium.es/3-simples-estrategias-para-ganar-en-la-ruleta-que-cualquiera-puede-intentar/
     '''
     
     def __init__(self, roulette: Roulette, player: Player) -> None:
