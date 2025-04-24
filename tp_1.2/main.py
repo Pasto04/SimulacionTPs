@@ -84,7 +84,22 @@ def generate_one_batch_graphics(players: list[Player], min_bet: int):
     batch_show_number = random.randint(1, number_of_batches)
     selected_player = players[batch_show_number-1]
     
-    GenerateGraphics.generate_bar_chart("Frecuencia relativa de victorias", 1, "Número de tirada", "Frecuencia relativa", selected_player.get_relative_freq_spins_won(), 0.5)
+    #aca calculo cual deberia ser el valor esperado segun apuesta
+    match(chosen_bet):
+            case int() as number if 0 <= number <= 36:
+                expected_value_based_on_bet = ( 1 / 37 ) #The chance of winning a straight-up bet is 1 in 37 (0-36)
+            case "red" | "black":
+                expected_value_based_on_bet = ( 18 / 36 ) #The chance of winning a color bet is 18 in 36 (0 auto-loses)
+            case "even" | "odd":
+                expected_value_based_on_bet = ( 18 / 36 ) #The chance of winning an even/odd bet is 18 in 36 (0 auto-loses)
+            case "dozen1" | "dozen2" | "dozen3":
+                expected_value_based_on_bet = ( 12 / 36 ) #The chance of winning a dozen bet is 12 in 36 (0 auto-loses)
+            case "column1" | "column2" | "column3":
+                expected_value_based_on_bet = ( 12 / 36 ) #The chance of winning a column bet is 12 in 36 (0 auto-loses)
+            case _:
+                raise ValueError(f"Apuesta desconocida: {chosen_bet}")
+
+    GenerateGraphics.generate_bar_chart("Frecuencia relativa de victorias", 1, "Número de tirada", "Frecuencia relativa", selected_player.get_relative_freq_spins_won(), expected_value_based_on_bet)
     GenerateGraphics.generate_line_chart("Flujo de caja", 2, "Número de tirada", "Cantidad de capital", selected_player.get_capital(), initial_capital)
     GenerateGraphics.generate_bar_chart_from_counter("Frecuencia del monto de las apuestas", 3, "Monto de apuesta", "Frecuencia absoluta", selected_player.get_bets(), min_bet)
     
@@ -101,7 +116,22 @@ def generate_general_graphics(players: list[Player]):
         capitals_array.append(p.get_capital())
         spins_count.append(len(p.get_bets()))
 
-    GenerateGraphics.generate_bar_chart("Cantidad de tiradas por jugador", 1, "Número de jugador", "Cantidad de tiradas", spins_count, None)
+    #aca calculo cual deberia ser el valor esperado segun apuesta
+    match(chosen_bet):
+        case int() as number if 0 <= number <= 36:
+            expected_value_based_on_bet = ( 1 / 37 ) #The chance of winning a straight-up bet is 1 in 37 (0-36)
+        case "red" | "black":
+            expected_value_based_on_bet = ( 18 / 36 ) #The chance of winning a color bet is 18 in 36 (0 auto-loses)
+        case "even" | "odd":
+            expected_value_based_on_bet = ( 18 / 36 ) #The chance of winning an even/odd bet is 18 in 36 (0 auto-loses)
+        case "dozen1" | "dozen2" | "dozen3":
+            expected_value_based_on_bet = ( 12 / 36 ) #The chance of winning a dozen bet is 12 in 36 (0 auto-loses)
+        case "column1" | "column2" | "column3":
+            expected_value_based_on_bet = ( 12 / 36 ) #The chance of winning a column bet is 12 in 36 (0 auto-loses)
+        case _:
+            raise ValueError(f"Apuesta desconocida: {chosen_bet}")
+
+    GenerateGraphics.generate_bar_chart("Cantidad de tiradas por jugador", 1, "Número de jugador", "Cantidad de tiradas", spins_count, expected_value_based_on_bet)
     GenerateGraphics.generate_line_chart("Flujo de caja", 2, "Número de tirada", "Cantidad de capital", capitals_array, initial_capital, True)
 
     title = f"MÚLTIPLES CORRIDAS\n"
