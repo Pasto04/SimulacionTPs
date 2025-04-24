@@ -27,7 +27,7 @@ class Roulette:
         if isinstance(selection, int):
             if 0 <= selection <= 36:
                 return selection
-            raise ValueError(f"Number bet must be 0–36, got {selection}")
+            raise ValueError(f"Number bet must be 0-36, got {selection}")
         
         sel = selection.lower()
         if sel in cls.GROUP_BETS:
@@ -41,15 +41,13 @@ class Roulette:
         """
         number = random.randint(0, 36)
 
-        # Straight-up number
-        if isinstance (selected_bet, int):
+        if isinstance(selected_bet, int):
             return number,  (selected_bet == number)
 
         # Group bets (0 auto-loses)
         if number == 0:
             return number, False
 
-        # everything else is a string in GROUP_BETS
         if selected_bet == 'red':
             win = number in self.RED
         elif selected_bet == 'black':
@@ -72,3 +70,6 @@ class Roulette:
             win = (number % 3 == 0)
 
         return number, win
+
+
+#TODO poner multiplicador
