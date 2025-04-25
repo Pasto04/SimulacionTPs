@@ -79,7 +79,8 @@ def main():
     if (initial_capital == 'i'):
         max_bet = float('inf')
 
-    roulette = Roulette(min_bet, max_bet)
+    roulette = Roulette.get_instance(min_bet, max_bet)
+
     players: list[Player] = []
 
     for _ in range(number_of_batches):

@@ -10,11 +10,18 @@ class Roulette:
         'dozen1','dozen2','dozen3',
         'column1','column2','column3'
     }
+    instance = None
 
     def __init__(self, min_bet: int, max_bet: int) -> None:
         self.min_bet = min_bet
         self.max_bet = max_bet
 
+    @classmethod
+    def get_instance(cls, min_bet=2500, max_bet=50000):
+        if cls.instance is None:
+            cls.instance = cls(min_bet, max_bet)
+        return cls.instance
+    
     @classmethod
     def validate_selection(cls, selection: Union[int, str]) -> Union[int, str]:
         """
