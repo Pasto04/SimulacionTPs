@@ -14,11 +14,11 @@ class GenerateGraphics:
         if multiple_lists:
             for aux in data:
                 plt.plot(aux)
-            #if len(lista[x].capital) > aux: aux = len(lista[x].capital)
         else:
             plt.plot(data, label="Capital")
-        
-        plt.axhline(y=expected_value, color='darkorange', linestyle='--', label='Capital inicial')
+        if (expected_value!=0):
+            plt.axhline(y=expected_value, color='darkorange', linestyle='--', label='Capital inicial')
+
         plt.legend()
         plt.plot()
 
@@ -54,6 +54,31 @@ class GenerateGraphics:
 
         plt.xticks(ticks=numbers, rotation=45)
         plt.plot()
+
+
+    @staticmethod
+    def generate_pie_chart_from_counter(title, subplot_number, data):
+        plt.subplot(2, 2, subplot_number)
+        plt.title(title)
+
+        labels = list(data.keys())
+        sizes = list(data.values())
+
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+        plt.plot()
+                
+        # Plot
+        '''plt.pie(sizes, labels=labels, colors=colors, explode=explode, 
+                autopct='%1.1f%%', shadow=True, startangle=140)
+
+
+        plt.pie(data, *, explode=None, labels=["Ganadores", "Perdedores"], colors=None, 
+                              autopct=None, pctdistance=0.6, shadow=False, 
+                              labeldistance=1.1, startangle=0, radius=1, counterclock=True, 
+                              wedgeprops=None, textprops=None, center=(0, 0), frame=False, 
+                              rotatelabels=False, normalize=True, hatch=None, data=None)
+        '''
+
 
 
     @staticmethod

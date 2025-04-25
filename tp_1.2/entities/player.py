@@ -2,14 +2,18 @@ class Player:
     def __init__(self, capital: int):
         self.wons_count = 0
         self.capital = [capital]
+        self.infinite_capital = capital == 0
+
         self.bets = []
         self.relative_freq_spins_won = []
 
 
     def update_capital(self, amount: int):
         self.capital.append(self.capital[-1] + amount)
+
         if amount > 0:
             self.wons_count += 1
+        
         
         spins_count = len(self.relative_freq_spins_won) + 1
         self.relative_freq_spins_won.append(self.wons_count/spins_count)
@@ -37,4 +41,7 @@ class Player:
 
     def get_strat(self):
         return self.strat
+    
+    def get_infinite_capital(self):
+        return self.infinite_capital
 

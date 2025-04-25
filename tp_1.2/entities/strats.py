@@ -23,6 +23,11 @@ class Strat(ABC):
         pass
 
     def ControlNextBet(self, desired_bet) -> int:
+        if (self.player.get_infinite_capital()):
+            if (desired_bet > self.max_bet):
+                return self.max_bet
+            return desired_bet
+
         if (self.player.get_current_capital() < desired_bet):
             desired_bet = self.player.get_current_capital()
 
@@ -41,7 +46,8 @@ class FibbonaciStrat(Strat):
     - on a loss, step forward in the sequence
     - on a win, step back two places (but never below the first)
     #Bet size = sequence[current_index] * min_bet
-    Source: https://blog.sportium.es/3-simples-estrategias-para-ganar-en-la-ruleta-que-cualquiera-puede-intentar/
+    Source: http
+    s://blog.sportium.es/3-simples-estrategias-para-ganar-en-la-ruleta-que-cualquiera-puede-intentar/
     '''
     
     def __init__(self, roulette: Roulette, player: Player) -> None:
@@ -88,8 +94,6 @@ class DAlembertStrat (Strat):
     - on a loss, increase your bet by one unit (min_bet)
     - on a win, decrease your bet by one unit, but never below min_bet
     Source: https://blog.sportium.es/3-simples-estrategias-para-ganar-en-la-ruleta-que-cualquiera-puede-intentar/
-    
-      TODO: check if two validations are needed??
     '''
 
     def __init__(self, roulette: Roulette, player: Player) -> None:

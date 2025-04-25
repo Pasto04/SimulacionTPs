@@ -15,27 +15,24 @@ import random
 from entities.strats import FibbonaciStrat, MartingalaStrat, DAlembertStrat, ParoliStrat
 from entities.player import Player
 from entities.roulette import Roulette
-from entities.graphics import GenerateGraphics
+from utils.graphics import GenerateGraphics
 
 chosen_bet = number_of_spins = number_of_batches = initial_capital = 0
 chosen_strat = ''
 
-#TODO: Listas de colores y grupos de apuestas, estan aca por se necesitan en el tipo de apuestas, considerar mover a otro lado, pero por ahora es funcional.
-
-RED   = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36}
-BLACK = {2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35}
-GROUP_BETS = { 
-    'red', 'black', 'even', 'odd',
-    'dozen1', 'dozen2', 'dozen3',
-    'column1', 'column2', 'column3'
-}
 
 def valid_bet(value: str):
     if value.isdigit():
         ivalue = int(value)
         if 0 <= ivalue <= 36:
             return ivalue
-        raise argparse.ArgumentTypeError(f"Número fuera de rango: {ivalue} (permitido: 0–36)")
+        raise argparse.ArgumentTypeError(f"Número fuera de rango: {ivalue} (permitido: 0-36)")
+
+    GROUP_BETS = { 
+    'red', 'black', 'even', 'odd',
+    'dozen1', 'dozen2', 'dozen3',
+    'column1', 'column2', 'column3'
+    }
 
     value_lower = value.lower()
     if value_lower in GROUP_BETS:
@@ -67,8 +64,8 @@ def get_simulation_args():
     parser.add_argument("-t", "--tiradas",  default=100, help="Valor del número de tiradas por corrida (100 por defecto)")
     parser.add_argument('-c', '--corridas', default=15, type=int, help='Valor del número de corridas (Por defecto: %(default)s)')
     parser.add_argument("-n", "--seleccion", default="red", type=valid_bet, help="Selección: un número, \"red\", \"black\", \"even\", \"odd\", \"dozen1\", \"dozen2\", \"dozen3\", \"column1\", \"column2\", \"column3\" (Por defecto: %(default)s)")
-    parser.add_argument('-s', '--estrategia', default='m', choices=['m','d','f','o'], help="Estrategia a utilizar: \"m\" - Martingala, \"d\" - D'Alemnert, \"f\" - Fibonacci, \"o\" - Paroli (Por defecto: %(default)s)", )
-    parser.add_argument('-a', '--capital', default=50000, type=valid_capital, help="Capital: \"i\" para infinito o el monto si es finito (Por defecto: %(default)s - Mínimo 2500)")
+    parser.add_argument('-s', '--estrategia', default='p', choices=['m','d','f','p'], help="Estrategia a utilizar: \"m\" - Martingala, \"d\" - D'Alemnert, \"f\" - Fibonacci, \"o\" - Paroli (Por defecto: %(default)s)", )
+    parser.add_argument('-a', '--capital', default='i', type=valid_capital, help="Capital: \"i\" para infinito o el monto si es finito (Por defecto: %(default)s - Mínimo 2500)")
 
     args, unknown = parser.parse_known_args()
     number_of_batches = int(args.corridas)
@@ -81,71 +78,76 @@ def get_simulation_args():
 
 
 def generate_one_batch_graphics(players: list[Player], min_bet: int):
+    global  initial_capital
     batch_show_number = random.randint(1, number_of_batches)
     selected_player = players[batch_show_number-1]
-    
-    #aca calculo cual deberia ser el valor esperado segun apuesta
-    match(chosen_bet):
-            case int() as number if 0 <= number <= 36:
-                expected_value_based_on_bet = ( 1 / 37 ) #The chance of winning a straight-up bet is 1 in 37 (0-36)
-            case "red" | "black":
-                expected_value_based_on_bet = ( 18 / 36 ) #The chance of winning a color bet is 18 in 36 (0 auto-loses)
-            case "even" | "odd":
-                expected_value_based_on_bet = ( 18 / 36 ) #The chance of winning an even/odd bet is 18 in 36 (0 auto-loses)
-            case "dozen1" | "dozen2" | "dozen3":
-                expected_value_based_on_bet = ( 12 / 36 ) #The chance of winning a dozen bet is 12 in 36 (0 auto-loses)
-            case "column1" | "column2" | "column3":
-                expected_value_based_on_bet = ( 12 / 36 ) #The chance of winning a column bet is 12 in 36 (0 auto-loses)
-            case _:
-                raise ValueError(f"Apuesta desconocida: {chosen_bet}")
+    expected_value_based_on_bet = calculate_expected_value(chosen_bet)
 
     GenerateGraphics.generate_bar_chart("Frecuencia relativa de victorias", 1, "Número de tirada", "Frecuencia relativa", selected_player.get_relative_freq_spins_won(), expected_value_based_on_bet)
     GenerateGraphics.generate_line_chart("Flujo de caja", 2, "Número de tirada", "Cantidad de capital", selected_player.get_capital(), initial_capital)
     GenerateGraphics.generate_bar_chart_from_counter("Frecuencia del monto de las apuestas", 3, "Monto de apuesta", "Frecuencia absoluta", selected_player.get_bets(), min_bet)
     
     title = f"CORRIDA NÚMERO {batch_show_number}\n"
-    title += f"Selección: {chosen_bet} - Estrategia: {selected_player.get_strat().get_name()} - Capital inicial: {initial_capital}"
+    if initial_capital == 0:
+        title += f"Selección: {chosen_bet} - Estrategia: {selected_player.get_strat().get_name()} - Capital inicial: infinito"
+    else:
+        title += f"Selección: {chosen_bet} - Estrategia: {selected_player.get_strat().get_name()} - Capital inicial: {initial_capital}"
     GenerateGraphics.show_graphics(title)
+
+
+def calculate_expected_value(chosen_bet: str) -> float:
+    match(chosen_bet):
+        case int() as number if 0 <= number <= 36:
+            expected_value_based_on_bet = ( 1 / 37 ) #The chance of winning a straight-up bet is 1 in 37 (0-36)
+        case "red" | "black" | "even" | "odd":
+            expected_value_based_on_bet = ( 18 / 37 ) #The chance of winning a color bet is 18 in 37
+        case "dozen1" | "dozen2" | "dozen3" | "column1" | "column2" | "column3":
+            expected_value_based_on_bet = ( 12 / 37 ) #The chance of winning a column bet is 12 in 37
+        case _:
+            raise ValueError(f"Apuesta desconocida: {chosen_bet}")
+    return expected_value_based_on_bet
 
 
 def generate_general_graphics(players: list[Player]):
     capitals_array = []
     spins_count = []
-
+    players_result = {
+        "wins": 0,
+        "losses": 0
+    }
     for p in players:
         capitals_array.append(p.get_capital())
         spins_count.append(len(p.get_bets()))
+        if p.get_current_capital() > 0:
+            players_result["wins"] += 1
+        else:
+            players_result["losses"] += 1
 
-    #aca calculo cual deberia ser el valor esperado segun apuesta
-    match(chosen_bet):
-        case int() as number if 0 <= number <= 36:
-            expected_value_based_on_bet = ( 1 / 37 ) #The chance of winning a straight-up bet is 1 in 37 (0-36)
-        case "red" | "black":
-            expected_value_based_on_bet = ( 18 / 36 ) #The chance of winning a color bet is 18 in 36 (0 auto-loses)
-        case "even" | "odd":
-            expected_value_based_on_bet = ( 18 / 36 ) #The chance of winning an even/odd bet is 18 in 36 (0 auto-loses)
-        case "dozen1" | "dozen2" | "dozen3":
-            expected_value_based_on_bet = ( 12 / 36 ) #The chance of winning a dozen bet is 12 in 36 (0 auto-loses)
-        case "column1" | "column2" | "column3":
-            expected_value_based_on_bet = ( 12 / 36 ) #The chance of winning a column bet is 12 in 36 (0 auto-loses)
-        case _:
-            raise ValueError(f"Apuesta desconocida: {chosen_bet}")
 
-    GenerateGraphics.generate_bar_chart("Cantidad de tiradas por jugador", 1, "Número de jugador", "Cantidad de tiradas", spins_count, expected_value_based_on_bet)
+    if initial_capital == 0:
+        GenerateGraphics.generate_pie_chart_from_counter("Proporcion de victorias", 1, players_result)
+    else:
+        GenerateGraphics.generate_bar_chart("Cantidad de tiradas por jugador", 1, "Número de jugador", "Cantidad de tiradas", spins_count, None)
     GenerateGraphics.generate_line_chart("Flujo de caja", 2, "Número de tirada", "Cantidad de capital", capitals_array, initial_capital, True)
 
     title = f"MÚLTIPLES CORRIDAS\n"
-    title += f"Corridas: {number_of_batches} - Selección: {chosen_bet} - Estrategia: {players[0].get_strat().get_name()} - Capital inicial: {initial_capital}"
+    if initial_capital == 0:
+        title += f"Corridas: {number_of_batches} - Selección: {chosen_bet} - Estrategia: {players[0].get_strat().get_name()} - Capital inicial: infinito"
+    else:
+        title += f"Corridas: {number_of_batches} - Selección: {chosen_bet} - Estrategia: {players[0].get_strat().get_name()} - Capital inicial: {initial_capital}"
+  
     GenerateGraphics.show_graphics(title)
 
 
 def main():
+    global chosen_bet, number_of_spins, number_of_batches, chosen_strat, initial_capital
     get_simulation_args()
     
     min_bet = 2500
     max_bet = 50000
     if (initial_capital == 'i'):
-        max_bet = float('inf')
+        initial_capital = 0
+        
 
     roulette = Roulette.get_instance(min_bet, max_bet)
 
@@ -158,7 +160,7 @@ def main():
         match(chosen_strat):
             case 'm': strat = MartingalaStrat(roulette, player)
             case 'd': strat = DAlembertStrat(roulette, player)
-            case 'o': strat = ParoliStrat(roulette, player)
+            case 'p': strat = ParoliStrat(roulette, player)
             case 'f': strat = FibbonaciStrat(roulette, player)
 
         player.set_strat(strat)
@@ -170,13 +172,12 @@ def main():
 
             current_capital = player.update_capital(capital_variation)
 
-            if current_capital < min_bet:
+            if current_capital < min_bet and initial_capital != 0:
                 break
 
             bet = strat.CalcleNextBet(player_won, bet)
 
 
-    #TODO depende a lo que juege el expected value (apuesta a qúe)
     generate_one_batch_graphics(players, min_bet)
     generate_general_graphics(players)
 
