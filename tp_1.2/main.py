@@ -125,7 +125,7 @@ def generate_general_graphics(players: list[Player]):
 
 
     if initial_capital == 0:
-        GenerateGraphics.generate_pie_chart_from_counter("Proporcion de victorias", 1, players_result)
+        GenerateGraphics.generate_pie_chart("Proporción de victorias", 1, players_result)
     else:
         GenerateGraphics.generate_bar_chart("Cantidad de tiradas por jugador", 1, "Número de jugador", "Cantidad de tiradas", spins_count, None)
     GenerateGraphics.generate_line_chart("Flujo de caja", 2, "Número de tirada", "Cantidad de capital", capitals_array, initial_capital, True)

@@ -16,8 +16,12 @@ class GenerateGraphics:
                 plt.plot(aux)
         else:
             plt.plot(data, label="Capital")
-        if (expected_value!=0):
+        
+        if (expected_value != 0):
             plt.axhline(y=expected_value, color='darkorange', linestyle='--', label='Capital inicial')
+            plt.legend()
+        else:
+            plt.axhline(y=expected_value, color='darkorange', linestyle='-')
 
         plt.legend()
         plt.plot()
@@ -57,7 +61,7 @@ class GenerateGraphics:
 
 
     @staticmethod
-    def generate_pie_chart_from_counter(title, subplot_number, data):
+    def generate_pie_chart(title, subplot_number, data):
         plt.subplot(2, 2, subplot_number)
         plt.title(title)
 
