@@ -19,7 +19,7 @@ class Strat(ABC):
         return self.name
 
     @abstractmethod
-    def CalcleNextBet (self, player_won: bool, bet: int):
+    def CalculeNextBet (self, player_won: bool, bet: int):
         pass
 
     def ControlNextBet(self, desired_bet) -> int:
@@ -55,7 +55,7 @@ class FibbonaciStrat(Strat):
         self.sequence: List[int] = [1, 1]
         self.current_index: int  = 0
 
-    def CalcleNextBet(self, player_won: bool, bet: int) -> int:
+    def CalculeNextBet(self, player_won: bool, bet: int) -> int:
         if player_won:
             self.current_index = max(self.current_index - 2, 0)
         else:
@@ -79,7 +79,7 @@ class MartingalaStrat (Strat):
         super().__init__(roulette, player, 'Martingala', 'Martingala betting strategy')
         self.loss_streak: int = 0
 
-    def CalcleNextBet(self, player_won: bool, bet: int) -> int:
+    def CalculeNextBet(self, player_won: bool, bet: int) -> int:
         if player_won:
             self.loss_streak = 0
         else:
@@ -100,7 +100,7 @@ class DAlembertStrat (Strat):
         super().__init__(roulette, player, "D'Alembert", "D'Alembert betting strategy")
         self.current_bet: int = roulette.min_bet
 
-    def CalcleNextBet(self, player_won: bool, bet: int) -> int:
+    def CalculeNextBet(self, player_won: bool, bet: int) -> int:
         if player_won:
             self.current_bet = max(self.current_bet - self.min_bet, self.min_bet)
         else:
@@ -121,7 +121,7 @@ class ParoliStrat (Strat):
         self.win_streak: int = 0
         self.max_doubles = 3
 
-    def CalcleNextBet(self, player_won: bool, bet: int) -> int:
+    def CalculeNextBet(self, player_won: bool, bet: int) -> int:
         if player_won:
             self.win_streak += 1
 

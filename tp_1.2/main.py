@@ -175,7 +175,7 @@ def main():
             if current_capital < min_bet and initial_capital != 0:
                 break
 
-            bet = strat.CalcleNextBet(player_won, bet)
+            bet = strat.CalculeNextBet(player_won, bet)
 
 
     generate_one_batch_graphics(players, min_bet)
