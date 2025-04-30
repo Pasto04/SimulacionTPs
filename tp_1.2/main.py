@@ -62,9 +62,9 @@ def get_simulation_args():
     
     parser = argparse.ArgumentParser()
     parser.add_argument("-t", "--tiradas",  default=100, help="Valor del número de tiradas por corrida (100 por defecto)")
-    parser.add_argument('-c', '--corridas', default=15, type=int, help='Valor del número de corridas (Por defecto: %(default)s)')
+    parser.add_argument('-c', '--corridas', default=384, type=int, help='Valor del número de corridas (Por defecto: %(default)s)')
     parser.add_argument("-n", "--seleccion", default="red", type=valid_bet, help="Selección: un número, \"red\", \"black\", \"even\", \"odd\", \"dozen1\", \"dozen2\", \"dozen3\", \"column1\", \"column2\", \"column3\" (Por defecto: %(default)s)")
-    parser.add_argument('-s', '--estrategia', default='p', choices=['m','d','f','p'], help="Estrategia a utilizar: \"m\" - Martingala, \"d\" - D'Alemnert, \"f\" - Fibonacci, \"o\" - Paroli (Por defecto: %(default)s)", )
+    parser.add_argument('-s', '--estrategia', default='m', choices=['m','d','f','p'], help="Estrategia a utilizar: \"m\" - Martingala, \"d\" - D'Alemnert, \"f\" - Fibonacci, \"o\" - Paroli (Por defecto: %(default)s)", )
     parser.add_argument('-a', '--capital', default='i', type=valid_capital, help="Capital: \"i\" para infinito o el monto si es finito (Por defecto: %(default)s - Mínimo 2500)")
 
     args, unknown = parser.parse_known_args()
