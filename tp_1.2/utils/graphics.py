@@ -70,19 +70,6 @@ class GenerateGraphics:
 
         plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
         plt.plot()
-                
-        # Plot
-        '''plt.pie(sizes, labels=labels, colors=colors, explode=explode, 
-                autopct='%1.1f%%', shadow=True, startangle=140)
-
-
-        plt.pie(data, *, explode=None, labels=["Ganadores", "Perdedores"], colors=None, 
-                              autopct=None, pctdistance=0.6, shadow=False, 
-                              labeldistance=1.1, startangle=0, radius=1, counterclock=True, 
-                              wedgeprops=None, textprops=None, center=(0, 0), frame=False, 
-                              rotatelabels=False, normalize=True, hatch=None, data=None)
-        '''
-
 
 
     @staticmethod
