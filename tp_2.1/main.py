@@ -105,7 +105,7 @@ def runs_test(random_numbers):
     n2 = signs.count(0)
     n = n1 + n2
 
-    if n1 < 0 or n2 < 0:
+    if n1 == 0 or n2 == 0:
         return runs, None, False  # No se puede aplicar el test
 
     expected_runs = (2 * n1 * n2) / n + 1
