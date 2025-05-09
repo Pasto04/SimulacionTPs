@@ -29,7 +29,7 @@ def main():
     }
 
 
-    #TODO cuántos nros hay que generar para los tests? @joaquin
+    #TODO cuántos nros hay que generar para los tests? @joaquin (lo voy a hacer en base a los test, despues me encargo de agregarlo también al informe)
     for x in range (1000):
         generated_numbers['middle_square_generator'].append(middle_square_generator.random())
         generated_numbers['linear_generator'].append(linear_generator.random())
