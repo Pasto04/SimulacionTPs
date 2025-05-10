@@ -4,6 +4,8 @@ from generators.middle_square_method import MiddleSquareMethod
 from generators.linear_congruential_generator import LinearCongruentialGenerator
 from generators.quadratic_congruential_generator import QuadraticCongruentialGenerator
 
+from tests import frequency_test, runs_test, reverse_arrangements_test, overlapping_sums_test, binary_rank_test
+
 def generate_scatter_plot(data, title, x_axys_label, y_axys_label):
     plt.title(title)
     plt.xlabel(x_axys_label)
@@ -45,75 +47,55 @@ def main():
         print(f"\n{name.upper()} - Test de Frecuencia (Chi-cuadrado):")
         print(f"Chi-cuadrado calculado: {chi:.4f}")
         print(f"Valor crítico (α=0.05): {critical:.4f}")
-        
-        # Explicación según si pasa el test o no
         if passed:
-            print(f"¿Pasa el test? Sí\nExplicación: El valor calculado del Chi-cuadrado es menor que el valor crítico, lo que indica que los números generados tienen una distribución uniforme. El generador pasa el test de frecuencia.")
+            print("¿Pasa el test? Sí")
+            print("Explicación: el valor calculado es menor que el crítico; la distribución es uniforme.")
         else:
-            print(f"¿Pasa el test? No\nExplicación: El valor calculado del Chi-cuadrado es mayor que el valor crítico, lo que indica que los números generados no tienen una distribución uniforme. El generador no pasa el test de frecuencia debido a sesgos en la generación de números aleatorios.")
+            print("¿Pasa el test? No")
+            print("Explicación: el valor calculado supera el crítico; la distribución no es uniforme.")
 
-    
-     # Test de independencia de runs
         runs_count, runs_expected, runs_passed = runs_test(numbers)
-        print(' ')
-        print(f"{name.upper()} - Test de Independencia de Runs:")
-        print(f"Cantidad de corridas observadas: {runs_count}")
-        print(f"Cantidad de corridas esperadas: {runs_expected}")
-        
+        print(f"\n{name.upper()} - Test de Independencia de Corridas:")
+        print(f"Corridas observadas: {runs_count}")
+        print(f"Corridas esperadas: {runs_expected:.2f}")
         if runs_passed:
-            print("¿Pasa el test? Sí\nExplicación: La cantidad de corridas observadas es cercana a la cantidad esperada, lo que indica independencia entre los valores generados.")
+            print("¿Pasa el test? Sí")
+            print("Explicación: las corridas observadas coinciden con las esperadas; hay independencia.")
         else:
-            print("¿Pasa el test? No\nExplicación: La cantidad de corridas observadas es significativamente diferente de la cantidad esperada, lo que indica que los valores generados no son independientes.")
+            print("¿Pasa el test? No")
+            print("Explicación: las corridas observadas difieren significativamente; falta independencia.")
 
+        inv_count, inv_expected, inv_passed = reverse_arrangements_test(numbers)
+        print(f"\n{name.upper()} - Test de Arreglos Inversos:")
+        print(f"Inversiones observadas: {inv_count}")
+        print(f"Inversiones esperadas: {inv_expected:.2f}")
+        if inv_passed:
+            print("¿Pasa el test? Sí")
+            print("Explicación: el número de inversiones está dentro del rango esperado.")
+        else:
+            print("¿Pasa el test? No")
+            print("Explicación: el número de inversiones está fuera del rango esperado; posible sesgo.")
 
+        sum_stat, sum_expected, sum_passed = overlapping_sums_test(numbers)
+        print(f"\n{name.upper()} - Test de Sumas Solapadas (m=5):")
+        print(f"Suma media observada: {sum_stat:.4f}")
+        print(f"Suma media esperada: {sum_expected:.4f}")
+        if sum_passed:
+            print("¿Pasa el test? Sí")
+            print("Explicación: la media de las sumas concuerda con la teórica; cumple iid.")
+        else:
+            print("¿Pasa el test? No")
+            print("Explicación: la media de las sumas difiere; posible dependencia o sesgo.")
 
-def chi_squared_critical_value(df, alpha=0.05):
-    critical_values = {
-        1: 3.841, 2: 5.991, 3: 7.815, 4: 9.488, 5: 11.070,
-        6: 12.592, 7: 14.067, 8: 15.507, 9: 16.919, 10: 18.307,
-    }
-    return critical_values.get(df, None)
-
-def frequency_test(random_numbers, num_intervals=10, alpha=0.05):
-    n = len(random_numbers)
-    expected_freq = n / num_intervals
-    observed_freqs = [0] * num_intervals
-
-    for number in random_numbers:
-        index = min(int(number * num_intervals), num_intervals - 1)
-        observed_freqs[index] += 1
-
-    chi_squared = sum(
-        (obs - expected_freq) ** 2 / expected_freq
-        for obs in observed_freqs
-    )
-
-    critical_value = chi_squared_critical_value(num_intervals - 1, alpha)
-    passed = chi_squared < critical_value if critical_value else False
-    return chi_squared, critical_value, passed
-
-def runs_test(random_numbers):
-    median = sorted(random_numbers)[len(random_numbers) // 2]  # Mediana empírica
-    signs = [1 if x >= median else 0 for x in random_numbers]
-    
-    runs = 1
-    for i in range(1, len(signs)):
-        if signs[i] != signs[i - 1]:
-            runs += 1
-
-    n1 = signs.count(1)
-    n2 = signs.count(0)
-    n = n1 + n2
-
-    if n1 == 0 or n2 == 0:
-        return runs, None, False  # No se puede aplicar el test
-
-    expected_runs = (2 * n1 * n2) / n + 1
-    variance_runs = (2 * n1 * n2 * (2 * n1 * n2 - n)) / (n**2 * (n - 1))
-    z = (runs - expected_runs) / (variance_runs ** 0.5)
-
-    passed = abs(z) < 1.96  # Nivel de confianza del 95%
-    return runs, expected_runs, passed
+        rank_dist, rank_passed = binary_rank_test(numbers)
+        print(f"\n{name.upper()} - Test de Rango Binario (32×32):")
+        print(f"Distribución de rangos: {rank_dist}")
+        if rank_passed:
+            print("¿Pasa el test? Sí")
+            print("Explicación: la distribución de rangos coincide con las proporciones teóricas.")
+        else:
+            print("¿Pasa el test? No")
+            print("Explicación: la distribución de rangos difiere de la esperada; posibles fallos.")
 
 if __name__ == "__main__":
     main()
