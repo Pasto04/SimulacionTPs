@@ -4,6 +4,7 @@ from tabulate import tabulate
 from generators.middle_square_method import MiddleSquareMethod
 from generators.linear_congruential_generator import LinearCongruentialGenerator
 from generators.quadratic_congruential_generator import QuadraticCongruentialGenerator
+from generators.mixed_generator import MixedGenerator   
 
 from tests import Tests
 
@@ -37,13 +38,15 @@ def main():
     middle_square_generator = MiddleSquareMethod.get_instance()
     linear_generator = LinearCongruentialGenerator.get_instance()
     quadratic_generator = QuadraticCongruentialGenerator.get_instance()
+    mixed_generator = MixedGenerator.get_instance()
     python_generator = random
 
     generated_numbers = {
         "middle_square_generator": [],
         "linear_generator": [],
         "quadratic_generator": [],
-        "python_generator": []
+        "python_generator": [],
+        "mixed_generator": []
     }
 
     for _ in range(3207):
@@ -51,6 +54,7 @@ def main():
         generated_numbers['linear_generator'].append(linear_generator.random())
         generated_numbers['quadratic_generator'].append(quadratic_generator.random())
         generated_numbers['python_generator'].append(python_generator.random())
+        generated_numbers['mixed_generator'].append(mixed_generator.random())
 
     testPassed = {
         "frequency_test": bool,
@@ -63,7 +67,8 @@ def main():
         "middle_square_generator": testPassed.copy(),
         "linear_generator": testPassed.copy(),
         "quadratic_generator": testPassed.copy(),
-        "python_generator": testPassed.copy()
+        "python_generator": testPassed.copy(),
+        "mixed_generator": testPassed.copy()
     }
 
 
@@ -142,6 +147,8 @@ def main():
     generate_scatter_plot(generated_numbers['linear_generator'], "Generador Lineal Congruencial", "Índice", "Valor")
     generate_scatter_plot(generated_numbers['quadratic_generator'], "Generador Cuadrático Congruencial", "Índice", "Valor")
     generate_scatter_plot(generated_numbers['python_generator'], "Generador Lenguaje Python", "Índice", "Valor")
+    generate_scatter_plot(generated_numbers['mixed_generator'], "Generador Mixto", "Índice", "Valor")
+
 
 
 if __name__ == "__main__":
