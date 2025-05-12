@@ -1,10 +1,11 @@
 import matplotlib.pyplot as plt
 import random
+from tabulate import tabulate
 from generators.middle_square_method import MiddleSquareMethod
 from generators.linear_congruential_generator import LinearCongruentialGenerator
 from generators.quadratic_congruential_generator import QuadraticCongruentialGenerator
 
-from tests import frequency_test, runs_test, reverse_arrangements_test, overlapping_sums_test, binary_rank_test
+from tests import Tests
 
 def generate_scatter_plot(data, title, x_axys_label, y_axys_label):
     plt.title(title)
@@ -14,6 +15,22 @@ def generate_scatter_plot(data, title, x_axys_label, y_axys_label):
     x_data = list(range(len(data)))
     plt.scatter(x_data, data, color='blue', marker='o', s=10)
     plt.show()
+
+def generate_comparison_table(results):
+    headers = ["Generador", "Frecuencia", "Corridas", "Arreglos Inversos", "Sumas superpuestas", "Poker"]
+    table_data = []
+    for name, tests in results.items():
+        row = [
+            name.replace("_", " ").title(),
+            "✓" if tests["frequency_test"] else "X",
+            "✓" if tests["runs_test"] else "X",
+            "✓" if tests["reverse_arrangements_test"] else "X",
+            "✓" if tests["overlapping_sums_test"] else "X",
+            "✓" if tests["poker_test"] else "X",
+        ]
+        table_data.append(row)
+    print( "✓: Pasó el test - X: No pasó el test")
+    print(tabulate(table_data, headers, tablefmt= 'grid'))
 
 
 def main():
@@ -29,73 +46,103 @@ def main():
         "python_generator": []
     }
 
-    #TODO cuántos nros hay que generar para los tests? @joaquin (lo voy a hacer en base a los test, despues me encargo de agregarlo también al informe)
-    for x in range(1000):
+    for _ in range(3207):
         generated_numbers['middle_square_generator'].append(middle_square_generator.random())
         generated_numbers['linear_generator'].append(linear_generator.random())
         generated_numbers['quadratic_generator'].append(quadratic_generator.random())
         generated_numbers['python_generator'].append(python_generator.random())
 
-    generate_scatter_plot(generated_numbers['middle_square_generator'], "Generador Medios Cuadrados", "Índice", "Valor")
-    generate_scatter_plot(generated_numbers['linear_generator'], "Generador Lineal Congruencial", "Índice", "Valor")
-    generate_scatter_plot(generated_numbers['quadratic_generator'], "Generador Cuadrático Congruencial", "Índice", "Valor")
-    generate_scatter_plot(generated_numbers['python_generator'], "Generador Lenguaje Python", "Índice", "Valor")
-    #TODO se debe testear con al menos cuatro pruebas para determinar la calidad de generación.
+    testPassed = {
+        "frequency_test": bool,
+        "runs_test": bool,
+        "reverse_arrangements_test": bool,
+        "overlapping_sums_test": bool,
+        'poker_test' : bool,
+    }
+    testsPassedByGenerator = {
+        "middle_square_generator": testPassed.copy(),
+        "linear_generator": testPassed.copy(),
+        "quadratic_generator": testPassed.copy(),
+        "python_generator": testPassed.copy()
+    }
+
 
     for name, numbers in generated_numbers.items():
-        chi, critical, passed = frequency_test(numbers)
+        chi, critical, frequency_test_passed = Tests.frequency_test(numbers)
+        testsPassedByGenerator[name]["frequency_test"] = frequency_test_passed
         print(f"\n{name.upper()} - Test de Frecuencia (Chi-cuadrado):")
         print(f"Chi-cuadrado calculado: {chi:.4f}")
         print(f"Valor crítico (α=0.05): {critical:.4f}")
-        if passed:
+        if frequency_test_passed:
             print("¿Pasa el test? Sí")
             print("Explicación: el valor calculado es menor que el crítico; la distribución es uniforme.")
         else:
             print("¿Pasa el test? No")
             print("Explicación: el valor calculado supera el crítico; la distribución no es uniforme.")
 
-        runs_count, runs_expected, runs_passed = runs_test(numbers)
+        runs_test_count, runs_test_expected, runs_test_passed = Tests.runs_test(numbers)
+        testsPassedByGenerator[name]["runs_test"] = runs_test_passed
         print(f"\n{name.upper()} - Test de Independencia de Corridas:")
-        print(f"Corridas observadas: {runs_count}")
-        print(f"Corridas esperadas: {runs_expected:.2f}")
-        if runs_passed:
+        print(f"Corridas observadas: {runs_test_count}")
+        print(f"Corridas esperadas: {runs_test_expected:.2f}")
+        if runs_test_passed:
             print("¿Pasa el test? Sí")
             print("Explicación: las corridas observadas coinciden con las esperadas; hay independencia.")
         else:
             print("¿Pasa el test? No")
             print("Explicación: las corridas observadas difieren significativamente; falta independencia.")
 
-        inv_count, inv_expected, inv_passed = reverse_arrangements_test(numbers)
+        inv_test_count, inv_test_expected, inv_test_passed = Tests.reverse_arrangements_test(numbers)
+        testsPassedByGenerator[name]["reverse_arrangements_test"] = inv_test_passed
         print(f"\n{name.upper()} - Test de Arreglos Inversos:")
-        print(f"Inversiones observadas: {inv_count}")
-        print(f"Inversiones esperadas: {inv_expected:.2f}")
-        if inv_passed:
+        print(f"Inversiones observadas: {inv_test_count}")
+        print(f"Inversiones esperadas: {inv_test_expected:.2f}")
+        if inv_test_passed:
             print("¿Pasa el test? Sí")
             print("Explicación: el número de inversiones está dentro del rango esperado.")
         else:
             print("¿Pasa el test? No")
             print("Explicación: el número de inversiones está fuera del rango esperado; posible sesgo.")
 
-        sum_stat, sum_expected, sum_passed = overlapping_sums_test(numbers)
+        sum_test_stat, sum_test_expected, sum_test_passed = Tests.overlapping_sums_test(numbers)
+        testsPassedByGenerator[name]["overlapping_sums_test"] = sum_test_passed
         print(f"\n{name.upper()} - Test de Sumas Solapadas (m=5):")
-        print(f"Suma media observada: {sum_stat:.4f}")
-        print(f"Suma media esperada: {sum_expected:.4f}")
-        if sum_passed:
+        print(f"Suma media observada: {sum_test_stat:.4f}")
+        print(f"Suma media esperada: {sum_test_expected:.4f}")
+        if sum_test_passed:
             print("¿Pasa el test? Sí")
             print("Explicación: la media de las sumas concuerda con la teórica; cumple iid.")
         else:
             print("¿Pasa el test? No")
             print("Explicación: la media de las sumas difiere; posible dependencia o sesgo.")
-
-        rank_dist, rank_passed = binary_rank_test(numbers)
-        print(f"\n{name.upper()} - Test de Rango Binario (32×32):")
-        print(f"Distribución de rangos: {rank_dist}")
-        if rank_passed:
+        
+        
+        #TEST DE POKER
+        poker_result = Tests.poker_test(numbers)
+        testsPassedByGenerator[name]["poker_test"] = poker_result["passed"]
+        
+        print(f"\n{name.upper()} - Test de Poker:")
+        print(f"Frecuencia de todos diferentes: {poker_result['patterns']['Todos diferentes']}")
+        print(f"Frecuencia de pares: {poker_result['patterns']['Un par']}")
+        print(f"Frecuencia de dos pares: {poker_result['patterns']['Dos pares']}")
+        print(f"Frecuencia de trios: {poker_result['patterns']['Trio']}")
+        print(f"Frecuencia de full: {poker_result['patterns']['Full']}")
+        print(f"Frecuencia de poker: {poker_result['patterns']['Poker']}")
+        print(f"Frecuencia de quintilla: {poker_result['patterns']['Quintilla']}")
+        
+        if poker_result["passed"]:
             print("¿Pasa el test? Sí")
-            print("Explicación: la distribución de rangos coincide con las proporciones teóricas.")
+            print("Explicación: la frecuencia de combinaciones es consistente con la distribución esperada.")
         else:
             print("¿Pasa el test? No")
-            print("Explicación: la distribución de rangos difiere de la esperada; posibles fallos.")
+            print("Explicación: la frecuencia de combinaciones no es consistente con la distribución esperada; posible sesgo.")
+    generate_comparison_table(testsPassedByGenerator)
+
+    generate_scatter_plot(generated_numbers['middle_square_generator'], "Generador Medios Cuadrados", "Índice", "Valor")
+    generate_scatter_plot(generated_numbers['linear_generator'], "Generador Lineal Congruencial", "Índice", "Valor")
+    generate_scatter_plot(generated_numbers['quadratic_generator'], "Generador Cuadrático Congruencial", "Índice", "Valor")
+    generate_scatter_plot(generated_numbers['python_generator'], "Generador Lenguaje Python", "Índice", "Valor")
+
 
 if __name__ == "__main__":
     main()
