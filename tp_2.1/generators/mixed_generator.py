@@ -1,16 +1,17 @@
 from generators.generator import Generator
 from generators.linear_congruential_generator import LinearCongruentialGenerator
-from generators.middle_square_method import MiddleSquareMethod
 from generators.quadratic_congruential_generator import QuadraticCongruentialGenerator
 import random
+
 class MixedGenerator(Generator):
     order =  0
     def __init__(self, seed: int):
         self.seed = seed
+        random.seed(seed)
 
     instance = None
     @classmethod
-    def get_instance(cls, seed:int=9731):
+    def get_instance(cls, seed:int=3849):
         if cls.instance is None:
             cls.instance = cls(seed)
         return cls.instance
@@ -26,6 +27,7 @@ class MixedGenerator(Generator):
                 generator = QuadraticCongruentialGenerator.get_instance(self.seed)
             case 2:
                 generator = LinearCongruentialGenerator.get_instance(self.seed) 
+        
         self.order += 1
         value = generator.random()
         self.update_seed(value)

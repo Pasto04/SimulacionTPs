@@ -10,7 +10,6 @@ Dev Team:
 """
 
 
-import numpy as np
 from scipy.stats import chi2, chisquare
 
 class Tests:

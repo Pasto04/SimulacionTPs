@@ -40,6 +40,7 @@ def main():
     quadratic_generator = QuadraticCongruentialGenerator.get_instance()
     mixed_generator = MixedGenerator.get_instance()
     python_generator = random
+    
 
     generated_numbers = {
         "middle_square_generator": [],
@@ -53,8 +54,11 @@ def main():
         generated_numbers['middle_square_generator'].append(middle_square_generator.random())
         generated_numbers['linear_generator'].append(linear_generator.random())
         generated_numbers['quadratic_generator'].append(quadratic_generator.random())
-        generated_numbers['python_generator'].append(python_generator.random())
         generated_numbers['mixed_generator'].append(mixed_generator.random())
+
+    python_generator.seed(5487)
+    for _ in range(3207):
+        generated_numbers['python_generator'].append(python_generator.random())
 
     testPassed = {
         "frequency_test": bool,
