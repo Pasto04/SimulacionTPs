@@ -17,6 +17,7 @@ from distributions.normal_distribution import NormalDistribution
 from distributions.gamma_distribution import GammaDistribution
 from distributions.binomial_distribution import BinomialDistribution
 from distributions.poisson_distribution import PoissonDistribution
+from distributions.hypergeometric_distribution import HypergeometricDistribution
 
 def main():
     generated_numbers = [ExponentialDistribution.randomFromRejectionMethod(5) for _ in range(15000)]
