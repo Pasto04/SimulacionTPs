@@ -14,12 +14,17 @@ import numpy as np
 from distributions.uniform_distribution import UniformDistribution
 from distributions.exponential_distribution import ExponentialDistribution
 from distributions.normal_distribution import NormalDistribution
+from distributions.gamma_distribution import GammaDistribution
+from distributions.binomial_distribution import BinomialDistribution
+from distributions.poisson_distribution import PoissonDistribution
 
 def main():
     generated_numbers = [ExponentialDistribution.randomFromRejectionMethod(5) for _ in range(15000)]
-    #print(generated_numbers)
+    
+    print(generated_numbers)
+        
     print("Promedio: " , np.mean(generated_numbers))
-    #print("Desviacion estandar: " , np.std(generated_numbers))
+    print("Desviacion estandar: " , np.std(generated_numbers))
 
 
 if __name__ == "__main__":

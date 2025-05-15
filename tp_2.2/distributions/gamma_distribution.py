@@ -1,6 +1,6 @@
 import math
 import random
-class NormalDistribution:
+class GammaDistribution:
     @classmethod
     def randomFromRejectionMethod(cls, alpha, beta=1):
         if alpha < 1:
