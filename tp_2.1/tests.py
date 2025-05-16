@@ -1,15 +1,3 @@
-"""
-Roulette Simulator:
-Dev Team:
-    - Cosentino, Lucio Nahuel
-    - Danteo, Elías Tomás
-    - De Bernardo, Aarón
-    - Fernandez Da Silva, Joaquín C.
-    - Malizani, Juan Pablo
-    - Pastorino, Juan José
-"""
-
-
 from scipy.stats import chi2, chisquare
 
 class Tests:
