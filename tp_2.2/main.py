@@ -34,29 +34,32 @@ def generate_distributions():
     pascal_distribution = PascalDistribution.get_instance(r=5, p=0.5)
     gamma_distribution = GammaDistribution.get_instance(alpha=2, beta=2)
     emprical_discrete_distribution = EmpiricalDiscreteDistribution.get_instance(values=[1, 2, 3, 4, 5], probs=[0.1, 0.2, 0.3, 0.2, 0.2])
+
+    for _ in range(1000):
+        uniform_distribution.randomFromInverseTransform()
+        uniform_distribution.randomFromRejectionMethod()
+        exponential_distribution.randomFromInverseTransform()
+        exponential_distribution.randomFromRejectionMethod()
+        gamma_distribution.randomFromRejectionMethod()
+        normal_distribution.randomFromInverseTransform()
+        normal_distribution.randomFromRejectionMethod()
+        pascal_distribution.randomFromRejectionMethod()
+        binomial_distribution.randomFromRejectionMethod()
+        hypergeometric_distribution.randomFromRejectionMethod() 
+        poisson_distribution.randomFromRejectionMethod()    
+        emprical_discrete_distribution.randomFromRejectionMethod() 
+
     
-    for _ in range(15000):
-        UniformDistribution.randomFromInverseTransform()
-        UniformDistribution.randomFromRejectionMethod()
-        ExponentialDistribution.randomFromInverseTransform()
-        ExponentialDistribution.randomFromRejectionMethod()
-        #GammaDistribution.randomFromRejectionMethod()
-        #NormalDistribution.randomFromInverseTransform()
-        #NormalDistribution.randomFromRejectionMethod()
-        #PascalDistribution.randomFromRejectionMethod()
-        #BinomialDistribution.randomFromRejectionMethod()
-        #HypergeometricDistribution.randomFromRejectionMethod() 
-        #PoissonDistribution.randomFromRejectionMethod()    
-        EmpiricalDiscreteDistribution.randomFromRejectionMethod()
     distributions: list[Distribution] = [
-        #normal_distribution,
+        normal_distribution,
         exponential_distribution,
         uniform_distribution,
-        #binomial_distribution,
-        #poisson_distribution,
-        #emprical_discrete_distribution
+        binomial_distribution,
+        poisson_distribution,
+        emprical_discrete_distribution
     ]
-    random_numbers = normal_distribution.getInverseTransformGeneratedNumbers()
+    
+
     return distributions
     
 
@@ -66,10 +69,11 @@ def test_distributions(distributions: list[Distribution]):
         if (len(dist.getRejectionMethodGeneratedNumbers()) > 0):
             chi2_stat, p, passed = Tests.frequency_test(dist.getRejectionMethodGeneratedNumbers(), dist.getParams(), dist_name=dist.getDistName())
             print(f"Chi2 test for {dist.dist_name} distribution: {chi2_stat}, p-value: {p}, passed: {passed}")
+
         if (len(dist.getInverseTransformGeneratedNumbers()) > 0):
             chi2_stat, p, passed = Tests.frequency_test(dist.getInverseTransformGeneratedNumbers(), dist.getParams(), dist_name=dist.getDistName())
             print(f"Chi2 test for {dist.dist_name} distribution: {chi2_stat}, p-value: {p}, passed: {passed}")
-        
+
 
     
 

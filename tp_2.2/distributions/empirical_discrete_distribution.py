@@ -1,29 +1,40 @@
-import random
 import matplotlib.pyplot as plt
 import numpy as np
 from distributions.distribution import Distribution
 class EmpiricalDiscreteDistribution(Distribution):
     dist_name = "empirical_discrete"
-    def __init__(self, values: int, probs: float):
-        EmpiricalDiscreteDistribution.params = {"values": values, "probs": probs}
+    def __init__(self, values: int, probs: float,seed: int = 42):
+        super().__init__(seed)
+        self.params = {"values": values, "probs": probs}
+        self.rejection_method_generated_numbers = []
 
+    def getDistName(self):
+        return self.dist_name
+    
+    def getParams(self):
+        return self.params
+
+    def getRejectionMethodGeneratedNumbers(self):
+        return self.rejection_method_generated_numbers
+    
+    
     @classmethod
     def get_instance(cls, values: int, probs: float):
         if cls.instance is None:
             cls.instance = cls(values, probs)
         return cls.instance
 
-    @classmethod
-    def randomFromRejectionMethod(cls):
-        values = cls.params['values']
-        probs = cls.params['probs']
+    
+    def randomFromRejectionMethod(self):
+        values = self.params['values']
+        probs = self.params['probs']
         if not values or not probs or len(values) != len(probs):
             raise ValueError("Values and probs must be non-empty lists of the same length.")
 
         max_prob = max(probs)
         while True:
-            idx = random.randint(0, len(values) - 1)
-            u = random.uniform(0, max_prob)
+            idx = self.rng.randint(0, len(values) - 1)
+            u = self.rng.uniform(0, max_prob)
             if u <= probs[idx]:
-                cls.rejection_method_generated_numbers.append(values[idx])
+                self.rejection_method_generated_numbers.append(values[idx])
                 break

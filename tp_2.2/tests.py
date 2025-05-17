@@ -7,6 +7,7 @@ class Tests:
     def continuous_bins(dist, random_numbers, num_intervals):
         qs = np.linspace(0, 1, num_intervals + 1)
         edges = dist.ppf(qs)
+        edges = np.sort(edges)
         if not np.isfinite(edges[0]):
             edges[0] = min(random_numbers)
         if not np.isfinite(edges[-1]):
@@ -40,6 +41,7 @@ class Tests:
             dist = norm(loc=params['mu'], scale=params['sigma'])
 
         edges = Tests.continuous_bins(dist, random_numbers, num_intervals)
+
         observed, _ = np.histogram(random_numbers, bins=edges)
         return observed, edges
 
