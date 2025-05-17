@@ -1,7 +1,17 @@
 import math
 import random
+from distributions.distribution import Distribution
+class HypergeometricDistribution(Distribution):
+    dist_name = "hypergeometric"
+    def __init__(self, N: int, K: int, n: int):
+        HypergeometricDistribution.params = {"N": N, "K": K, "n": n}
+        
+    @classmethod
+    def get_instance(cls, N: int, K: int, n: int):
+        if cls.instance is None:
+            cls.instance = cls(N, K, n)
+        return cls.instance
 
-class HypergeometricDistribution:
     @staticmethod
     def pmf(N: int, K: int, n: int, x: int) -> float:
         # N = tamaño de la población
@@ -16,8 +26,10 @@ class HypergeometricDistribution:
         return (math.comb(K, x) * math.comb(N - K, n - x)) / math.comb(N, n)
 
     @classmethod
-    def randomFromRejectionMethod(cls, N: int, K: int, n: int) -> int:
-        #genera un numero aleatorio con distribucion hipergeometrica usando el metodo de rechazo.
+    def randomFromRejectionMethod(cls) -> int:
+        N = cls.params['N']
+        K = cls.params['K']
+        n = cls.params['n']
         
         x_min = max(0, n - (N - K))  # minimo valor posible de exitos
         x_max = min(n, K)            # maximo valor posible de exitos
@@ -29,4 +41,5 @@ class HypergeometricDistribution:
             y = random.uniform(0, max_pmf)
             fx = cls.pmf(N, K, n, x)
             if y <= fx:
-                return x
+                cls.rejection_method_generated_numbers.append(x)
+                break

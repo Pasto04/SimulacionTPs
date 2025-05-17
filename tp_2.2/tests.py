@@ -2,6 +2,7 @@ import numpy as np
 from scipy.stats import chisquare, uniform, expon, norm, poisson, binom
 
 class Tests:
+
     @staticmethod
     def continuous_bins(dist, random_numbers, num_intervals):
         qs = np.linspace(0, 1, num_intervals + 1)
@@ -16,14 +17,14 @@ class Tests:
     def observed_frequencies(random_numbers, dist_name, params, num_intervals):
         n = len(random_numbers)
 
-        if dist_name in ('poisson', 'binomial', 'emp_discrete'):
+        if dist_name in ('poisson', 'binomial', 'empirical_discrete'):
             if dist_name == 'poisson':
-                dist = poisson(mu=params['mu'])
-                x_min, x_max = min(random_numbers), max(random_numbers)
+                dist = poisson(mu=params['lambda'])
+                x_min, x_max = int(min(random_numbers)), int(max(random_numbers))
                 values = list(range(x_min, x_max + 1))
             elif dist_name == 'binomial':
                 dist = binom(n=params['n'], p=params['p'])
-                x_min, x_max = min(random_numbers), max(random_numbers)
+                x_min, x_max = int(min(random_numbers)), int(max(random_numbers))
                 values = list(range(x_min, x_max + 1))
             else:  
                 values = params['values']
@@ -45,9 +46,9 @@ class Tests:
 
     @staticmethod
     def expected_frequencies(n, dist_name, params, bins=None):
-        if dist_name in ('poisson', 'binomial', 'emp_discrete'):
+        if dist_name in ('poisson', 'binomial', 'empirical_discrete'):
             if dist_name == 'poisson':
-                dist = poisson(mu=params['mu'])
+                dist = poisson(mu=params['lambda'])
             elif dist_name == 'binomial':
                 dist = binom(n=params['n'], p=params['p'])
             else:
