@@ -4,28 +4,18 @@ class UniformDistribution(Distribution):
     def __init__(self, a: float, b: float, seed: int = 12345):
         super().__init__(seed)
         self.params = {"a": a, "b": b}
-        self.rejection_method_generated_numbers = []
-        self.inverse_transform_generated_numbers = []
         
     @classmethod
     def get_instance(cls, a: float, b: float):
         if cls.instance is None:
             cls.instance = cls(a,b)
         return cls.instance
-    
-    def getDistName(self):
-        return self.dist_name
-    
+
+
     def getParams(self):
         return self.params
 
-    def getRejectionMethodGeneratedNumbers(self):
-        return self.rejection_method_generated_numbers
-    
-    def getInverseTransformGeneratedNumbers(self):
-        return self.inverse_transform_generated_numbers
-    
-    
+
     def randomFromInverseTransform(self):
         a = self.params['a']
         b = self.params['b']

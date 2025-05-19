@@ -5,24 +5,18 @@ import numpy as np
 from distributions.distribution import Distribution
 class BinomialDistribution(Distribution):
     dist_name = "binomial"
+
     def __init__(self, n: int, p: float, seed=12345):
         super().__init__(seed)
         #n: Número de ensayos
         #p: Probabilidad de éxito en cada ensayo
         self.params = {"n": n, "p": p}
-        self.rejection_method_generated_numbers = []
 
-    def getDistName(self):
-        return self.dist_name
     
     def getParams(self):
         return self.params
 
-    def getRejectionMethodGeneratedNumbers(self):
-        return self.rejection_method_generated_numbers
 
-    
-    
     @classmethod
     def get_instance(cls, n: int, p: float):
         if cls.instance is None:

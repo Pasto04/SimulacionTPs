@@ -6,25 +6,18 @@ class PoissonDistribution(Distribution):
     def __init__(self, lambda_: float, seed:int=12345):
         super().__init__(seed)
         self.params = {'lambda': lambda_}
-        self.rejection_method_generated_numbers = []
         
     @classmethod
     def get_instance(cls, lambda_: float):
         if cls.instance is None:
             cls.instance = cls(lambda_)
         return cls.instance
-    
-    def getDistName(self):
-        return self.dist_name
-    
+
+
     def getParams(self):
         return self.params
 
-    def getRejectionMethodGeneratedNumbers(self):
-        return self.rejection_method_generated_numbers
-    
 
-    
     def randomFromRejectionMethod(self):
         lambda_ = self.params['lambda']
         if lambda_ <= 0:

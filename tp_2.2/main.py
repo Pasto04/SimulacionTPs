@@ -71,13 +71,13 @@ def test_distributions(distributions: list[Distribution]):
         for dist in distributions:
             rejection_method_numbers = dist.getRejectionMethodGeneratedNumbers()
             if (len(rejection_method_numbers) > 0):
-                results = Tests.all_tests(rejection_method_numbers, dist.getParams(), dist_name=dist.getDistName(), num_intervals=NUM_INTERVALS)
-                show_distribution_results(results, rejection_method_numbers, f"{dist.getDistName()} - Método Rechazo", general_results)
+                results = Tests.all_tests(rejection_method_numbers, dist.getParams(), dist_name=dist.get_dist_name(), num_intervals=NUM_INTERVALS)
+                show_distribution_results(results, rejection_method_numbers, f"{dist.get_dist_name()} - Método Rechazo", general_results)
             
             inverse_transform_numbers = dist.getInverseTransformGeneratedNumbers()
             if (len(inverse_transform_numbers) > 0):
-                results = Tests.all_tests(inverse_transform_numbers, dist.getParams(), dist_name=dist.getDistName(), num_intervals=NUM_INTERVALS)
-                show_distribution_results(results, inverse_transform_numbers, f"{dist.getDistName()} - Transformada Inversa", general_results)
+                results = Tests.all_tests(inverse_transform_numbers, dist.getParams(), dist_name=dist.get_dist_name(), num_intervals=NUM_INTERVALS)
+                show_distribution_results(results, inverse_transform_numbers, f"{dist.get_dist_name()} - Transformada Inversa", general_results)
             
         print("\nResumen de tests:")
         headers = ["Distribución", "Chi²", "KS", "AD", "Media", "Desv. Std"]
@@ -88,8 +88,8 @@ def test_distributions(distributions: list[Distribution]):
                 res["Chi2"],
                 res["KS"],
                 res["AD"],
-                #res["Media"],
-                #res["Desv. Std"]
+                #TODOres["Media"],
+                #TODOres["Desv. Std"]
             ]
             table_data.append(row)
         
@@ -97,7 +97,7 @@ def test_distributions(distributions: list[Distribution]):
         print(tabulate(table_data, headers=headers, tablefmt="grid"))
 
     except Exception as e:
-        print(f"⚠️ Error en la prueba de {dist.getDistName()}: {e}")
+        print(f"⚠️ Error en la prueba de {dist.get_dist_name()}: {e}")
 
 
 def show_distribution_results(results, numbers, dist_name, general_results):
@@ -133,8 +133,8 @@ def show_distribution_results(results, numbers, dist_name, general_results):
         "Chi2": "✓" if isinstance(results['Chi2'], tuple) and results['Chi2'][2] else "X",
         "KS": "✓" if isinstance(results['KS'], tuple) and results['KS'][2] else "X",
         "AD": "✓" if isinstance(results['AD'], tuple) and results['AD'][2] else "X",
-        #"Media": f"{np.mean(dist.getDistName()):.2f}",  #acá está el error
-        #"Desv. Std": f"{np.std(dist.getDistName()):.2f}"
+        #TODO"Media": f"{np.mean(dist.get_dist_name()):.2f}",  #acá está el error
+        #TODO"Desv. Std": f"{np.std(dist.get_dist_name()):.2f}"
     }       
 
 

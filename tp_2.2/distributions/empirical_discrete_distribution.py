@@ -3,19 +3,14 @@ import numpy as np
 from distributions.distribution import Distribution
 class EmpiricalDiscreteDistribution(Distribution):
     dist_name = "empirical_discrete"
+
     def __init__(self, values: int, probs: float,seed: int = 42):
         super().__init__(seed)
         self.params = {"values": values, "probs": probs}
-        self.rejection_method_generated_numbers = []
 
-    def getDistName(self):
-        return self.dist_name
-    
+
     def getParams(self):
         return self.params
-
-    def getRejectionMethodGeneratedNumbers(self):
-        return self.rejection_method_generated_numbers
     
     
     @classmethod

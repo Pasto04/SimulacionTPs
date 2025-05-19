@@ -2,20 +2,16 @@ import math
 from distributions.distribution import Distribution
 class PascalDistribution(Distribution):
     dist_name = "pascal"
+
     def __init__(self, r: int, p: float, seed: int = 12345):
         super().__init__(seed)
         self.params = {"r": r, "p": p}
-        self.rejection_method_generated_numbers = []
-        
-    def getDistName(self):
-        return self.dist_name
-    
+
+
     def getParams(self):
         return self.params
 
-    def getRejectionMethodGeneratedNumbers(self):
-        return self.rejection_method_generated_numbers
-    
+
     @classmethod
     def get_instance(cls, r: int, p: float):
         if cls.instance is None:

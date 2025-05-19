@@ -2,20 +2,16 @@ import math
 from distributions.distribution import Distribution
 class HypergeometricDistribution(Distribution):
     dist_name = "hypergeometric"
+    
     def __init__(self, N: int, K: int, n: int, seed: int = 12345):
         super().__init__(seed)
         self.params = {"N": N, "K": K, "n": n}
-        self.rejection_method_generated_numbers = []
-    
-    def getDistName(self):
-        return self.dist_name
-    
+
+
     def getParams(self):
         return self.params
 
-    def getRejectionMethodGeneratedNumbers(self):
-        return self.rejection_method_generated_numbers
-        
+
     @classmethod
     def get_instance(cls, N: int, K: int, n: int):
         if cls.instance is None:

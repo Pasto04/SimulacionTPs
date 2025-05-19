@@ -2,27 +2,22 @@ import math
 from distributions.distribution import Distribution
 class GammaDistribution(Distribution):
     dist_name = "gamma"
+
     def __init__(self, alpha: float, beta: float = 1, seed: int = 12345):
         super().__init__(seed)
         self.params = {"alpha": alpha, "beta": beta}
-        self.rejection_method_generated_numbers = []
         
     @classmethod
     def get_instance(cls, alpha: float, beta: float = 1):
         if cls.instance is None:
             cls.instance = cls(alpha,beta)
         return cls.instance
-    
-    def getDistName(self):
-        return self.dist_name
-    
+
+
     def getParams(self):
         return self.params
 
-    def getRejectionMethodGeneratedNumbers(self):
-        return self.rejection_method_generated_numbers
-    
-    
+
     def randomFromRejectionMethod(self):
         alpha = self.params['alpha']
         beta = self.params['beta']
