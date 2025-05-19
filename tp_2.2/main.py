@@ -58,6 +58,9 @@ def generate_distributions():
         uniform_distribution,
         binomial_distribution,
         poisson_distribution,
+        hypergeometric_distribution,
+        pascal_distribution,
+        gamma_distribution,
         emprical_discrete_distribution
     ]
 
@@ -80,7 +83,7 @@ def test_distributions(distributions: list[Distribution]):
                 show_distribution_results(results, inverse_transform_numbers, f"{dist.get_dist_name()} - Transformada Inversa", general_results)
             
         print("\nResumen de tests:")
-        headers = ["Distribución", "Chi²", "KS", "AD", "Media", "Desv. Std"]
+        headers = ["Distribución", "Chi²", "Kolmogorov Smirnov", "Anderson Darling", "Media", "Desvío Estándar"]
         table_data = []
         for name, res in general_results.items():
             row = [
@@ -88,12 +91,12 @@ def test_distributions(distributions: list[Distribution]):
                 res["Chi2"],
                 res["KS"],
                 res["AD"],
-                #TODOres["Media"],
-                #TODOres["Desv. Std"]
+                res["Media"],
+                res["Desv. Std"]
             ]
             table_data.append(row)
         
-        print("✓: Pasó el test - X: No pasó el test")
+        print("✓: Pasó el test\nX: No pasó el test\n-: No aplica")
         print(tabulate(table_data, headers=headers, tablefmt="grid"))
 
     except Exception as e:
@@ -130,11 +133,23 @@ def show_distribution_results(results, numbers, dist_name, general_results):
     print("Desviación estándar:", np.std(numbers))
 
     general_results[dist_name] = {
-        "Chi2": "✓" if isinstance(results['Chi2'], tuple) and results['Chi2'][2] else "X",
-        "KS": "✓" if isinstance(results['KS'], tuple) and results['KS'][2] else "X",
-        "AD": "✓" if isinstance(results['AD'], tuple) and results['AD'][2] else "X",
-        #TODO"Media": f"{np.mean(dist.get_dist_name()):.2f}",  #acá está el error
-        #TODO"Desv. Std": f"{np.std(dist.get_dist_name()):.2f}"
+        "Chi2": (
+            "✓" if isinstance(results['Chi2'], tuple) and results['Chi2'][2]
+            else "X" if isinstance(results['Chi2'], tuple)
+            else "-"
+        ),
+        "KS": (
+            "✓" if isinstance(results['KS'], tuple) and results['KS'][2]
+            else "X" if isinstance(results['KS'], tuple)
+            else "-"
+        ),
+        "AD": (
+            "✓" if isinstance(results['AD'], tuple) and results['AD'][2]
+            else "X" if isinstance(results['AD'], tuple)
+            else "-"
+        ),
+        "Media": f"{np.mean(numbers):.2f}",
+        "Desv. Std": f"{np.std(numbers):.2f}"
     }       
 
 
