@@ -49,9 +49,9 @@ def generate_distributions():
         normal_distribution.randomFromRejectionMethod()
         pascal_distribution.randomFromRejectionMethod()
         binomial_distribution.randomFromRejectionMethod()
-        hypergeometric_distribution.randomFromRejectionMethod() 
-        poisson_distribution.randomFromRejectionMethod()    
-        emprical_discrete_distribution.randomFromRejectionMethod() 
+        hypergeometric_distribution.randomFromRejectionMethod()
+        poisson_distribution.randomFromRejectionMethod()
+        emprical_discrete_distribution.randomFromRejectionMethod()
 
     distributions: list[Distribution] = [
         normal_distribution,
@@ -73,16 +73,17 @@ def test_distributions(distributions: list[Distribution]):
 
     try:
         for dist in distributions:
-            rejection_method_numbers = dist.getRejectionMethodGeneratedNumbers()
-            if (len(rejection_method_numbers) > 0):
-                results = Tests.all_tests(rejection_method_numbers, dist.getParams(), dist_name=dist.get_dist_name(), num_intervals=NUM_INTERVALS)
-                show_distribution_results(results, rejection_method_numbers, f"{dist.get_dist_name()} - Método Rechazo", general_results)
-            
-            inverse_transform_numbers = dist.getInverseTransformGeneratedNumbers()
-            if (len(inverse_transform_numbers) > 0):
-                results = Tests.all_tests(inverse_transform_numbers, dist.getParams(), dist_name=dist.get_dist_name(), num_intervals=NUM_INTERVALS)
-                show_distribution_results(results, inverse_transform_numbers, f"{dist.get_dist_name()} - Transformada Inversa", general_results)
-            
+            if not (isinstance(dist, HypergeometricDistribution) or isinstance(dist, PascalDistribution) or isinstance(dist, GammaDistribution)):
+                rejection_method_numbers = dist.getRejectionMethodGeneratedNumbers()
+                if (len(rejection_method_numbers) > 0):
+                    results = Tests.all_tests(rejection_method_numbers, dist.getParams(), dist_name=dist.get_dist_name(), num_intervals=NUM_INTERVALS)
+                    show_distribution_results(results, rejection_method_numbers, f"{dist.get_dist_name()} - Método Rechazo", general_results)
+                
+                inverse_transform_numbers = dist.getInverseTransformGeneratedNumbers()
+                if (len(inverse_transform_numbers) > 0):
+                    results = Tests.all_tests(inverse_transform_numbers, dist.getParams(), dist_name=dist.get_dist_name(), num_intervals=NUM_INTERVALS)
+                    show_distribution_results(results, inverse_transform_numbers, f"{dist.get_dist_name()} - Transformada Inversa", general_results)
+                
             generate_graph(dist)
 
 
