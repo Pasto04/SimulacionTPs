@@ -1,7 +1,11 @@
 import math
+import numpy as np
+from scipy.stats import norm
 from distributions.distribution import Distribution
+
 class NormalDistribution(Distribution):
     dist_name = "normal"
+    dist_type = "continuous"
 
     def __init__(self, mu, sigma, seed:int =12345): 
         super().__init__(seed)
@@ -18,7 +22,17 @@ class NormalDistribution(Distribution):
             cls.instance = cls(mu, sigma)
         return cls.instance
 
-    
+
+    def get_expected_pdf(self):
+        mu = self.params["mu"]
+        sigma = self.params["sigma"]
+
+        x = np.linspace(mu - 4*sigma, mu + 4*sigma, 1000)
+        pdf = norm.pdf(x, mu, sigma)
+
+        return x, pdf
+
+
     def randomFromInverseTransform(self): # en realidad no es por el método de la transformada inversa
         mu = self.params['mu']
         sigma = self.params['sigma']

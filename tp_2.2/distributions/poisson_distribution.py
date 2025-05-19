@@ -1,8 +1,12 @@
 import math
+from scipy.stats import poisson
+import numpy as np
 from distributions.distribution import Distribution
 
 class PoissonDistribution(Distribution):
     dist_name = "poisson"
+    dist_type = "discrete"
+    
     def __init__(self, lambda_: float, seed:int=12345):
         super().__init__(seed)
         self.params = {'lambda': lambda_}
@@ -13,9 +17,18 @@ class PoissonDistribution(Distribution):
             cls.instance = cls(lambda_)
         return cls.instance
 
-
     def getParams(self):
         return self.params
+
+    def get_expected_pmf(self):
+        lambda_ = self.params["lambda"]
+        
+        x_max = int(3 * lambda_)
+        x = np.arange(0, x_max + 1)
+        
+        pdf = poisson.pmf(x, lambda_)
+
+        return x, pdf
 
 
     def randomFromRejectionMethod(self):

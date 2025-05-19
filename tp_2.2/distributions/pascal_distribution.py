@@ -1,22 +1,34 @@
 import math
+import numpy as np
+from scipy.stats import nbinom
 from distributions.distribution import Distribution
+
 class PascalDistribution(Distribution):
     dist_name = "pascal"
+    dist_type = "discrete"
 
     def __init__(self, r: int, p: float, seed: int = 12345):
         super().__init__(seed)
         self.params = {"r": r, "p": p}
 
-
     def getParams(self):
         return self.params
-
 
     @classmethod
     def get_instance(cls, r: int, p: float):
         if cls.instance is None:
             cls.instance = cls(r, p)
         return cls.instance
+
+    def get_expected_pmf(self):
+        r = self.params["r"]
+        p = self.params["p"]
+        
+        x = np.arange(0, 20)
+        pmf = nbinom.pmf(x, r, p)
+        
+        return x, pmf
+
 
     @staticmethod
     def pmf(r: int, p: float, x: int) -> float:

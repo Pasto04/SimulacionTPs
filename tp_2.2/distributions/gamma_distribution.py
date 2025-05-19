@@ -1,7 +1,11 @@
 import math
+import numpy as np
+from scipy.stats import gamma
 from distributions.distribution import Distribution
+
 class GammaDistribution(Distribution):
     dist_name = "gamma"
+    dist_type = "continuous"
 
     def __init__(self, alpha: float, beta: float = 1, seed: int = 12345):
         super().__init__(seed)
@@ -16,6 +20,16 @@ class GammaDistribution(Distribution):
 
     def getParams(self):
         return self.params
+
+    def get_expected_pdf(self):
+        alpha = self.params["alpha"]
+        beta = self.params["beta"]
+        
+        max_x = alpha * beta * 3
+        x = np.linspace(0, max_x, 1000)
+        pdf = gamma.pdf(x, alpha, scale=1/beta)
+        
+        return x, pdf
 
 
     def randomFromRejectionMethod(self):

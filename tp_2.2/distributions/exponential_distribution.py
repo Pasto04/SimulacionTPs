@@ -1,7 +1,11 @@
 import math
+import numpy as np
+from scipy.stats import expon
 from distributions.distribution import Distribution
+
 class ExponentialDistribution(Distribution):
     dist_name = "exponential"
+    dist_type = "continuous"
 
     def __init__(self, lambda_: float, seed:int =12345):
         super().__init__(seed)
@@ -17,8 +21,18 @@ class ExponentialDistribution(Distribution):
         if cls.instance is None:
             cls.instance = cls(lambda_)
         return cls.instance
-    
-    
+
+
+    def get_expected_pdf(self):
+        lambda_ = self.params["lambda"]
+        scale = 1 / lambda_
+
+        x = np.linspace(0, 10 / lambda_, 1000)
+        pdf = expon.pdf(x, scale=scale)
+
+        return x, pdf
+
+
     def randomFromInverseTransform(self):
         lambda_ = self.params['lambda']
         r = self.rng.random()

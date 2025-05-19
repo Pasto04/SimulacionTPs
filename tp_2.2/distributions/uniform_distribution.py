@@ -1,6 +1,11 @@
+from scipy.stats import uniform
+import numpy as np
 from distributions.distribution import Distribution
+
 class UniformDistribution(Distribution):
     dist_name = "uniform"
+    dist_type = "continuous"
+    
     def __init__(self, a: float, b: float, seed: int = 12345):
         super().__init__(seed)
         self.params = {"a": a, "b": b}
@@ -16,13 +21,22 @@ class UniformDistribution(Distribution):
         return self.params
 
 
+    def get_expected_pdf(self):
+        a = self.params["a"]
+        b = self.params["b"]
+
+        x = np.linspace(a, b, 1000)
+        pdf = uniform.pdf(x, a, b - a)
+
+        return x, pdf
+
+
     def randomFromInverseTransform(self):
         a = self.params['a']
         b = self.params['b']
         r = self.rng.random()
         x= a + (b-a) * r
         self.inverse_transform_generated_numbers.append(x)
-
 
     
     def randomFromRejectionMethod(self):

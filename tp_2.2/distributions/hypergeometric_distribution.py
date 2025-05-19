@@ -1,15 +1,28 @@
 import math
+import numpy as np
+from scipy.stats import hypergeom
 from distributions.distribution import Distribution
+
 class HypergeometricDistribution(Distribution):
     dist_name = "hypergeometric"
+    dist_type = "discrete"
     
     def __init__(self, N: int, K: int, n: int, seed: int = 12345):
         super().__init__(seed)
         self.params = {"N": N, "K": K, "n": n}
 
-
     def getParams(self):
         return self.params
+
+    def get_expected_pmf(self):
+        N = self.params["N"]
+        M = self.params["K"]
+        n = self.params["n"]
+        
+        x = np.arange(0, min(M, n) + 1)
+        pmf = hypergeom.pmf(x, N, M, n)
+        
+        return x, pmf
 
 
     @classmethod

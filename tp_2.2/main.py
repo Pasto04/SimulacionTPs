@@ -22,8 +22,9 @@ from distributions.pascal_distribution import PascalDistribution
 from distributions.distribution import Distribution
 from tabulate import tabulate
 from tests import Tests
+from graphics import generate_graph
 
-NUM_RANDOM_VALUES = 1000
+NUM_RANDOM_VALUES = 5000
 NUM_INTERVALS = 10
 
 def generate_distributions():
@@ -82,6 +83,9 @@ def test_distributions(distributions: list[Distribution]):
                 results = Tests.all_tests(inverse_transform_numbers, dist.getParams(), dist_name=dist.get_dist_name(), num_intervals=NUM_INTERVALS)
                 show_distribution_results(results, inverse_transform_numbers, f"{dist.get_dist_name()} - Transformada Inversa", general_results)
             
+            generate_graph(dist)
+
+
         print("\nResumen de tests:")
         headers = ["Distribución", "Chi²", "Kolmogorov Smirnov", "Anderson Darling", "Media", "Desvío Estándar"]
         table_data = []
