@@ -5,7 +5,7 @@ class EmpiricalDiscreteDistribution(Distribution):
     dist_name = "empirical_discrete"
     dist_type = "discrete"
 
-    def __init__(self, values: int, probs: float,seed: int = 42):
+    def __init__(self, values: int, probs: float, seed=42):
         super().__init__(seed)
         self.params = {"values": values, "probs": probs}
 
