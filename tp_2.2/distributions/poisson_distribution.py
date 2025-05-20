@@ -37,25 +37,21 @@ class PoissonDistribution(Distribution):
             self.rejection_method_generated_numbers.append(0)
             return
 
-        b = 0.931 + 2.53 * math.sqrt(lambda_)
-        a = -0.059 + 0.02483 * b
-        inv_alpha = 1.1239 + 1.1328 / (b - 3.4)
-        vr = 0.9277 - 3.6224 / (b - 2)
+        c = 0.767 - 3.36 / lambda_
+        beta = math.pi / math.sqrt(3.0 * lambda_)
+        alpha = beta * lambda_
+        k = math.log(c) - lambda_ - math.log(beta)
 
         while True:
-            u = self.rng.random() - 0.5
-            v = self.rng.random()
-            us = 0.5 - abs(u)
-            k = int(math.floor((2 * a / us + b) * u + lambda_ + 0.43))
-            if k < 0:
+            u = self.rng.random()
+            x = (alpha - math.log((1.0 - u) / u)) / beta
+            n = int(math.floor(x + 0.5))
+            if n < 0:
                 continue
-
-            if us >= 0.07 and v <= vr:
-                self.rejection_method_generated_numbers.append(k)
-                break
-
-            log_p = -lambda_ + k*math.log(lambda_) - math.lgamma(k+1)
-            log_q = math.log(v * inv_alpha / (us*us))
-            if log_q <= log_p:
-                self.rejection_method_generated_numbers.append(k)
+            v = self.rng.random()
+            y = alpha - beta * x
+            lhs = y + math.log(v / ((1.0 + math.exp(y))**2))
+            rhs = k + n * math.log(lambda_) - math.lgamma(n + 1)
+            if lhs <= rhs:
+                self.rejection_method_generated_numbers.append(n)
                 break
