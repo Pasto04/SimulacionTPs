@@ -1,5 +1,3 @@
-import numpy as np
-from scipy.stats import norm
 import matplotlib.pyplot as plt
 from distributions.distribution import Distribution
 from collections import Counter
@@ -31,7 +29,7 @@ def generate_graph(distribution: Distribution):
 
     plt.title(distribution.get_dist_name().upper())
     plt.xlabel('x')
-    plt.ylabel('Densidad de probabilidad')
+    plt.ylabel('f(x)')
     plt.legend()
     plt.grid(True)
     plt.show()
