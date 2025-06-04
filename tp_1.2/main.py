@@ -83,10 +83,11 @@ def generate_one_batch_graphics(players: list[Player], min_bet: int):
     selected_player = players[batch_show_number-1]
     expected_value_based_on_bet = calculate_expected_value(chosen_bet)
 
-    GenerateGraphics.generate_bar_chart("Frecuencia relativa de victorias", 1, "Número de tirada", "Frecuencia relativa", selected_player.get_relative_freq_spins_won(), expected_value_based_on_bet)
+    GenerateGraphics.generate_bar_chart("Frecuencia relativa de obtener la apuesta favorable\n según el número de tirada en la secuencia de la estrategia", 1, "Número de tirada", "Frecuencia relativa", selected_player.get_win_rate_by_step(), expected_value_based_on_bet)
     GenerateGraphics.generate_line_chart("Flujo de caja", 2, "Número de tirada", "Cantidad de capital", selected_player.get_capital(), initial_capital)
     GenerateGraphics.generate_bar_chart_from_counter("Frecuencia del monto de las apuestas", 3, "Monto de apuesta", "Frecuencia absoluta", selected_player.get_bets(), min_bet)
-    
+    GenerateGraphics.generate_bar_chart("Frecuencia relativa de victorias", 4, "Número de tirada", "Frecuencia relativa", selected_player.get_relative_freq_spins_won(), expected_value_based_on_bet)
+
     title = f"CORRIDA NÚMERO {batch_show_number}\n"
     if initial_capital == 0:
         title += f"Selección: {chosen_bet} - Estrategia: {selected_player.get_strat().get_name()} - Capital inicial: infinito"
@@ -109,6 +110,27 @@ def calculate_expected_value(chosen_bet: str) -> float:
 
 
 def generate_general_graphics(players: list[Player]):
+    combined_bet_step_stats = {}
+
+    for player in players:
+        for step, data in player.bet_step_stats.items():
+            if step not in combined_bet_step_stats:
+                combined_bet_step_stats[step] = {"bets": 0, "wins": 0}
+            
+            combined_bet_step_stats[step]["bets"] += data["bets"]
+            combined_bet_step_stats[step]["wins"] += data["wins"]
+
+    max_step = max(combined_bet_step_stats.keys())
+    win_rate_by_bet_step = []
+
+    for step in range(1, max_step + 1):
+        stats = combined_bet_step_stats.get(step, {"bets": 0, "wins": 0})
+        bets = stats["bets"]
+        wins = stats["wins"]
+        rate = wins / bets if bets > 0 else 0.0
+        win_rate_by_bet_step.append(rate)
+    
+
     capitals_array = []
     spins_count = []
     players_result = {
@@ -123,12 +145,13 @@ def generate_general_graphics(players: list[Player]):
         else:
             players_result["losses"] += 1
 
-
-    if initial_capital == 0:
-        GenerateGraphics.generate_pie_chart("Proporción de victorias", 1, players_result)
-    else:
-        GenerateGraphics.generate_bar_chart("Cantidad de tiradas por jugador", 1, "Número de jugador", "Cantidad de tiradas", spins_count, None)
+    GenerateGraphics.generate_bar_chart("Frecuencia relativa de obtener la apuesta favorable\n según el número de tirada en la secuencia de la estrategia", 1, "Número de tirada", "Frecuencia relativa", win_rate_by_bet_step, calculate_expected_value(chosen_bet))
     GenerateGraphics.generate_line_chart("Flujo de caja", 2, "Número de tirada", "Cantidad de capital", capitals_array, initial_capital, True)
+    
+    if initial_capital == 0:
+        GenerateGraphics.generate_pie_chart("Proporción de victorias", 3, players_result)
+    else:
+        GenerateGraphics.generate_bar_chart("Cantidad de tiradas por jugador", 3, "Número de jugador", "Cantidad de tiradas", spins_count, None)
 
     title = f"MÚLTIPLES CORRIDAS\n"
     if initial_capital == 0:
@@ -175,7 +198,7 @@ def main():
             if current_capital < min_bet and initial_capital != 0:
                 break
 
-            bet = strat.CalculeNextBet(player_won, bet)
+            bet = strat.CalculeNextBet(player_won)
 
 
     generate_one_batch_graphics(players, min_bet)

@@ -8,6 +8,7 @@ class Strat(ABC):
     def __init__(self, roulette: Roulette, player: Player, name = 'defaultName', description = 'defaultDescription'):
         self.name =  name
         self.description = description
+        self.strat_step = 1 # número de apuesta en la secuencia
         self.min_bet = roulette.min_bet
         self.max_bet = roulette.max_bet
         self.player = player
@@ -19,7 +20,7 @@ class Strat(ABC):
         return self.name
 
     @abstractmethod
-    def CalculeNextBet (self, player_won: bool, bet: int):
+    def CalculeNextBet (self, player_won: bool):
         pass
 
     def ControlNextBet(self, desired_bet) -> int:
@@ -55,11 +56,15 @@ class FibbonaciStrat(Strat):
         self.sequence: List[int] = [1, 1]
         self.current_index: int  = 0
 
-    def CalculeNextBet(self, player_won: bool, bet: int) -> int:
+    def CalculeNextBet(self, player_won: bool) -> int:
+        self.player.update_wins_by_step(player_won, self.strat_step)
+
         if player_won:
             self.current_index = max(self.current_index - 2, 0)
+            self.strat_step = 1
         else:
             self.current_index += 1
+            self.strat_step += 1
 
         while self.current_index >= len(self.sequence):
             self.sequence.append(self.sequence[-1] + self.sequence[-2])
@@ -79,14 +84,19 @@ class MartingalaStrat (Strat):
         super().__init__(roulette, player, 'Martingala', 'Martingala betting strategy')
         self.loss_streak: int = 0
 
-    def CalculeNextBet(self, player_won: bool, bet: int) -> int:
+    def CalculeNextBet(self, player_won: bool) -> int:
+        self.player.update_wins_by_step(player_won, self.strat_step)
+
         if player_won:
             self.loss_streak = 0
+            self.strat_step = 1
         else:
             self.loss_streak += 1
+            self.strat_step += 1
 
         next_bet = self.min_bet * (2 ** self.loss_streak)
         return super().ControlNextBet(next_bet)
+
 
 class DAlembertStrat (Strat):
     '''
@@ -100,13 +110,18 @@ class DAlembertStrat (Strat):
         super().__init__(roulette, player, "D'Alembert", "D'Alembert betting strategy")
         self.current_bet: int = roulette.min_bet
 
-    def CalculeNextBet(self, player_won: bool, bet: int) -> int:
+    def CalculeNextBet(self, player_won: bool) -> int:
+        self.player.update_wins_by_step(player_won, self.strat_step)
+
         if player_won:
             self.current_bet = max(self.current_bet - self.min_bet, self.min_bet)
+            self.strat_step = 1
         else:
             self.current_bet = min(self.current_bet + self.min_bet, self.max_bet)
+            self.strat_step += 1
 
         return super().ControlNextBet(self.current_bet)
+
 
 class ParoliStrat (Strat):
     '''
@@ -121,16 +136,18 @@ class ParoliStrat (Strat):
         self.win_streak: int = 0
         self.max_doubles = 3
 
-    def CalculeNextBet(self, player_won: bool, bet: int) -> int:
+    def CalculeNextBet(self, player_won: bool) -> int:
+        self.player.update_wins_by_step(player_won, self.strat_step)
+
         if player_won:
             self.win_streak += 1
-
+            self.strat_step = 1
             if self.max_doubles is not None:
                 self.win_streak = min(self.win_streak, self.max_doubles)
 
             desired = self.min_bet * (2 ** self.win_streak)
         else:
-
+            self.strat_step += 1
             self.win_streak = 0
             desired = self.min_bet
 
