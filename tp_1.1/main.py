@@ -31,7 +31,7 @@ def get_simulation_args():
     
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--corridas", help="Valor del número de corridas (10 por defecto)", default=10)
-    parser.add_argument("-t", "--tiradas", help="Valor del número de tiradas por corrida (415 por defecto)", default=415)
+    parser.add_argument("-t", "--tiradas", help="Valor del número de tiradas por corrida (439 por defecto)", default=439)
     parser.add_argument("-n", "--numero", help="Valor del número a analizar (7 por defecto)", default=7)
 
     args, unknown = parser.parse_known_args()
