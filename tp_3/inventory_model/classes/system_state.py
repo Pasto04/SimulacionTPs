@@ -4,6 +4,8 @@ class SystemState:
         self.available_inventory = 20
         self.backordered_demand = 0
         
+        self.last_event_time = 0
         self.last_order_quantity = 0
+        
         self.reorder_point = 15
         self.max_inventory_level = 30

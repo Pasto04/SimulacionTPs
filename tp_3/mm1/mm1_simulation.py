@@ -35,6 +35,8 @@ class MM1Simulation:
                 self.handle_departure()
             self.system_state.last_event_time = self.clock
         
+        #TODO self.update_area_under_b()
+        #TODO self.update_area_under_q()
         self.generate_report()
 
 
