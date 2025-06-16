@@ -157,5 +157,3 @@ class MM1Simulation:
             server_usage,
             n_clients_in_queue_probability,
             denial_probability_by_queue_size,
-        )
-

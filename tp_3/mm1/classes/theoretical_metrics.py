@@ -21,3 +21,4 @@ class TheoreticalMetrics:
             self.avg_time_in_queue = (
                 arrival_rate / (service_rate * (service_rate - arrival_rate))
             )
+
