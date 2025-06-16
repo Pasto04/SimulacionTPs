@@ -4,6 +4,7 @@ from typing import Literal
 from mm1.classes.statistical_counters import StatisticalCounters
 from mm1.classes.system_state import SystemState
 from mm1.classes.graphics import Graphics
+from mm1.classes.theoretical_metrics import TheoreticalMetrics
 
 
 class MM1Simulation:
@@ -13,6 +14,7 @@ class MM1Simulation:
         self.sim_time = sim_time
         self.max_queue = max_queue
         self.random = random
+        self.theoretical_metrics = TheoreticalMetrics(arrival_rate, service_rate)
         '''
         self.data = {
             'wait_times': [],
@@ -59,6 +61,7 @@ class MM1Simulation:
 
 
     def handle_arrival(self):
+        self.update_blocking_by_queue_size()
         self.generate_next_arrival()
         self.update_area_under_b()
         self.update_area_under_q()
@@ -113,9 +116,17 @@ class MM1Simulation:
         level = self.system_state.clients_in_queue
 
         if level not in self.statistical_counters.time_by_queue_level:
-            self.statistical_counters.time_by_queue_level[level] = 0
+            self.statistical_counters.time_by_queue_level[level] = 0.0
 
         self.statistical_counters.time_by_queue_level[level] += time_since_last_event
+
+    def update_blocking_by_queue_size(self):
+        self.statistical_counters.total_arrivals += 1
+        for threshold in self.statistical_counters.blocking_counts:
+            if self.system_state.clients_in_queue >= threshold:
+                self.statistical_counters.blocking_counts[threshold] += 1
+            if threshold == 0 and self.system_state.server_busy == False:
+                self.statistical_counters.blocking_counts[threshold] -= 1
 
 
     def generate_report(self):
@@ -129,10 +140,14 @@ class MM1Simulation:
         server_usage = self.statistical_counters.area_under_b / self.sim_time
         
         n_clients_in_queue_probability = {}
+        denial_probability_by_queue_size = {0:0, 2:0, 5:0, 10:0, 50:0}
         for level, time in self.statistical_counters.time_by_queue_level.items():
             n_clients_in_queue_probability[level] = time / self.sim_time
-        
-        Graphics.generate_queue_probabilities_chart(n_clients_in_queue_probability)
+        for queue_lenght, customers_blocked in self.statistical_counters.blocking_counts.items():
+            denial_probability_by_queue_size[queue_lenght] = customers_blocked / self.statistical_counters.total_arrivals if self.statistical_counters.total_arrivals > 0 else 0
 
+
+        Graphics.generate_queue_probabilities_chart(n_clients_in_queue_probability)
+        Graphics.generate_queue_probabilities_chart(denial_probability_by_queue_size)
         
-        #TODO Probabilidad de denegación de servicio (cola finita de tamaño: 0, 2, 5, 10, 50).
+        
