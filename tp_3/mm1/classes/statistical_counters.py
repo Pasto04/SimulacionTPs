@@ -6,4 +6,3 @@ class StatisticalCounters:
         self.area_under_b = 0
         self.total_arrivals = 0
         self.blocking_counts = {0:0, 2:0, 5:0, 10:0, 50:0}
-

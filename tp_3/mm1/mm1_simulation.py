@@ -15,7 +15,6 @@ class MM1Simulation:
         self.sim_time = sim_time
         self.max_queue = max_queue
         self.random = random
-        self.theoretical_metrics = TheoreticalMetrics(arrival_rate, service_rate)
         '''
         self.data = {
             'wait_times': [],
@@ -71,6 +70,7 @@ class MM1Simulation:
 
         if self.system_state.server_busy == False:
             self.system_state.server_busy = True
+
             self.statistical_counters.customers_delayed += 1
             self.generate_next_departure()
             
@@ -134,10 +134,10 @@ class MM1Simulation:
         area_under_q = sum(
             int(level) * time for level, time in self.statistical_counters.time_by_queue_level.items()
         )
-        average_customer_in_system = (area_under_q + self.statistical_counters.area_under_b) / self.sim_time
-        average_customer_in_queue = area_under_q / self.sim_time
-        average_time_in_system = self.statistical_counters.total_delay / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
-        average_time_in_queue = area_under_q / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
+        avg_customer_in_system = (area_under_q + self.statistical_counters.area_under_b) / self.sim_time
+        avg_customer_in_queue = area_under_q / self.sim_time
+        avg_time_in_system = self.statistical_counters.total_delay / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
+        avg_time_in_queue = area_under_q / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
         server_usage = self.statistical_counters.area_under_b / self.sim_time
 
         n_clients_in_queue_probability = {}
@@ -148,11 +148,14 @@ class MM1Simulation:
             denial_probability_by_queue_size[queue_lenght] = customers_blocked / self.statistical_counters.total_arrivals if self.statistical_counters.total_arrivals > 0 else 0
 
         return MM1Report(
-            average_customer_in_system,
-            average_customer_in_queue,
-            average_time_in_system,
-            average_time_in_queue,
+            self.arrival_rate,
+            self.service_rate,
+            avg_customer_in_system,
+            avg_customer_in_queue,
+            avg_time_in_system,
+            avg_time_in_queue,
             server_usage,
             n_clients_in_queue_probability,
+            denial_probability_by_queue_size,
         )
 
