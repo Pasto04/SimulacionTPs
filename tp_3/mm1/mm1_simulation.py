@@ -4,6 +4,7 @@ from typing import Literal
 from mm1.classes.statistical_counters import StatisticalCounters
 from mm1.classes.system_state import SystemState
 from mm1.classes.graphics import Graphics
+from mm1.classes.report import MM1Report
 from mm1.classes.theoretical_metrics import TheoreticalMetrics
 
 
@@ -25,7 +26,7 @@ class MM1Simulation:
         '''
 
 
-    def run_simulation(self):	
+    def run_simulation(self) -> MM1Report:
         self.init_simulation()      
         event_type = self.advance_time()
         
@@ -42,7 +43,8 @@ class MM1Simulation:
 
         self.update_area_under_b()
         self.update_area_under_q()
-        self.generate_report()
+        report = self.generate_report()
+        return report
 
 
     def init_simulation(self):
@@ -128,7 +130,7 @@ class MM1Simulation:
                 self.statistical_counters.blocking_counts[threshold] -= 1
 
 
-    def generate_report(self):
+    def generate_report(self) -> MM1Report:
         area_under_q = sum(
             int(level) * time for level, time in self.statistical_counters.time_by_queue_level.items()
         )
@@ -138,13 +140,6 @@ class MM1Simulation:
         average_time_in_queue = area_under_q / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
         server_usage = self.statistical_counters.area_under_b / self.sim_time
 
-        print("\n--- Métricas de Rendimiento de la Simulación de Cola MM1 ---")
-        print(f"- Clientes promedio en el sistema:     {average_customer_in_system:.3f}")
-        print(f"- Clientes promedio en cola:           {average_customer_in_queue:.3f}")
-        print(f"- Tiempo promedio en el sistema:       {average_time_in_system:.3f} unidades de tiempo")
-        print(f"- Tiempo promedio en cola:             {average_time_in_queue:.3f} unidades de tiempo")
-        print(f"- Utilización del servidor:            {server_usage:.3%}")
-
         n_clients_in_queue_probability = {}
         denial_probability_by_queue_size = {0:0, 2:0, 5:0, 10:0, 50:0}
         for level, time in self.statistical_counters.time_by_queue_level.items():
@@ -152,8 +147,12 @@ class MM1Simulation:
         for queue_lenght, customers_blocked in self.statistical_counters.blocking_counts.items():
             denial_probability_by_queue_size[queue_lenght] = customers_blocked / self.statistical_counters.total_arrivals if self.statistical_counters.total_arrivals > 0 else 0
 
+        return MM1Report(
+            average_customer_in_system,
+            average_customer_in_queue,
+            average_time_in_system,
+            average_time_in_queue,
+            server_usage,
+            n_clients_in_queue_probability,
+        )
 
-        Graphics.generate_queue_probabilities_chart(n_clients_in_queue_probability)
-        Graphics.generate_queue_probabilities_chart(denial_probability_by_queue_size)
-        
-        
