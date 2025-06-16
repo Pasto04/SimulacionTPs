@@ -27,18 +27,21 @@ class MM1Simulation:
 
     def run_simulation(self):	
         self.init_simulation()      
-
+        event_type = self.advance_time()
+        
         while self.clock < self.sim_time:
-            event_type = self.advance_time()
-
+            self.update_area_under_b()
+            self.update_area_under_q()
+            
             if (event_type == "arrival"):
                 self.handle_arrival()
             else:
                 self.handle_departure()
             self.system_state.last_event_time = self.clock
-        
-        #TODO self.update_area_under_b()
-        #TODO self.update_area_under_q()
+            event_type = self.advance_time()
+
+        self.update_area_under_b()
+        self.update_area_under_q()
         self.generate_report()
 
 
@@ -63,8 +66,6 @@ class MM1Simulation:
     def handle_arrival(self):
         self.update_blocking_by_queue_size()
         self.generate_next_arrival()
-        self.update_area_under_b()
-        self.update_area_under_q()
 
         if self.system_state.server_busy == False:
             self.system_state.server_busy = True
@@ -75,13 +76,10 @@ class MM1Simulation:
         elif self.system_state.clients_in_queue < self.max_queue:
             self.system_state.clients_in_queue += 1
             self.system_state.arrival_times.append(self.clock)
-            
+
 
 
     def handle_departure(self):
-        self.update_area_under_b()
-        self.update_area_under_q()
-        
         if self.system_state.clients_in_queue == 0:
             self.system_state.server_busy = False
             self.next_departure_time = np.inf
@@ -120,6 +118,7 @@ class MM1Simulation:
 
         self.statistical_counters.time_by_queue_level[level] += time_since_last_event
 
+
     def update_blocking_by_queue_size(self):
         self.statistical_counters.total_arrivals += 1
         for threshold in self.statistical_counters.blocking_counts:
@@ -138,7 +137,14 @@ class MM1Simulation:
         average_time_in_system = self.statistical_counters.total_delay / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
         average_time_in_queue = area_under_q / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
         server_usage = self.statistical_counters.area_under_b / self.sim_time
-        
+
+        print("\n--- Métricas de Rendimiento de la Simulación de Cola MM1 ---")
+        print(f"- Clientes promedio en el sistema:     {average_customer_in_system:.3f}")
+        print(f"- Clientes promedio en cola:           {average_customer_in_queue:.3f}")
+        print(f"- Tiempo promedio en el sistema:       {average_time_in_system:.3f} unidades de tiempo")
+        print(f"- Tiempo promedio en cola:             {average_time_in_queue:.3f} unidades de tiempo")
+        print(f"- Utilización del servidor:            {server_usage:.3%}")
+
         n_clients_in_queue_probability = {}
         denial_probability_by_queue_size = {0:0, 2:0, 5:0, 10:0, 50:0}
         for level, time in self.statistical_counters.time_by_queue_level.items():

@@ -31,10 +31,9 @@ class InventoryModelSimulation:
 
     def run_simulation(self):
         self.init_simulation()
+        event_type = self.advance_time()
 
         while self.clock < self.sim_time:
-            event_type = self.advance_time()
-
             if event_type == "customer_arrival":
                 self.handle_customer_arrival()
             elif event_type == "order_arrival":
@@ -42,7 +41,8 @@ class InventoryModelSimulation:
             else:
                 self.evaluate_inventory()
 
-            self.system_state.last_event_time = self.clock #TODO corregir
+            self.system_state.last_event_time = self.clock
+            event_type = self.advance_time()
 
         self.update_areas()
         self.generate_report()
@@ -122,8 +122,18 @@ class InventoryModelSimulation:
         if level > 0:
             self.statistical_counters.area_under_available_inventory += level * time
         elif level < 0:
-            self.statistical_counters.area_under_backordered_demand += -1 * level * time #TODO revisar si es correcto
+            self.statistical_counters.area_under_backordered_demand += -1 * level * time
 
 
     def generate_report(self):
-        pass
+        ordering_cost = self.statistical_counters.total_ordering_cost
+        holding_cost = self.statistical_counters.area_under_available_inventory * self.holding_cost_per_unit_per_time
+        backorder_cost = self.statistical_counters.area_under_backordered_demand * self.backorder_cost_per_unit_per_time
+        total_cost = ordering_cost + holding_cost + backorder_cost
+
+        print("\n--- Modelo de Inventario - Promedios costos por período ---")
+        print(f"- Costo de orden:                      ${ordering_cost / self.sim_time:12,.2f}")
+        print(f"- Costo de mantenimiento:              ${holding_cost / self.sim_time:12,.2f}")
+        print(f"- Costo de faltante:                   ${backorder_cost / self.sim_time:12,.2f}")
+        print(f"- Costo total:                         ${total_cost / self.sim_time:12,.2f}")
+
