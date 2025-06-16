@@ -4,6 +4,7 @@ from numpy.random import default_rng
 from mm1.classes.report import MM1Report
 
 def main():
+    master_rng = default_rng(1234)
     runs_per_experiment = 10
     service_rate = 1
     arrival_rate_factors = [0.25, 0.5, 0.75, 1.0, 1.25]
@@ -21,7 +22,7 @@ def main():
             report = simulation.run_simulation()
             reports.append(report)
         avg_reports_by_rate_factor[factor] = MM1Report.aggregate_reports(reports)
-        #TODO calcular promedio de las runs y mostrar el reporte final
+        
     for factor, report in avg_reports_by_rate_factor.items():
         print(f"\n== Reporte promedio para arrival_rate = {report.arrival_rate:.2f} y service_rate = {report.service_rate:.2f} ==")
         report.print_summary()
