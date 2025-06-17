@@ -26,13 +26,13 @@ class MM1Report:
         theoretical_metrics = TheoreticalMetrics(
             self.arrival_rate, self.service_rate
         )
-        print("\n== Métricas de Rendimiento de la Simulación de Cola MM1 ==")
-        print(f"- Clientes promedio en el sistema:     {self.avg_customer_in_system:.3f}                    |  Valor Teórico: {theoretical_metrics.avg_customers_in_system:8.3f}")
-        print(f"- Clientes promedio en cola:           {self.avg_customer_in_queue:.3f}                    |  Valor Teórico: {theoretical_metrics.avg_customers_in_queue:8.3f}")
-        print(f"- Tiempo promedio en el sistema:       {self.avg_time_in_system:.3f} unidades de tiempo |  Valor Teórico: {theoretical_metrics.avg_time_in_system:8.3f}")
-        print(f"- Tiempo promedio en cola:             {self.avg_time_in_queue:.3f} unidades de tiempo |  Valor Teórico: {theoretical_metrics.avg_time_in_system:8.3f}")
-        print(f"- Utilización del servidor:            {self.server_usage:.3%}                    |  Valor Teórico: {theoretical_metrics.server_usage:8.3f}")
-        
+        print(f"- Clientes promedio en el sistema:     {self.avg_customer_in_system:8.3f}                    |  Valor Teórico: {theoretical_metrics.avg_customers_in_system:8.3f}")
+        print(f"- Clientes promedio en cola:           {self.avg_customer_in_queue:8.3f}                    |  Valor Teórico: {theoretical_metrics.avg_customers_in_queue:8.3f}")
+        print(f"- Tiempo promedio en el sistema:       {self.avg_time_in_system:8.3f} unidades de tiempo |  Valor Teórico: {theoretical_metrics.avg_time_in_system:8.3f}")
+        print(f"- Tiempo promedio en cola:             {self.avg_time_in_queue:8.3f} unidades de tiempo |  Valor Teórico: {theoretical_metrics.avg_time_in_queue:8.3f}")
+        print(f"- Utilización del servidor:            {self.server_usage:8.3%}                    |  Valor Teórico: {theoretical_metrics.server_usage:8.3%}")
+
+
     @staticmethod
     def aggregate_reports(reports: list['MM1Report']) -> 'MM1Report':
         n = len(reports)

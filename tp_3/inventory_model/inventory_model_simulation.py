@@ -1,14 +1,16 @@
 import numpy as np
 from numpy.random import Generator, default_rng
 from typing import Literal
+from inventory_model.classes.report import InventoryModelReport
 from inventory_model.classes.statistical_counters import StatisticalCounters
 from inventory_model.classes.system_state import SystemState
-
 
 class InventoryModelSimulation:
     def __init__(
         self,
         customer_arrival_rate: float,
+        reorder_point: int,
+        max_inventory_level: int,
         cost_per_unit: float,
         ordering_fixed_cost: float,
         holding_cost_per_unit_per_time: float,
@@ -18,6 +20,8 @@ class InventoryModelSimulation:
         random: Generator = default_rng()
     ):
         self.customer_arrival_rate = customer_arrival_rate
+        self.reorder_point = reorder_point
+        self.max_inventory_level = max_inventory_level
 
         self.cost_per_unit = cost_per_unit
         self.ordering_fixed_cost = ordering_fixed_cost
@@ -29,7 +33,7 @@ class InventoryModelSimulation:
         self.random = random
 
 
-    def run_simulation(self):
+    def run_simulation(self) -> InventoryModelReport:
         self.init_simulation()
         event_type = self.advance_time()
 
@@ -45,7 +49,7 @@ class InventoryModelSimulation:
             event_type = self.advance_time()
 
         self.update_areas()
-        self.generate_report()
+        return self.generate_report()
 
 
     def init_simulation(self):
@@ -54,7 +58,7 @@ class InventoryModelSimulation:
         self.next_order_arrival_time = np.inf
         self.next_inventory_evaluation_time = self.inventory_evaluation_period
 
-        self.system_state = SystemState()
+        self.system_state = SystemState(self.reorder_point, self.max_inventory_level)
         self.statistical_counters = StatisticalCounters()
 
 
@@ -125,15 +129,19 @@ class InventoryModelSimulation:
             self.statistical_counters.area_under_backordered_demand += -1 * level * time
 
 
-    def generate_report(self):
+    def generate_report(self) -> InventoryModelReport:
         ordering_cost = self.statistical_counters.total_ordering_cost
         holding_cost = self.statistical_counters.area_under_available_inventory * self.holding_cost_per_unit_per_time
         backorder_cost = self.statistical_counters.area_under_backordered_demand * self.backorder_cost_per_unit_per_time
         total_cost = ordering_cost + holding_cost + backorder_cost
 
-        print("\n--- Modelo de Inventario - Promedios costos por período ---")
-        print(f"- Costo de orden:                      ${ordering_cost / self.sim_time:12,.2f}")
-        print(f"- Costo de mantenimiento:              ${holding_cost / self.sim_time:12,.2f}")
-        print(f"- Costo de faltante:                   ${backorder_cost / self.sim_time:12,.2f}")
-        print(f"- Costo total:                         ${total_cost / self.sim_time:12,.2f}")
+        return InventoryModelReport(
+            self.customer_arrival_rate,
+            self.reorder_point,
+            self.max_inventory_level,
+            ordering_cost = ordering_cost / self.sim_time,
+            holding_cost = holding_cost / self.sim_time,
+            backorder_cost = backorder_cost / self.sim_time,
+            total_cost = total_cost / self.sim_time
+        )
 
