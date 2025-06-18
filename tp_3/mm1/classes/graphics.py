@@ -13,7 +13,13 @@ class Graphics:
         plt.xlabel('Número de clientes en cola')
         plt.ylabel('Probabilidad')
         plt.title('Distribución de Probabilidad de Clientes en Cola')
-        plt.xticks(levels)
+
+        if len(levels) > 20:
+            step = max(1, len(levels) // 20)
+            plt.xticks(levels[::step])
+        else:
+            plt.xticks(levels)
+
         plt.grid(axis='y', linestyle='--', alpha=0.7)
 
         plt.savefig(f"./images/mm1-{image_id}.png")
