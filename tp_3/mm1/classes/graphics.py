@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 class Graphics:
     @staticmethod
-    def generate_queue_probabilities_chart(probabilities: dict[int:int]):
+    def generate_probabilities_chart(probabilities: dict[int:int], title: str, xlabel: str, ylabel: str):
         levels = sorted(probabilities.keys())
         probabilities = [probabilities[level] for level in levels]
 

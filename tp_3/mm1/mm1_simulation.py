@@ -65,7 +65,7 @@ class MM1Simulation:
 
 
     def handle_arrival(self):
-        self.update_blocking_by_queue_size()
+        self.statistical_counters.total_arrivals += 1
         self.generate_next_arrival()
 
         if self.system_state.server_busy == False:
@@ -78,6 +78,8 @@ class MM1Simulation:
         elif self.system_state.clients_in_queue < self.max_queue:
             self.system_state.clients_in_queue += 1
             self.system_state.arrival_times.append(self.clock)
+        else:
+            self.statistical_counters.customers_blocked += 1
 
 
 
@@ -121,15 +123,6 @@ class MM1Simulation:
         self.statistical_counters.time_by_queue_level[level] += time_since_last_event
 
 
-    def update_blocking_by_queue_size(self):
-        self.statistical_counters.total_arrivals += 1
-        for threshold in self.statistical_counters.blocking_counts:
-            if self.system_state.clients_in_queue >= threshold:
-                self.statistical_counters.blocking_counts[threshold] += 1
-            if threshold == 0 and self.system_state.server_busy == False:
-                self.statistical_counters.blocking_counts[threshold] -= 1
-
-
     def generate_report(self) -> MM1Report:
         area_under_q = sum(
             int(level) * time for level, time in self.statistical_counters.time_by_queue_level.items()
@@ -141,13 +134,13 @@ class MM1Simulation:
         server_usage = self.statistical_counters.area_under_b / self.sim_time
 
         n_clients_in_queue_probability = {}
-        denial_probability_by_queue_size = {0:0, 2:0, 5:0, 10:0, 50:0}
         for level, time in self.statistical_counters.time_by_queue_level.items():
             n_clients_in_queue_probability[level] = time / self.sim_time
-        for queue_lenght, customers_blocked in self.statistical_counters.blocking_counts.items():
-            denial_probability_by_queue_size[queue_lenght] = customers_blocked / self.statistical_counters.total_arrivals if self.statistical_counters.total_arrivals > 0 else 0
+        
+        denial_probability = self.statistical_counters.customers_blocked / self.statistical_counters.total_arrivals if self.statistical_counters.total_arrivals > 0 else 0
 
         return MM1Report(
+            self.max_queue,
             self.arrival_rate,
             self.service_rate,
             avg_customer_in_system,
@@ -156,5 +149,5 @@ class MM1Simulation:
             avg_time_in_queue,
             server_usage,
             n_clients_in_queue_probability,
-            denial_probability_by_queue_size,
+            denial_probability,
         )
