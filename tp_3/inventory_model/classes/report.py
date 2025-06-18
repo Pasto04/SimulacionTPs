@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 
 class InventoryModelReport:
-  
     def __init__(
         self,
         customer_arrival_rate: float,
@@ -26,7 +25,8 @@ class InventoryModelReport:
         print(f"- Costo de mantenimiento:              ${self.holding_cost:12,.2f}")
         print(f"- Costo de faltante:                   ${self.backorder_cost:12,.2f}")
         print(f"- Costo total:                         ${self.total_cost:12,.2f}")
-        self.plot_cost_pie_chart()
+        self.plot_cost_pie_chart(f"{self.customer_arrival_rate}-{self.reorder_point}-{self.max_inventory_level}")
+
 
     @staticmethod
     def aggregate_reports(reports: list['InventoryModelReport']) -> 'InventoryModelReport':
@@ -36,7 +36,7 @@ class InventoryModelReport:
         avg_backorder_cost = sum(r.backorder_cost for r in reports) / n
         avg_total_cost = sum(r.total_cost for r in reports) / n
 
-            
+
         return InventoryModelReport(
             reports[0].customer_arrival_rate,
             reports[0].reorder_point,
@@ -46,8 +46,9 @@ class InventoryModelReport:
             backorder_cost=avg_backorder_cost,
             total_cost=avg_total_cost
         )
-        
-    def plot_cost_pie_chart(self):
+
+
+    def plot_cost_pie_chart(self, image_id: str):
         labels = ['Pedido', 'Mantenimiento', 'Faltantes']
         costs = [self.ordering_cost, self.holding_cost, self.backorder_cost]
 
@@ -55,4 +56,5 @@ class InventoryModelReport:
         plt.pie(costs, labels=labels, autopct='%1.1f%%', startangle=140)
         plt.title("Distribución porcentual de costos en la simulación")
         plt.axis('equal')  
-        plt.show()
+        plt.savefig(f"./images/inventory-model-{image_id}.png")
+        plt.close()

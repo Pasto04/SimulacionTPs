@@ -40,8 +40,9 @@ class MM1Report:
         print(f"- Tiempo promedio en cola:             {self.avg_time_in_queue:8.3f} unidades de tiempo |  Valor Teórico: {theoretical_metrics.avg_time_in_queue:8.3f}")
         print(f"- Utilización del servidor:            {self.server_usage:8.3%}                    |  Valor Teórico: {theoretical_metrics.server_usage:8.3%}")
         print(f"- Probabilidad de denegación:          {self.denial_probability:8.3%}                    |  Valor Teórico: {theoretical_metrics.denial_probability:8.3%}")
-        Graphics.generate_probabilities_chart(self.queue_length_probabilities,'Distribución de Probabilidad de Clientes en Cola','Número de clientes en cola', 'Probabilidad')
-        
+        Graphics.generate_probabilities_chart(self.queue_length_probabilities, f"{self.max_queue}-{self.arrival_rate}-{self.service_rate}")
+
+
     @staticmethod
     def aggregate_reports(reports: list['MM1Report']) -> 'MM1Report':
         n = len(reports)

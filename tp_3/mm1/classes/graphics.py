@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 class Graphics:
     @staticmethod
-    def generate_probabilities_chart(probabilities: dict[int:int], title: str, xlabel: str, ylabel: str):
+    def generate_probabilities_chart(probabilities: dict[int:int], image_id: str):
         levels = sorted(probabilities.keys())
         probabilities = [probabilities[level] for level in levels]
 
@@ -16,5 +16,6 @@ class Graphics:
         plt.xticks(levels)
         plt.grid(axis='y', linestyle='--', alpha=0.7)
 
-        plt.tight_layout()
-        plt.show()
+        plt.savefig(f"./images/mm1-{image_id}.png")
+        plt.close()
+

@@ -15,14 +15,6 @@ class MM1Simulation:
         self.sim_time = sim_time
         self.max_queue = max_queue
         self.random = random
-        '''
-        self.data = {
-            'wait_times': [],
-            'system_times': [],
-            'blocked_customers': 0,
-            'total_customers': 0,
-        }
-        '''
 
 
     def run_simulation(self) -> MM1Report:
