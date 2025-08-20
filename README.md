@@ -11,3 +11,5 @@ TP 2.1 : Generadores Pseudoaleatorios
 TP 2.2 : Generadores de Números Pseudoaleatorios de Distintas Distribuciones de Probabilidad
 
 TP 3 - Simulación de un modelo MM1 e Inventario
+
+TPI: Boarding SIM
