@@ -3,9 +3,7 @@ from numpy.random import Generator, default_rng
 from typing import Literal
 from mm1.classes.statistical_counters import StatisticalCounters
 from mm1.classes.system_state import SystemState
-from mm1.classes.graphics import Graphics
 from mm1.classes.report import MM1Report
-from mm1.classes.theoretical_metrics import TheoreticalMetrics
 
 
 class MM1Simulation:
@@ -121,7 +119,7 @@ class MM1Simulation:
         )
         avg_customer_in_system = (area_under_q + self.statistical_counters.area_under_b) / self.sim_time
         avg_customer_in_queue = area_under_q / self.sim_time
-        avg_time_in_system = self.statistical_counters.total_delay / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
+        avg_time_in_system = self.statistical_counters.area_under_b / self.statistical_counters.customers_delayed + self.statistical_counters.total_delay / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
         avg_time_in_queue = area_under_q / self.statistical_counters.customers_delayed if self.statistical_counters.customers_delayed > 0 else 0
         server_usage = self.statistical_counters.area_under_b / self.sim_time
 
