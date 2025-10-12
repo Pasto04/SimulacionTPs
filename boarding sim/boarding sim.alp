@@ -28,6 +28,12 @@
     }
     
     return null;
+}
+
+public enum BoardingMethod {
+  BACK_TO_FRONT,
+  FRONT_TO_BACK,
+  WINDOWS_MIDDLE_AISLE
 }]]></AdditionalClassCode>
 			<StartupCode><![CDATA[Simulation exp = (Simulation)getExperiment();
 String selectedPlane = exp.getSelectedPlane();
@@ -176,6 +182,21 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);]]></StartupCode>
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[60]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1760273364310</Id>
+					<Name><![CDATA[boardingMethod]]></Name>
+					<X>50</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[BoardingMethod]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[BoardingMethod.FRONT_TO_BACK]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -507,6 +528,128 @@ if (plane instanceof AirbusA320) {
 }]]></Action>
 				</Event>
 			</Events>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1760272830198</Id>
+					<Name><![CDATA[assignBoardingGroup]]></Name>
+					<X>50</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[seat]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[row]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (boardingMethod){
+	case BACK_TO_FRONT:        return backToFront(seat, row);
+	case FRONT_TO_BACK:        return frontToBack(seat, row);
+	case WINDOWS_MIDDLE_AISLE: return windowsMiddleAisle(seat, row);
+	default: return backToFront(seat, row);
+}]]></Body>
+				</Function>
+				<Function AccessType="private" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1760272874879</Id>
+					<Name><![CDATA[backToFront]]></Name>
+					<X>50</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[seat]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[row]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[return (int) (getPlane().groupsNumber -(row / (getPlane().rowsNumber / getPlane().groupsNumber)))+1;]]></Body>
+				</Function>
+				<Function AccessType="private" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1760273691651</Id>
+					<Name><![CDATA[frontToBack]]></Name>
+					<X>50</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[seat]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[row]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[return (int)(getPlane().groupsNumber -(row / (getPlane().rowsNumber / getPlane().groupsNumber)))+1;]]></Body>
+				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1760273694221</Id>
+					<Name><![CDATA[windowsMiddleAisle]]></Name>
+					<X>50</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[seat]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[row]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[BasePlane plane = getPlane();
+int rows  = plane.rowsNumber;
+int seats = plane.seatsNumber;
+double groups = plane.groupsNumber;
+int gsize  = plane.groupSize;
+
+int seatsXRow =  (int) seats / rows;
+
+int seatIdx = Math.max(0, Math.min(seatsXRow - 1, Character.toUpperCase(seat.charAt(0)) - 'A'));
+
+int withinRowRank = 0;
+int left = 0, right = seatsXRow - 1, rank = 0;
+
+while (left <= right) {
+    if (seatIdx == left) { 
+        withinRowRank = rank; 
+        break;
+    }
+    rank++;
+    if (left == right) break;
+    if (seatIdx == right) { 
+        withinRowRank = rank; 
+        break;
+    }
+    rank++;
+    left++; 
+    right--;
+}
+
+int rowRank = Math.max(0, rows - row);
+
+int globalIndex = withinRowRank * rows + rowRank;
+
+int group = (int) Math.min(groups - 1, globalIndex / gsize) + 1;
+
+return group;]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1755085745147</Id>
@@ -709,7 +852,7 @@ getPlane().seats.put(passengerSeat, true);
 ped.seatLetter = passengerSeat.replaceAll("[0-9]", "");
 ped.seatRow = Integer.parseInt(passengerSeat.replaceAll("[A-Z]",""));
 
-ped.group = (int) (ped.seatRow / (getPlane().rowsNumber / getPlane().groupsNumber)) + 1;
+ped.group = assignBoardingGroup(ped.seatLetter, ped.seatRow);
 ped.speed = ped.getComfortableSpeed();]]></Code>
 							</Value>
 						</Parameter>
@@ -3193,7 +3336,7 @@ person.setVisible(true);
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
+						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
@@ -3241,7 +3384,7 @@ person.setVisible(true);
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
