@@ -8927,7 +8927,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>288</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8952,7 +8952,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>263</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8977,7 +8977,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>88</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9002,7 +9002,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>238</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9027,7 +9027,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>213</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9052,7 +9052,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>138</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9077,7 +9077,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>188</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9102,7 +9102,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>63</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9127,7 +9127,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>113</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9152,7 +9152,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>163</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9202,7 +9202,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>13</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9227,7 +9227,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-12</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9377,7 +9377,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>38</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9602,7 +9602,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>313</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9727,7 +9727,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>213</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9752,7 +9752,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>238</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9777,7 +9777,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>288</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9802,7 +9802,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>263</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -16906,175 +16906,367 @@ airbusA320.pedWait.free(passenger);
 
 			<Presentation>
 				<Figure3D>
-					<Id>1759792344915</Id>
-					<Name><![CDATA[chair]]></Name>
-					<X>21</X><Y>21</Y>
+					<Id>1760362370011</Id>
+					<Name><![CDATA[object3d6]]></Name>
+					<X>330</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>21</X><Y>21</Y><Z>0</Z>
+					<X>330</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/chair.dae]]></ClassName>
+						<ClassName><![CDATA[3d/Silla1.dae]]></ClassName>
 					</ResourceReference>
 					<ColorTable>
 						<ColorMapping>
-							<Name><![CDATA[material0]]></Name>
-							<OriginalColor>-3094341</OriginalColor>
+							<Name><![CDATA[mat8]]></Name>
+							<OriginalColor>-45292</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat7]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat6]]></Name>
+							<OriginalColor>-4276546</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat5]]></Name>
+							<OriginalColor>-6250336</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat4]]></Name>
+							<OriginalColor>-12621190</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat3]]></Name>
+							<OriginalColor>-207802</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat2]]></Name>
+							<OriginalColor>-723723</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat1]]></Name>
+							<OriginalColor>-12762806</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat0]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.1</Scale>
+					<Scale>2.05</Scale>
 					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 </Figure3D>
 				<Figure3D>
-					<Id>1759794291655</Id>
-					<Name><![CDATA[chair1]]></Name>
-					<X>76</X><Y>21</Y>
+					<Id>1760362370714</Id>
+					<Name><![CDATA[object3d7]]></Name>
+					<X>275</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>76</X><Y>21</Y><Z>0</Z>
+					<X>275</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/chair.dae]]></ClassName>
+						<ClassName><![CDATA[3d/Silla1.dae]]></ClassName>
 					</ResourceReference>
 					<ColorTable>
 						<ColorMapping>
-							<Name><![CDATA[material0]]></Name>
-							<OriginalColor>-3094341</OriginalColor>
+							<Name><![CDATA[mat8]]></Name>
+							<OriginalColor>-45292</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat7]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat6]]></Name>
+							<OriginalColor>-4276546</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat5]]></Name>
+							<OriginalColor>-6250336</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat4]]></Name>
+							<OriginalColor>-12621190</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat3]]></Name>
+							<OriginalColor>-207802</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat2]]></Name>
+							<OriginalColor>-723723</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat1]]></Name>
+							<OriginalColor>-12762806</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat0]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.1</Scale>
+					<Scale>2.05</Scale>
 					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 </Figure3D>
 				<Figure3D>
-					<Id>1759794294647</Id>
-					<Name><![CDATA[chair2]]></Name>
-					<X>131</X><Y>21</Y>
+					<Id>1760362348472</Id>
+					<Name><![CDATA[object3d5]]></Name>
+					<X>220</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>131</X><Y>21</Y><Z>0</Z>
+					<X>220</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/chair.dae]]></ClassName>
+						<ClassName><![CDATA[3d/Silla1.dae]]></ClassName>
 					</ResourceReference>
 					<ColorTable>
 						<ColorMapping>
-							<Name><![CDATA[material0]]></Name>
-							<OriginalColor>-3094341</OriginalColor>
+							<Name><![CDATA[mat8]]></Name>
+							<OriginalColor>-45292</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat7]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat6]]></Name>
+							<OriginalColor>-4276546</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat5]]></Name>
+							<OriginalColor>-6250336</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat4]]></Name>
+							<OriginalColor>-12621190</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat3]]></Name>
+							<OriginalColor>-207802</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat2]]></Name>
+							<OriginalColor>-723723</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat1]]></Name>
+							<OriginalColor>-12762806</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat0]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.1</Scale>
+					<Scale>2.05</Scale>
 					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 </Figure3D>
 				<Figure3D>
-					<Id>1759794310711</Id>
-					<Name><![CDATA[chair3]]></Name>
-					<X>331</X><Y>21</Y>
+					<Id>1760362195894</Id>
+					<Name><![CDATA[object3d4]]></Name>
+					<X>21</X><Y>47</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>331</X><Y>21</Y><Z>0</Z>
+					<X>21</X><Y>47</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/chair.dae]]></ClassName>
+						<ClassName><![CDATA[3d/Silla1.dae]]></ClassName>
 					</ResourceReference>
 					<ColorTable>
 						<ColorMapping>
-							<Name><![CDATA[material0]]></Name>
-							<OriginalColor>-3094341</OriginalColor>
+							<Name><![CDATA[mat8]]></Name>
+							<OriginalColor>-45292</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat7]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat6]]></Name>
+							<OriginalColor>-4276546</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat5]]></Name>
+							<OriginalColor>-6250336</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat4]]></Name>
+							<OriginalColor>-12621190</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat3]]></Name>
+							<OriginalColor>-207802</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat2]]></Name>
+							<OriginalColor>-723723</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat1]]></Name>
+							<OriginalColor>-12762806</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat0]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.1</Scale>
+					<Scale>2.05</Scale>
 					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 </Figure3D>
 				<Figure3D>
-					<Id>1759794310713</Id>
-					<Name><![CDATA[chair4]]></Name>
-					<X>221</X><Y>21</Y>
+					<Id>1760362170992</Id>
+					<Name><![CDATA[object3d3]]></Name>
+					<X>129</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>221</X><Y>21</Y><Z>0</Z>
+					<X>129</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/chair.dae]]></ClassName>
+						<ClassName><![CDATA[3d/Silla1.dae]]></ClassName>
 					</ResourceReference>
 					<ColorTable>
 						<ColorMapping>
-							<Name><![CDATA[material0]]></Name>
-							<OriginalColor>-3094341</OriginalColor>
+							<Name><![CDATA[mat8]]></Name>
+							<OriginalColor>-45292</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat7]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat6]]></Name>
+							<OriginalColor>-4276546</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat5]]></Name>
+							<OriginalColor>-6250336</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat4]]></Name>
+							<OriginalColor>-12621190</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat3]]></Name>
+							<OriginalColor>-207802</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat2]]></Name>
+							<OriginalColor>-723723</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat1]]></Name>
+							<OriginalColor>-12762806</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat0]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.1</Scale>
+					<Scale>2.05</Scale>
 					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 </Figure3D>
 				<Figure3D>
-					<Id>1759794310715</Id>
-					<Name><![CDATA[chair5]]></Name>
-					<X>276</X><Y>21</Y>
+					<Id>1760362038577</Id>
+					<Name><![CDATA[object3d2]]></Name>
+					<X>75</X><Y>46</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>276</X><Y>21</Y><Z>0</Z>
+					<X>75</X><Y>46</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/chair.dae]]></ClassName>
+						<ClassName><![CDATA[3d/Silla1.dae]]></ClassName>
 					</ResourceReference>
 					<ColorTable>
 						<ColorMapping>
-							<Name><![CDATA[material0]]></Name>
-							<OriginalColor>-3094341</OriginalColor>
+							<Name><![CDATA[mat8]]></Name>
+							<OriginalColor>-45292</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat7]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat6]]></Name>
+							<OriginalColor>-4276546</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat5]]></Name>
+							<OriginalColor>-6250336</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat4]]></Name>
+							<OriginalColor>-12621190</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat3]]></Name>
+							<OriginalColor>-207802</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat2]]></Name>
+							<OriginalColor>-723723</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat1]]></Name>
+							<OriginalColor>-12762806</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat0]]></Name>
+							<OriginalColor>-5979184</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.1</Scale>
+					<Scale>2.05</Scale>
 					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
@@ -17825,68 +18017,6 @@ airbusA320.pedWait.free(passenger);
 			<BypassInitialScreen>false</BypassInitialScreen>
 		</SimulationExperiment>	
 	</Experiments>
-	<ModelResources>
-		<Resource>
-			<Id>1755699829201</Id>
-			<Path><![CDATA[3d/b777.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1756906989104</Id>
-			<Path><![CDATA[3d/a320.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1758132383193</Id>
-			<Path><![CDATA[3d/person.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1758134508377</Id>
-			<Path><![CDATA[a320.png]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1759791122639</Id>
-			<Path><![CDATA[3d/suitcase_3.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1759791676887</Id>
-			<Path><![CDATA[3d/chair.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1759935448275</Id>
-			<Path><![CDATA[3d/seated_person.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1760198013774</Id>
-			<Path><![CDATA[Captura de pantalla 2025-10-11 125321.png]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1760322979296</Id>
-			<Path><![CDATA[3d/Paredes2.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1760323011217</Id>
-			<Path><![CDATA[3d/Paredes3.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-	</ModelResources>
     <RequiredLibraryReference>
 		<LibraryName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></LibraryName>
 		<VersionMajor>1</VersionMajor>
