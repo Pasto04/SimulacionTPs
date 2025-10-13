@@ -2438,6 +2438,1338 @@ agent.inPlane = true;]]></Code>
 						<Point><X>40</X><Y>0</Y></Point>
 					</Points>
 				</TargetLine>
+				<Figure3D>
+					<Id>1760365264989</Id>
+					<Name><![CDATA[object3d1]]></Name>
+					<X>640</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>640</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365345885</Id>
+					<Name><![CDATA[object3d2]]></Name>
+					<X>615</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>615</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365346570</Id>
+					<Name><![CDATA[object3d3]]></Name>
+					<X>590</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>590</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365366265</Id>
+					<Name><![CDATA[object3d4]]></Name>
+					<X>665</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>665</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365366280</Id>
+					<Name><![CDATA[object3d5]]></Name>
+					<X>690</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>690</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365366296</Id>
+					<Name><![CDATA[object3d6]]></Name>
+					<X>715</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>715</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365395937</Id>
+					<Name><![CDATA[object3d7]]></Name>
+					<X>590</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>590</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365395952</Id>
+					<Name><![CDATA[object3d8]]></Name>
+					<X>665</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>665</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365395969</Id>
+					<Name><![CDATA[object3d9]]></Name>
+					<X>715</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>715</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365395998</Id>
+					<Name><![CDATA[object3d10]]></Name>
+					<X>615</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>615</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365396014</Id>
+					<Name><![CDATA[object3d11]]></Name>
+					<X>640</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>640</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365396030</Id>
+					<Name><![CDATA[object3d12]]></Name>
+					<X>690</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>690</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365401929</Id>
+					<Name><![CDATA[object3d13]]></Name>
+					<X>590</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>590</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365401944</Id>
+					<Name><![CDATA[object3d14]]></Name>
+					<X>665</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>665</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365401959</Id>
+					<Name><![CDATA[object3d15]]></Name>
+					<X>715</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>715</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365401974</Id>
+					<Name><![CDATA[object3d16]]></Name>
+					<X>615</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>615</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365401990</Id>
+					<Name><![CDATA[object3d17]]></Name>
+					<X>640</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>640</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365402005</Id>
+					<Name><![CDATA[object3d18]]></Name>
+					<X>690</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>690</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421193</Id>
+					<Name><![CDATA[object3d19]]></Name>
+					<X>975</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>975</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421209</Id>
+					<Name><![CDATA[object3d20]]></Name>
+					<X>1000</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1000</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421225</Id>
+					<Name><![CDATA[object3d21]]></Name>
+					<X>950</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>950</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421227</Id>
+					<Name><![CDATA[object3d22]]></Name>
+					<X>1025</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1025</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421241</Id>
+					<Name><![CDATA[object3d23]]></Name>
+					<X>1075</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1075</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421259</Id>
+					<Name><![CDATA[object3d24]]></Name>
+					<X>1000</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1000</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421273</Id>
+					<Name><![CDATA[object3d25]]></Name>
+					<X>975</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>975</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421288</Id>
+					<Name><![CDATA[object3d26]]></Name>
+					<X>1075</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1075</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421304</Id>
+					<Name><![CDATA[object3d27]]></Name>
+					<X>1050</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1050</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421320</Id>
+					<Name><![CDATA[object3d28]]></Name>
+					<X>1000</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1000</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421336</Id>
+					<Name><![CDATA[object3d29]]></Name>
+					<X>950</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>950</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421352</Id>
+					<Name><![CDATA[object3d30]]></Name>
+					<X>1025</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1025</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421368</Id>
+					<Name><![CDATA[object3d31]]></Name>
+					<X>975</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>975</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421385</Id>
+					<Name><![CDATA[object3d32]]></Name>
+					<X>1075</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1075</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421400</Id>
+					<Name><![CDATA[object3d33]]></Name>
+					<X>950</X><Y>675</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>950</X><Y>675</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421416</Id>
+					<Name><![CDATA[object3d34]]></Name>
+					<X>1050</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1050</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421432</Id>
+					<Name><![CDATA[object3d35]]></Name>
+					<X>1050</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1050</X><Y>640</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760365421448</Id>
+					<Name><![CDATA[object3d36]]></Name>
+					<X>1025</X><Y>710</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>1025</X><Y>710</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Silla espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Seats PBR.002]]></Name>
+							<OriginalColor>-16441526</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Plastic Black]]></Name>
+							<OriginalColor>-15658220</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Chrome Apolish]]></Name>
+							<OriginalColor>-7237231</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.0</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
 			</Presentation>
 
 				</Level>
@@ -18017,6 +19349,74 @@ airbusA320.pedWait.free(passenger);
 			<BypassInitialScreen>false</BypassInitialScreen>
 		</SimulationExperiment>	
 	</Experiments>
+	<ModelResources>
+		<Resource>
+			<Id>1760363320874</Id>
+			<Path><![CDATA[3d/a320.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320876</Id>
+			<Path><![CDATA[3d/b777.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320878</Id>
+			<Path><![CDATA[3d/Paredes2.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320879</Id>
+			<Path><![CDATA[3d/Paredes3.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320880</Id>
+			<Path><![CDATA[3d/person.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320881</Id>
+			<Path><![CDATA[3d/seated_person.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320882</Id>
+			<Path><![CDATA[3d/Silla1.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320883</Id>
+			<Path><![CDATA[3d/suitcase_3.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320884</Id>
+			<Path><![CDATA[a320.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760363320885</Id>
+			<Path><![CDATA[Captura de pantalla 2025-10-11 125321.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760365109600</Id>
+			<Path><![CDATA[3d/Silla espera.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+	</ModelResources>
     <RequiredLibraryReference>
 		<LibraryName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></LibraryName>
 		<VersionMajor>1</VersionMajor>
