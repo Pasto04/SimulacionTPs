@@ -8600,7 +8600,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>53</X><Y>535</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8736,7 +8736,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>7</X><Y>462</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8777,7 +8777,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>438</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8802,7 +8802,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>413</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8827,7 +8827,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>388</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8852,7 +8852,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>363</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8877,7 +8877,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>338</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -8902,7 +8902,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>313</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9527,7 +9527,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>438</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9552,7 +9552,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>413</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9577,7 +9577,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>388</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9627,7 +9627,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>363</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -9652,7 +9652,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>338</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -17493,6 +17493,176 @@ airbusA320.pedWait.free(passenger);
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 </Figure3D>
+				<Figure3D>
+					<Id>1760322972988</Id>
+					<Name><![CDATA[object3d]]></Name>
+					<X>10</X><Y>20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>10</X><Y>20</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Paredes2.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_001]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_002]]></Name>
+							<OriginalColor>-5658199</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_003.010]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_004]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_005.005]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_007]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_006]]></Name>
+							<OriginalColor>-8355712</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_003.003]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_008.001]]></Name>
+							<OriginalColor>-8388608</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_009.001]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_010.001]]></Name>
+							<OriginalColor>-4144960</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_005.001]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_003.002]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_011.001]]></Name>
+							<OriginalColor>-14474461</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_012.001]]></Name>
+							<OriginalColor>-1331</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.5</Scale>
+					<Rotation>270.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
+					<Id>1760323005493</Id>
+					<Name><![CDATA[object3d1]]></Name>
+					<X>340</X><Y>20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>340</X><Y>20</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Paredes3.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_001]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_002]]></Name>
+							<OriginalColor>-5658199</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_003.010]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_004]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_005.005]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_007]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_006]]></Name>
+							<OriginalColor>-8355712</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_010.001]]></Name>
+							<OriginalColor>-4144960</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_005.001]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_003.002]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_011.001]]></Name>
+							<OriginalColor>-14474461</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_012.001]]></Name>
+							<OriginalColor>-1331</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_003.003]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_008.001]]></Name>
+							<OriginalColor>-8388608</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[dbl_Group_009.001]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>14.5</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
 			</Presentation>
 
 				</Level>
@@ -17701,6 +17871,18 @@ airbusA320.pedWait.free(passenger);
 		<Resource>
 			<Id>1760198013774</Id>
 			<Path><![CDATA[Captura de pantalla 2025-10-11 125321.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760322979296</Id>
+			<Path><![CDATA[3d/Paredes2.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760323011217</Id>
+			<Path><![CDATA[3d/Paredes3.dae]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
