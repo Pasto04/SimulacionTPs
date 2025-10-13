@@ -18017,68 +18017,6 @@ airbusA320.pedWait.free(passenger);
 			<BypassInitialScreen>false</BypassInitialScreen>
 		</SimulationExperiment>	
 	</Experiments>
-	<ModelResources>
-		<Resource>
-			<Id>1755699829201</Id>
-			<Path><![CDATA[3d/b777.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1756906989104</Id>
-			<Path><![CDATA[3d/a320.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1758132383193</Id>
-			<Path><![CDATA[3d/person.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1758134508377</Id>
-			<Path><![CDATA[a320.png]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1759791122639</Id>
-			<Path><![CDATA[3d/suitcase_3.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1759935448275</Id>
-			<Path><![CDATA[3d/seated_person.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1760198013774</Id>
-			<Path><![CDATA[Captura de pantalla 2025-10-11 125321.png]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1760322979296</Id>
-			<Path><![CDATA[3d/Paredes2.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1760323011217</Id>
-			<Path><![CDATA[3d/Paredes3.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1760362043675</Id>
-			<Path><![CDATA[3d/Silla1.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-	</ModelResources>
     <RequiredLibraryReference>
 		<LibraryName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></LibraryName>
 		<VersionMajor>1</VersionMajor>
