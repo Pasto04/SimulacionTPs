@@ -38,6 +38,8 @@ public enum BoardingMethod {
 			<StartupCode><![CDATA[Simulation exp = (Simulation)getExperiment();
 String selectedPlane = exp.getSelectedPlane();
 
+boardingMethod = BoardingMethod.valueOf(exp.getSelectedBoardingMethod());
+
 if (selectedPlane.equals("Boeing 777")) {
 	Boeing777 plane = add_boeing777s();
 	plane.setXYZ(649,69,0);
@@ -195,9 +197,6 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);]]></StartupCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[BoardingMethod]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[BoardingMethod.FRONT_TO_BACK]]></Code>
-						</InitialValue>
 					</Properties>
 				</Variable>
 			</Variables>
@@ -572,7 +571,23 @@ if (plane instanceof AirbusA320) {
 						<Name><![CDATA[row]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[return (int) (getPlane().groupsNumber -(row / (getPlane().rowsNumber / getPlane().groupsNumber)))+1;]]></Body>
+					<Body><![CDATA[BasePlane plane = getPlane();
+int rows = plane.rowsNumber;
+int seats = plane.seatsNumber;
+double groups = plane.groupsNumber;
+int groupSize = plane.groupSize;
+
+int seatsPerRow = seats / rows;
+
+int seatIdx = Character.toUpperCase(seat.charAt(0)) - 'A';
+
+int ordinal = ((row - 1) * seatsPerRow) + seatIdx;
+
+double seatsPerGroup = Math.ceil(seats / groups);
+
+int group  = (int)(((seats - ordinal) / seatsPerGroup) + 1);
+
+return group;  ]]></Body>
 				</Function>
 				<Function AccessType="private" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -592,7 +607,23 @@ if (plane instanceof AirbusA320) {
 						<Name><![CDATA[row]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[return (int)(getPlane().groupsNumber -(row / (getPlane().rowsNumber / getPlane().groupsNumber)))+1;]]></Body>
+					<Body><![CDATA[BasePlane plane = getPlane();
+int rows = plane.rowsNumber;
+int seats = plane.seatsNumber;
+double groups = plane.groupsNumber;
+int groupSize = plane.groupSize;
+
+int seatsPerRow = seats / rows;
+
+int seatIdx = Character.toUpperCase(seat.charAt(0)) - 'A';
+
+int ordinal = ((row - 1) * seatsPerRow) + seatIdx;
+
+double seatsPerGroup = Math.ceil(seats / groups);
+
+int group  = (int)((ordinal / seatsPerGroup) + 1);
+
+return group;                ]]></Body>
 				</Function>
 				<Function AccessType="public" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -1580,7 +1611,7 @@ agent.inPlane = true;]]></Code>
 						<Parameter>
 							<Name><![CDATA[onPedSelected]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[System.out.println(ped.toString())]]></Code>
+								<Code><![CDATA[//System.out.println(ped.toString())]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4529,6 +4560,8 @@ person.setVisible(true);
 		<ActiveObjectClass>
 			<Id>1755699829168</Id>
 			<Name><![CDATA[BasePlane]]></Name>
+			<StartupCode><![CDATA[Simulation exp = (Simulation)getExperiment();
+groupsNumber = exp.getGroupsNumber();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1755699829173</Id>
@@ -4635,6 +4668,36 @@ person.setVisible(true);
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1760396571899</Id>
+					<Name><![CDATA[inGateNode]]></Name>
+					<X>450</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1760396571901</Id>
+					<Name><![CDATA[inGateLimit]]></Name>
+					<X>450</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="true" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[3]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1755699857943</Id>
 					<Name><![CDATA[seatsNumber]]></Name>
@@ -4671,9 +4734,6 @@ person.setVisible(true);
 						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[6]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>1755700231209</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -4695,9 +4755,6 @@ person.setVisible(true);
 						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[30]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>1755700234492</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -4732,6 +4789,27 @@ person.setVisible(true);
 					</Properties>                 
 				</Variable>
 			</Variables>
+			<Functions>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1760396571896</Id>
+					<Name><![CDATA[allowBoarding]]></Name>
+					<X>600</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[Main root = (Main) getEngine().getRoot();
+long nearGate = root.passengers.stream()
+	.filter(p -> p.inPlane)
+	.filter(p -> !p.isSeated)
+    .filter(p -> p.currentRow < 1)
+    .count();
+
+return nearGate < inGateLimit && inGateNode == 0 ;]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1755699829169</Id>
@@ -5181,7 +5259,7 @@ for (int row = 1; row <= rowsNumber; row++) {
 						<Parameter>
 							<Name><![CDATA[locationLine]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[targetLine1]]></Code>
+								<Code><![CDATA[targetLine]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -5308,22 +5386,6 @@ for (int row = 1; row <= rowsNumber; row++) {
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
 				</Image>
-				<TargetLine>
-					<Id>1759785786097</Id>
-					<Name><![CDATA[targetLine]]></Name>
-					<X>17</X><Y>295</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-16744448</LineColor>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>50</Y></Point>
-					</Points>
-				</TargetLine>
 				<RectangleNode>
 					<Id>1759785786120</Id>
 					<Name><![CDATA[node]]></Name>
@@ -5575,7 +5637,7 @@ for (int row = 1; row <= rowsNumber; row++) {
 				<Control Type="Window3D">
 					<Id>1760212214590</Id>
 					<Name><![CDATA[window3d]]></Name>
-					<X>550</X><Y>50</Y>
+					<X>570</X><Y>140</Y>
 					<Width>500</Width>
 					<Height>300</Height>
 					<MakeDefaultViewArea>true</MakeDefaultViewArea>
@@ -5588,7 +5650,7 @@ for (int row = 1; row <= rowsNumber; row++) {
 				</Control>
 				<TargetLine>
 					<Id>1760212214595</Id>
-					<Name><![CDATA[targetLine1]]></Name>
+					<Name><![CDATA[targetLine]]></Name>
 					<X>58</X><Y>218</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -5605,7 +5667,7 @@ for (int row = 1; row <= rowsNumber; row++) {
 				<TargetLine>
 					<Id>1760212214598</Id>
 					<Name><![CDATA[targetLine2]]></Name>
-					<X>62</X><Y>-85</Y>
+					<X>60</X><Y>-85</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7841,6 +7903,143 @@ for (int row = 1; row <= rowsNumber; row++) {
 					<Width>35</Width>
 					<Height>1</Height>
 				</RectangleWall>
+				<RectangleNode>
+					<Id>1760396525282</Id>
+					<Name><![CDATA[planeGateNode]]></Name>
+					<X>36</X><Y>217</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<EmbeddedObject>
+						<Id>1760396525287</Id>
+						<ActiveObjectClass>
+							<PackageName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></PackageName>
+							<ClassName><![CDATA[AreaNodeDescriptor]]></ClassName>
+						</ActiveObjectClass>
+						<GenericParameterSubstitute>
+							<GenericParameterSubstituteReference>
+								<PackageName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></PackageName>
+								<ClassName><![CDATA[AreaNodeDescriptor]]></ClassName>
+								<ItemName><![CDATA[1574694148121]]></ItemName>
+							</GenericParameterSubstituteReference>
+						</GenericParameterSubstitute>
+						<Parameters>
+							<Parameter>
+								<Name><![CDATA[appliedClass]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[speedRestricted]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[maxSpeed]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[accessRestricted]]></Name>
+								<Value Class="CodeValue">
+									<Code><![CDATA[true]]></Code>
+								</Value>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[accessRestrictionType]]></Name>
+								<Value Class="CodeValue">
+									<Code><![CDATA[AREA_ACCESS_RESTRICTION_BY_CONDITION]]></Code>
+								</Value>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[accessRestrictionCondition]]></Name>
+								<Value Class="CodeValue">
+									<Code><![CDATA[allowBoarding()]]></Code>
+								</Value>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[capacity]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[throughput]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[schedule]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[avoidedIfClosed]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onEnter]]></Name>
+								<Value Class="CodeValue">
+									<Code><![CDATA[inGateNode++]]></Code>
+								</Value>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onEnterDenied]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onExit]]></Name>
+								<Value Class="CodeValue">
+									<Code><![CDATA[inGateNode--]]></Code>
+								</Value>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onOpen]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onClose]]></Name>
+							</Parameter>
+						</Parameters>
+						<ReplicationFlag>false</ReplicationFlag>
+						<Replication Class="CodeValue">
+							<Code><![CDATA[100]]></Code>
+						</Replication>
+						<CollectionType>ARRAY_LIST_BASED</CollectionType>
+						<InitialLocationType>XYZ</InitialLocationType>
+						<ColumnCode Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</ColumnCode>
+						<RowCode Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</RowCode>
+						<LocationNameCode Class="CodeValue">
+							<Code><![CDATA[""]]></Code>
+						</LocationNameCode>
+						<InitializationType>SPECIFIED_NUMBER</InitializationType>
+						<InitializationDatabaseTableQuery>
+							<Id>1760396525286</Id>
+							<TableReference>
+							</TableReference>
+						</InitializationDatabaseTableQuery>
+						<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+						<QuantityColumn>
+						</QuantityColumn>
+					</EmbeddedObject>
+					<LineColor>-65536</LineColor>
+					<FillColor/>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillMaterial>null</FillMaterial>
+					<LineStyle>DASHED</LineStyle>
+					<AttractorsLayout>random</AttractorsLayout>
+					<Sloped>false</Sloped>
+					<Slope>
+						<Id>1760396525280</Id>
+						<Name><![CDATA[planeGateNode]]></Name>
+						<X>0</X><Y>10</Y>
+						<PublicFlag>false</PublicFlag>
+						<PresentationFlag>true</PresentationFlag>
+						<ShowLabel>true</ShowLabel>
+						<Dx>20</Dx>
+						<Dy>0</Dy>
+						<Dz>0</Dz>
+						<AngleX>30</AngleX>
+						<AngleZ>0</AngleZ>
+						<SlopeType>angle</SlopeType>	
+					</Slope>
+
+					<Width>24</Width>
+					<Height>16</Height>
+					<Rotation>0.0</Rotation>
+				</RectangleNode>
 			</Presentation>
 
 				</Level>
@@ -7955,8 +8154,10 @@ for (int row = 1; row <= rowsNumber; row++) {
 				</Parameter>
 			</Parameters>
 			<StartupCode><![CDATA[seatsNumber = 180;
-groupsNumber = 6;
-groupSize = 30;
+groupSize = (int) (seatsNumber / groupsNumber);
+//groupsNumber = 6;
+//groupSize = 30;
+System.out.println("Cantidad de grupos"+groupsNumber);
 rowsNumber = 30;
 
 String[] letters = {"A", "B", "C", "D", "E", "F"};
@@ -8091,36 +8292,6 @@ for (int i = 0; i < 30; i++) {
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[this.getScale().pixelsPerUnit(METER);]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1760271465727</Id>
-					<Name><![CDATA[InGateNode]]></Name>
-					<X>200</X><Y>900</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="private" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1760271591510</Id>
-					<Name><![CDATA[inGateLimit]]></Name>
-					<X>200</X><Y>950</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="true" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[3]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -8696,24 +8867,6 @@ return seat.getY() / rowScale * planeScale + row.getY();]]></Body>
 
 int row = p.seatRow;
 return rowEntries[row-1];]]></Body>
-				</Function>
-				<Function AccessType="public" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[boolean]]></ReturnType>
-					<Id>1760242011009</Id>
-					<Name><![CDATA[allowBoarding]]></Name>
-					<X>500</X><Y>900</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[long nearGate = get_Main().passengers.stream()
-	.filter(p -> p.inPlane)
-	.filter(p -> !p.isSeated)
-    .filter(p -> p.currentRow < 1)
-    .count();
-
-return nearGate < inGateLimit && InGateNode == 0 ;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -10509,7 +10662,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-37</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10584,7 +10737,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-162</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10609,7 +10762,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-137</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10634,7 +10787,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-87</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10659,7 +10812,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-62</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10684,7 +10837,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-112</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10734,7 +10887,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-237</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10759,7 +10912,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-212</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10784,7 +10937,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-262</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10809,7 +10962,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-287</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -10834,7 +10987,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>-65</X><Y>-187</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11009,7 +11162,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>188</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11034,7 +11187,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>163</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11159,7 +11312,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>38</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11184,7 +11337,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-137</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11209,7 +11362,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>13</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11234,7 +11387,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-87</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11259,7 +11412,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-37</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11284,7 +11437,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-112</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11309,7 +11462,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>63</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11334,7 +11487,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>88</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11359,7 +11512,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>138</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11384,7 +11537,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-62</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11409,7 +11562,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>113</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11434,7 +11587,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-12</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11459,7 +11612,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-187</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11484,7 +11637,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-237</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11509,7 +11662,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-287</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11534,7 +11687,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-212</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11559,7 +11712,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-162</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -11584,7 +11737,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>60</X><Y>-262</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -17205,7 +17358,7 @@ row.releaseSeatAccess(ped);]]></Code>
 							<Parameter>
 								<Name><![CDATA[onEnter]]></Name>
 								<Value Class="CodeValue">
-									<Code><![CDATA[InGateNode++]]></Code>
+									<Code><![CDATA[inGateNode++]]></Code>
 								</Value>
 							</Parameter>
 							<Parameter>
@@ -17214,7 +17367,7 @@ row.releaseSeatAccess(ped);]]></Code>
 							<Parameter>
 								<Name><![CDATA[onExit]]></Name>
 								<Value Class="CodeValue">
-									<Code><![CDATA[InGateNode--]]></Code>
+									<Code><![CDATA[inGateNode--]]></Code>
 								</Value>
 							</Parameter>
 							<Parameter>
@@ -19249,6 +19402,14 @@ airbusA320.pedWait.free(passenger);
 			<Name><![CDATA[Simulation]]></Name>
 			<AdditionalClassCode><![CDATA[public String getSelectedPlane() {
     return cmbPlaneModel.getValue();
+}
+
+public String getSelectedBoardingMethod() {
+    return cmbBoardingMethod.getValue();
+}
+
+public double getGroupsNumber() {
+	return sldGroupsNumber.getValue();
 }]]></AdditionalClassCode>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>512</MaximumMemory>
@@ -19283,8 +19444,8 @@ airbusA320.pedWait.free(passenger);
 				</Text>
 				<Text>
 					<Id>1756907420246</Id>
-					<Name><![CDATA[text1]]></Name>
-					<X>50</X><Y>120</Y>
+					<Name><![CDATA[txtPlaneModel]]></Name>
+					<X>50</X><Y>150</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19306,13 +19467,13 @@ airbusA320.pedWait.free(passenger);
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1756907420248</Id>
 					<Name><![CDATA[cmbPlaneModel]]></Name>
-					<X>340</X><Y>120</Y>
+					<X>400</X><Y>150</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="270" Height="50">
+					<BasicProperties Width="340" Height="50">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor>-1</FillColor>
 						<TextColor>-16777216</TextColor>
@@ -19325,6 +19486,97 @@ airbusA320.pedWait.free(passenger);
 						<Button><![CDATA[Boeing 777]]></Button>
 						<LinkTo>false</LinkTo>
 						<Link>plane.seatsNumber</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1760383605139</Id>
+					<Name><![CDATA[txtBoardingMethod]]></Name>
+					<X>50</X><Y>300</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Metodo de abordaje]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>36</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="ComboBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1760383670975</Id>
+					<Name><![CDATA[cmbBoardingMethod]]></Name>
+					<X>400</X><Y>300</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="50">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor>-1</FillColor>
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="36" Style="0"/>
+						<DefaultValueCode><![CDATA["BACK_TO_FRONT"]]></DefaultValueCode>
+						<Editable>false</Editable>
+						<Button><![CDATA[BACK_TO_FRONT]]></Button>
+						<Button><![CDATA[FRONT_TO_BACK]]></Button>
+						<Button><![CDATA[WINDOWS_MIDDLE_AISLE]]></Button>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1760387879329</Id>
+					<Name><![CDATA[txtGroupsNumber]]></Name>
+					<X>50</X><Y>420</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Cantidad de grupos]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>36</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1760387920078</Id>
+					<Name><![CDATA[sldGroupsNumber]]></Name>
+					<X>410</X><Y>420</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="330" Height="50">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[1]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[1]]></MinValue>
+						<MaxValue><![CDATA[30]]></MaxValue>
+						<Step><![CDATA[1]]></Step>
+						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
 				</Control>
 			</Presentation>
