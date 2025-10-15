@@ -211,7 +211,7 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[ViewArea]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[//view2D]]></Code>
+							<Code><![CDATA[airportView2D]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -745,7 +745,7 @@ int group = (int) Math.min(groups - 1, globalIndex / gsize) + 1;
 return group;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[boolean]]></ReturnType>
 					<Id>1760531534218</Id>
 					<Name><![CDATA[setView]]></Name>
@@ -760,7 +760,23 @@ return group;]]></Body>
 					</Parameter>
 					<Body><![CDATA[view.navigateTo();
 currentView = view;
-return true;
+
+if (view == airportView2D || view == airportView3D) {
+	mainMenu.setPos(view.getX(), view.getY());
+	return;
+}
+
+BasePlane plane = getPlane();
+
+if (view == plane.airplaneView2D){
+	plane.mainMenu.setPos(view.getX(), view.getY());
+	return;
+}
+
+if (view == plane.airplaneView3D){
+	plane.mainMenu.setPos(view.getX(), view.getY());
+	return;
+}
 ]]></Body>
 				</Function>
 			</Functions>
@@ -2530,7 +2546,7 @@ agent.inPlane = true;]]></Code>
 				<EmbeddedObjectPresentation>
 					<Id>1759949618701</Id>
 					<Name><![CDATA[passengers_presentation]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>-450</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2584,8 +2600,7 @@ agent.inPlane = true;]]></Code>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<OnClickCode><![CDATA[setView(airportView2D);
-mainMenu.setPos(airportView2D.getX(), airportView2D.getY());]]></OnClickCode>
+					<OnClickCode><![CDATA[setView(airportView2D);]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -2631,8 +2646,7 @@ mainMenu.setPos(airportView2D.getX(), airportView2D.getY());]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<OnClickCode><![CDATA[setView(airportView3D);
-mainMenu.setPos(airportView3D.getX(), airportView3D.getY());]]></OnClickCode>
+					<OnClickCode><![CDATA[setView(airportView3D);]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -2679,7 +2693,8 @@ mainMenu.setPos(airportView3D.getX(), airportView3D.getY());]]></OnClickCode>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<OnClickCode><![CDATA[ViewArea view = ((AirbusA320) getPlane()).airplaneView2D;
-return setView(view);]]></OnClickCode>
+setView(view);
+getPlane().mainMenu.setPos(view.getX(), view.getY());]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -2726,7 +2741,8 @@ return setView(view);]]></OnClickCode>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<OnClickCode><![CDATA[ViewArea view = ((AirbusA320) getPlane()).airplaneView3D;
-return setView(view);
+setView(view);
+getPlane().mainMenu.setPos(view.getX(), view.getY());
 ]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
@@ -4779,55 +4795,6 @@ person.setVisible(true);
 
 			<Presentation>
 				<Figure3D>
-					<Id>1759931671460</Id>
-					<Name><![CDATA[seated_person]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>0</X><Y>0</Y><Z>0</Z>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<ResourceReference>
-						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/seated_person.dae]]></ClassName>
-					</ResourceReference>
-					<ColorTable>
-						<ColorMapping>
-							<Name><![CDATA[MA_Shape_8]]></Name>
-							<OriginalColor>-4083577</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_Shape_003]]></Name>
-							<OriginalColor>-3355444</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_Shape_9]]></Name>
-							<OriginalColor>-13355980</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_Shape_10]]></Name>
-							<OriginalColor>-5279952</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_Shape2]]></Name>
-							<OriginalColor>-3355444</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_Shape_7]]></Name>
-							<OriginalColor>-3094341</OriginalColor>
-						</ColorMapping>
-					</ColorTable>
-					<AutoScale>true</AutoScale>
-					<Scale>1.0</Scale>
-					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
-					<ApplyShading>true</ApplyShading>
-					<InternalLighting>OFF</InternalLighting>
-					<IgnoreSceneLights>false</IgnoreSceneLights>
-</Figure3D>
-				<Figure3D>
 					<Id>1758138045752</Id>
 					<Name><![CDATA[person]]></Name>
 					<X>1</X><Y>0</Y>
@@ -4913,7 +4880,70 @@ person.setVisible(true);
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 </Figure3D>
+				<Figure3D>
+					<Id>1759931671460</Id>
+					<Name><![CDATA[seated_person]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>0</X><Y>0</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/seated_person.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[MA_Shape_8]]></Name>
+							<OriginalColor>-4083577</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[MA_Shape_003]]></Name>
+							<OriginalColor>-3355444</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[MA_Shape_9]]></Name>
+							<OriginalColor>-13355980</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[MA_Shape_10]]></Name>
+							<OriginalColor>-5279952</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[MA_Shape2]]></Name>
+							<OriginalColor>-3355444</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[MA_Shape_7]]></Name>
+							<OriginalColor>-3094341</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>1.0</Scale>
+					<Rotation>0.0</Rotation>
+					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
 			</Presentation>
+
+				</Level>
+				<Level>
+					<Id>1760539085877</Id>
+					<Name><![CDATA[personPackingLuggage]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
+
 
 				</Level>
 			</Presentation>
@@ -5292,7 +5322,7 @@ return nearGate < inGateLimit && inGateNode == 0 ;]]></Body>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
+					<Z>100</Z>
 					<Rotation>0.0</Rotation>
 
 			<Presentation>
@@ -5305,7 +5335,7 @@ return nearGate < inGateLimit && inGateNode == 0 ;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<OnClickCode><![CDATA[return getMain().setView(getMain().airportView2D);]]></OnClickCode>
+					<OnClickCode><![CDATA[getMain().setView(getMain().airportView2D);]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -5349,8 +5379,7 @@ return nearGate < inGateLimit && inGateNode == 0 ;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<OnClickCode><![CDATA[getMain().setView(airplaneView2D);
-mainMenu.setPos(airplaneView2D.getX(), airplaneView2D.getY());]]></OnClickCode>
+					<OnClickCode><![CDATA[getMain().setView(airplaneView2D);]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -5396,8 +5425,7 @@ mainMenu.setPos(airplaneView2D.getX(), airplaneView2D.getY());]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<OnClickCode><![CDATA[getMain().setView(airplaneView3D);
-mainMenu.setPos(airplaneView3D.getX(), airplaneView3D.getY());]]></OnClickCode>
+					<OnClickCode><![CDATA[getMain().setView(airplaneView3D);]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -5467,7 +5495,7 @@ mainMenu.setPos(airplaneView3D.getX(), airplaneView3D.getY());]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<OnClickCode><![CDATA[return getMain().setView(getMain().airportView3D);]]></OnClickCode>
+					<OnClickCode><![CDATA[getMain().setView(getMain().airportView3D);]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
