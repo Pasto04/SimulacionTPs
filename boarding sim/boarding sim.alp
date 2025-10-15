@@ -10902,6 +10902,35 @@ row.releaseSeatAccess(ped);]]></Code>
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
+				<Figure3D>
+					<Id>1760544761790</Id>
+					<Name><![CDATA[a320_3D]]></Name>
+					<X>0</X><Y>110</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>0</X><Y>110</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Avion .dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[mat_1]]></Name>
+							<OriginalColor>-6908266</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>17.4</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
 				<Camera3D>
 					<Id>1758133707120</Id>
 					<Name><![CDATA[camera]]></Name>
@@ -18317,64 +18346,28 @@ row.releaseSeatAccess(ped);]]></Code>
 				<Figure3D>
 					<Id>1756906989103</Id>
 					<Name><![CDATA[a320]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>0</X><Y>110</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>0</X><Y>0</Y><Z>0</Z>
+					<X>0</X><Y>110</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/a320.dae]]></ClassName>
+						<ClassName><![CDATA[3d/Avion abierta arriba7.dae]]></ClassName>
 					</ResourceReference>
 					<ColorTable>
 						<ColorMapping>
-							<Name><![CDATA[front]]></Name>
-							<OriginalColor>-1</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[wings]]></Name>
-							<OriginalColor>-1</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[vertical_stabilizer]]></Name>
-							<OriginalColor>-1</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[horizontal_stabilizer]]></Name>
-							<OriginalColor>-11779585</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[windows]]></Name>
-							<OriginalColor>-12961222</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[doors]]></Name>
-							<OriginalColor>-1513240</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[nacelle]]></Name>
-							<OriginalColor>-1</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[engine]]></Name>
-							<OriginalColor>-13816531</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[wheels]]></Name>
-							<OriginalColor>-11974327</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[a320]]></Name>
-							<OriginalColor>-1</OriginalColor>
+							<Name><![CDATA[mat_1]]></Name>
+							<OriginalColor>-6908266</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.9</Scale>
+					<Scale>17.4</Scale>
 					<Rotation>90.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
@@ -20478,12 +20471,6 @@ public double getGroupsNumber() {
 	</Experiments>
 	<ModelResources>
 		<Resource>
-			<Id>1760363320874</Id>
-			<Path><![CDATA[3d/a320.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
 			<Id>1760363320876</Id>
 			<Path><![CDATA[3d/b777.dae]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
@@ -20540,6 +20527,24 @@ public double getGroupsNumber() {
 		<Resource>
 			<Id>1760540933085</Id>
 			<Path><![CDATA[b777.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760544711707</Id>
+			<Path><![CDATA[3d/Avion .dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760544711708</Id>
+			<Path><![CDATA[3d/faib_a320_cfm_t.jpg]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760546868883</Id>
+			<Path><![CDATA[3d/Avion abierta arriba7.dae]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
