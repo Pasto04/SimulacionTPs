@@ -1903,6 +1903,79 @@ agent.inPlane = true;]]></Code>
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
+				<Figure3D>
+					<Id>1760582404204</Id>
+					<Name><![CDATA[object3d]]></Name>
+					<X>735</X><Y>510</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>735</X><Y>510</Y><Z>-10</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/airport-jetway3.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[Part17Mtl]]></Name>
+							<OriginalColor>-3289651</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part25Mtl]]></Name>
+							<OriginalColor>-14996939</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part285Mtl]]></Name>
+							<OriginalColor>-460552</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part191Mtl]]></Name>
+							<OriginalColor>-855053</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part130Mtl]]></Name>
+							<OriginalColor>-1710881</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part1Mtl]]></Name>
+							<OriginalColor>-3355444</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part5Mtl]]></Name>
+							<OriginalColor>-15658735</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part207Mtl]]></Name>
+							<OriginalColor>-14996939</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part267Mtl]]></Name>
+							<OriginalColor>-3355444</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part27Mtl]]></Name>
+							<OriginalColor>-3921892</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part117Mtl]]></Name>
+							<OriginalColor>-14996939</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[Part568Mtl]]></Name>
+							<OriginalColor>-10264734</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>3.0</Scale>
+					<Rotation>180.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
 				<TargetLine>
 					<Id>1755086054978</Id>
 					<Name><![CDATA[WaitingRoomSpawn]]></Name>
@@ -1923,7 +1996,7 @@ agent.inPlane = true;]]></Code>
 					<ServiceColor>-16776961</ServiceColor>
 					<Id>1755086236694</Id>
 					<Name><![CDATA[PassagerCheck]]></Name>
-					<X>810</X><Y>720</Y>
+					<X>730</X><Y>720</Y>
 					<Label><X>57.5</X><Y>-45.5</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2009,7 +2082,7 @@ agent.inPlane = true;]]></Code>
 				<QueueLine>
 					<Id>1755086236696</Id>
 					<Name><![CDATA[queueLine]]></Name>
-					<X>810</X><Y>720</Y>
+					<X>730</X><Y>720</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2032,7 +2105,7 @@ agent.inPlane = true;]]></Code>
 				<ServicePoint>
 					<Id>1755086236700</Id>
 					<Name><![CDATA[servicePoint]]></Name>
-					<X>810</X><Y>640</Y>
+					<X>730</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2046,7 +2119,7 @@ agent.inPlane = true;]]></Code>
 				<ServicePoint>
 					<Id>1755086236702</Id>
 					<Name><![CDATA[servicePoint1]]></Name>
-					<X>830</X><Y>640</Y>
+					<X>750</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2060,7 +2133,7 @@ agent.inPlane = true;]]></Code>
 				<QueueLine>
 					<Id>1755086266432</Id>
 					<Name><![CDATA[queueLine1]]></Name>
-					<X>830</X><Y>720</Y>
+					<X>750</X><Y>720</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2095,65 +2168,9 @@ agent.inPlane = true;]]></Code>
 					<QueueChoicePolicy>CLOSEST_QUEUE_STRICT</QueueChoicePolicy>
 				</ServiceWithLine>
 				<Wall>
-					<Id>1755086361927</Id>
-					<Name><![CDATA[wall2]]></Name>
-					<X>790</X><Y>620</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-3308225</LineColor>
-					<LineWidth>2</LineWidth>
-					<LineMaterial>null</LineMaterial>
-					<FillingType>HATCHED_AREA</FillingType>
-					<ZHeight>20</ZHeight>
-					<Closed>false</Closed>
-					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>15</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>90</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>65</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>90</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>90</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>90</Y><Z>0</Z></Point>
-						<Point><X>-20</X><Y>90</Y><Z>0</Z></Point>
-					</Points>
-				</Wall>
-				<Wall>
-					<Id>1755086368239</Id>
-					<Name><![CDATA[wall3]]></Name>
-					<X>850</X><Y>620</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-3308225</LineColor>
-					<LineWidth>2</LineWidth>
-					<LineMaterial>null</LineMaterial>
-					<FillingType>HATCHED_AREA</FillingType>
-					<ZHeight>20</ZHeight>
-					<Closed>false</Closed>
-					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>15</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>90</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>65</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>65</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>70</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>95</Y><Z>0</Z></Point>
-						<Point><X>-40</X><Y>90</Y><Z>0</Z></Point>
-					</Points>
-				</Wall>
-				<Wall>
 					<Id>1755086459803</Id>
 					<Name><![CDATA[wall]]></Name>
-					<X>790</X><Y>620</Y>
+					<X>715</X><Y>620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2168,32 +2185,29 @@ agent.inPlane = true;]]></Code>
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>24.999886007504987</X><Y>0.07549577310289705</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-260</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-235</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-260</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>-260</X><Y>240</Y><Z>0</Z></Point>
-						<Point><X>-260</X><Y>215</Y><Z>0</Z></Point>
-						<Point><X>-235</X><Y>240</Y><Z>0</Z></Point>
-						<Point><X>320</X><Y>240</Y><Z>0</Z></Point>
-						<Point><X>295</X><Y>240</Y><Z>0</Z></Point>
-						<Point><X>320</X><Y>215</Y><Z>0</Z></Point>
-						<Point><X>320</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>320</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>295</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>60</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>85</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>59.938</X><Y>-25</Y><Z>0</Z></Point>
-						<Point><X>59.5</X><Y>-200.5</Y><Z>0</Z></Point>
-						<Point><X>59.562</X><Y>-175.5</Y><Z>0</Z></Point>
-						<Point><X>59.5</X><Y>-175.5</Y><Z>0</Z></Point>
+						<Point><X>-185</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-160</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-185</X><Y>25</Y><Z>0</Z></Point>
+						<Point><X>-185</X><Y>240</Y><Z>0</Z></Point>
+						<Point><X>-185</X><Y>215</Y><Z>0</Z></Point>
+						<Point><X>-160</X><Y>240</Y><Z>0</Z></Point>
+						<Point><X>395</X><Y>240</Y><Z>0</Z></Point>
+						<Point><X>370</X><Y>240</Y><Z>0</Z></Point>
+						<Point><X>395</X><Y>215</Y><Z>0</Z></Point>
+						<Point><X>395</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>395</X><Y>25</Y><Z>0</Z></Point>
+						<Point><X>370</X><Y>0.009</Y><Z>0</Z></Point>
+						<Point><X>43.49</X><Y>0.131</Y><Z>0</Z></Point>
+						<Point><X>68.49</X><Y>0.122</Y><Z>0</Z></Point>
+						<Point><X>18.49</X><Y>0.056</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<RectangleNode>
 					<Id>1755087108069</Id>
 					<Name><![CDATA[boardingGate]]></Name>
-					<X>705</X><Y>345</Y>
+					<X>715</X><Y>355</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2309,7 +2323,7 @@ agent.inPlane = true;]]></Code>
 					</Slope>
 
 					<Width>40</Width>
-					<Height>20</Height>
+					<Height>30</Height>
 					<Rotation>90.0</Rotation>
 				</RectangleNode>
 				<RectangleNode>
@@ -2434,46 +2448,6 @@ agent.inPlane = true;]]></Code>
 					<Height>110</Height>
 					<Rotation>0.0</Rotation>
 				</RectangleNode>
-				<Wall>
-					<Id>1756908615255</Id>
-					<Name><![CDATA[wall1]]></Name>
-					<X>790</X><Y>620</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-3308225</LineColor>
-					<LineWidth>2</LineWidth>
-					<LineMaterial>null</LineMaterial>
-					<FillingType>HATCHED_AREA</FillingType>
-					<ZHeight>20</ZHeight>
-					<Closed>false</Closed>
-					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>-25</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>-175</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>-150</Y><Z>0</Z></Point>
-						<Point><X>-16.817</X><Y>-193.499</Y><Z>0</Z></Point>
-						<Point><X>-50</X><Y>-230</Y><Z>0</Z></Point>
-						<Point><X>-33.183</X><Y>-211.501</Y><Z>0</Z></Point>
-						<Point><X>-75</X><Y>-230</Y><Z>0</Z></Point>
-						<Point><X>-110</X><Y>-230</Y><Z>0</Z></Point>
-						<Point><X>-85</X><Y>-230</Y><Z>0</Z></Point>
-						<Point><X>-110</X><Y>-255</Y><Z>0</Z></Point>
-						<Point><X>-110</X><Y>-280</Y><Z>0</Z></Point>
-						<Point><X>-110</X><Y>-255</Y><Z>0</Z></Point>
-						<Point><X>-85</X><Y>-280</Y><Z>0</Z></Point>
-						<Point><X>-20</X><Y>-280</Y><Z>0</Z></Point>
-						<Point><X>-45</X><Y>-280</Y><Z>0</Z></Point>
-						<Point><X>-2.322</X><Y>-262.322</Y><Z>0</Z></Point>
-						<Point><X>60</X><Y>-200</Y><Z>0</Z></Point>
-						<Point><X>42.322</X><Y>-217.678</Y><Z>0</Z></Point>
-						<Point><X>60</X><Y>-200</Y><Z>0</Z></Point>
-					</Points>
-				</Wall>
 				<Camera3D>
 					<Id>1758137857123</Id>
 					<Name><![CDATA[camera]]></Name>
@@ -2564,7 +2538,7 @@ agent.inPlane = true;]]></Code>
 					<LineColor>-16744448</LineColor>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>30</X><Y>0</Y></Point>
 					</Points>
 				</TargetLine>
 				<Group>
@@ -2822,7 +2796,7 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 				<Group>
 					<Id>1760534561174</Id>
 					<Name><![CDATA[chairs]]></Name>
-					<X>560</X><Y>640</Y>
+					<X>525</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4168,6 +4142,74 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 			</Presentation>
 
 				</Group>
+				<Wall>
+					<Id>1760582486989</Id>
+					<Name><![CDATA[wall1]]></Name>
+					<X>720</X><Y>690</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-3308225</LineColor>
+					<LineWidth>2</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-4.11</X><Y>-24.659999999999997</Y><Z>0</Z></Point>
+						<Point><X>-1.847</X><Y>-24.932000000000002</Y><Z>0</Z></Point>
+						<Point><X>-10</X><Y>-135</Y><Z>0</Z></Point>
+						<Point><X>-8.153</X><Y>-110.068</Y><Z>0</Z></Point>
+						<Point><X>-11.61</X><Y>-159.94799999999998</Y><Z>0</Z></Point>
+						<Point><X>-20</X><Y>-290</Y><Z>0</Z></Point>
+						<Point><X>-18.39</X><Y>-265.052</Y><Z>0</Z></Point>
+						<Point><X>-20</X><Y>-305</Y><Z>0</Z></Point>
+						<Point><X>-40</X><Y>-300</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>-300</Y><Z>0</Z></Point>
+						<Point><X>-65</X><Y>-300</Y><Z>0</Z></Point>
+						<Point><X>-50</X><Y>-300</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>-300</Y><Z>0</Z></Point>
+						<Point><X>-45.89002531736607</X><Y>-275.34015190419643</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
+				<Wall>
+					<Id>1760582516643</Id>
+					<Name><![CDATA[wall2]]></Name>
+					<X>765</X><Y>695</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-3308225</LineColor>
+					<LineWidth>2</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-6.728</X><Y>-24.078000000000003</Y><Z>0</Z></Point>
+						<Point><X>-2.166</X><Y>-24.906</Y><Z>0</Z></Point>
+						<Point><X>-10</X><Y>-115</Y><Z>0</Z></Point>
+						<Point><X>-7.834</X><Y>-90.094</Y><Z>0</Z></Point>
+						<Point><X>-11.968</X><Y>-139.922</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>-305</Y><Z>0</Z></Point>
+						<Point><X>-23.031999999999996</X><Y>-280.078</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>-320</Y><Z>0</Z></Point>
+						<Point><X>-55</X><Y>-340</Y><Z>0</Z></Point>
+						<Point><X>-40</X><Y>-340</Y><Z>0</Z></Point>
+						<Point><X>-80</X><Y>-340</Y><Z>0</Z></Point>
+						<Point><X>-95</X><Y>-340</Y><Z>0</Z></Point>
+						<Point><X>-70</X><Y>-340</Y><Z>0</Z></Point>
+						<Point><X>-88.27238657865651</X><Y>-315.9222256499286</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
 			</Presentation>
 
 				</Level>
@@ -10915,7 +10957,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>0</X><Y>110</Y><Z>0</Z>
+					<X>0</X><Y>110</Y><Z>5</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -20549,6 +20591,12 @@ public double getGroupsNumber() {
 		<Resource>
 			<Id>1760546868883</Id>
 			<Path><![CDATA[3d/Avion abierta arriba7.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760582404221</Id>
+			<Path><![CDATA[3d/airport-jetway3.dae]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
