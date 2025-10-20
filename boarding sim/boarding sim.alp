@@ -1904,6 +1904,39 @@ agent.inPlane = true;]]></Code>
 
 			<Presentation>
 				<Figure3D>
+					<Id>1760982947077</Id>
+					<Name><![CDATA[object3d37]]></Name>
+					<X>934</X><Y>620</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<X>934</X><Y>620</Y><Z>0</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[3d/Sala de espera.dae]]></ClassName>
+					</ResourceReference>
+					<ColorTable>
+						<ColorMapping>
+							<Name><![CDATA[mat1]]></Name>
+							<OriginalColor>-1</OriginalColor>
+						</ColorMapping>
+						<ColorMapping>
+							<Name><![CDATA[mat0]]></Name>
+							<OriginalColor>-6974059</OriginalColor>
+						</ColorMapping>
+					</ColorTable>
+					<AutoScale>true</AutoScale>
+					<Scale>2.7</Scale>
+					<Rotation>90.0</Rotation>
+					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<ApplyShading>true</ApplyShading>
+					<InternalLighting>OFF</InternalLighting>
+					<IgnoreSceneLights>false</IgnoreSceneLights>
+</Figure3D>
+				<Figure3D>
 					<Id>1760582404204</Id>
 					<Name><![CDATA[object3d]]></Name>
 					<X>735</X><Y>510</Y>
@@ -1979,7 +2012,7 @@ agent.inPlane = true;]]></Code>
 				<TargetLine>
 					<Id>1755086054978</Id>
 					<Name><![CDATA[WaitingRoomSpawn]]></Name>
-					<X>1108</X><Y>740</Y>
+					<X>1090</X><Y>870</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2167,43 +2200,6 @@ agent.inPlane = true;]]></Code>
 					<WaitForExit>false</WaitForExit>
 					<QueueChoicePolicy>CLOSEST_QUEUE_STRICT</QueueChoicePolicy>
 				</ServiceWithLine>
-				<Wall>
-					<Id>1755086459803</Id>
-					<Name><![CDATA[wall]]></Name>
-					<X>715</X><Y>620</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-3308225</LineColor>
-					<LineWidth>2</LineWidth>
-					<LineMaterial>null</LineMaterial>
-					<FillingType>HATCHED_AREA</FillingType>
-					<ZHeight>20</ZHeight>
-					<Closed>false</Closed>
-					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>24.999886007504987</X><Y>0.07549577310289705</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-185</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-160</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-185</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>-185</X><Y>240</Y><Z>0</Z></Point>
-						<Point><X>-185</X><Y>215</Y><Z>0</Z></Point>
-						<Point><X>-160</X><Y>240</Y><Z>0</Z></Point>
-						<Point><X>395</X><Y>240</Y><Z>0</Z></Point>
-						<Point><X>370</X><Y>240</Y><Z>0</Z></Point>
-						<Point><X>395</X><Y>215</Y><Z>0</Z></Point>
-						<Point><X>395</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>395</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>370</X><Y>0.009</Y><Z>0</Z></Point>
-						<Point><X>43.49</X><Y>0.131</Y><Z>0</Z></Point>
-						<Point><X>68.49</X><Y>0.122</Y><Z>0</Z></Point>
-						<Point><X>18.49</X><Y>0.056</Y><Z>0</Z></Point>
-					</Points>
-				</Wall>
 				<RectangleNode>
 					<Id>1755087108069</Id>
 					<Name><![CDATA[boardingGate]]></Name>
@@ -2329,7 +2325,7 @@ agent.inPlane = true;]]></Code>
 				<RectangleNode>
 					<Id>1755089490469</Id>
 					<Name><![CDATA[wait_zone]]></Name>
-					<X>540</X><Y>740</Y>
+					<X>490</X><Y>740</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2444,14 +2440,14 @@ agent.inPlane = true;]]></Code>
 						<SlopeType>angle</SlopeType>	
 					</Slope>
 
-					<Width>560</Width>
-					<Height>110</Height>
+					<Width>520</Width>
+					<Height>130</Height>
 					<Rotation>0.0</Rotation>
 				</RectangleNode>
 				<Camera3D>
 					<Id>1758137857123</Id>
 					<Name><![CDATA[camera]]></Name>
-					<X>500</X><Y>870</Y><Z>100</Z>
+					<X>460</X><Y>900</Y><Z>100</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ShowLabel>false</ShowLabel>
 					<RotationX>20.0</RotationX>
@@ -2796,7 +2792,7 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 				<Group>
 					<Id>1760534561174</Id>
 					<Name><![CDATA[chairs]]></Name>
-					<X>525</X><Y>640</Y>
+					<X>480</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4210,6 +4206,265 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 						<Point><X>-88.27238657865651</X><Y>-315.9222256499286</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
+				<Wall>
+					<Id>1760983241996</Id>
+					<Name><![CDATA[wall]]></Name>
+					<X>905</X><Y>937</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-16777216</LineColor>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>50</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>24.999</X><Y>0.18100000000000005</Y><Z>0</Z></Point>
+						<Point><X>138</X><Y>1</Y><Z>0</Z></Point>
+						<Point><X>113.001</X><Y>0.819</Y><Z>0</Z></Point>
+						<Point><X>162.997</X><Y>0.5900000000000001</Y><Z>0</Z></Point>
+						<Point><X>199</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>174.00299999999993</X><Y>0.41000000000000014</Y><Z>0</Z></Point>
+						<Point><X>199.649</X><Y>-24.992</Y><Z>0</Z></Point>
+						<Point><X>201</X><Y>-77</Y><Z>0</Z></Point>
+						<Point><X>200.351</X><Y>-52.008</Y><Z>0</Z></Point>
+						<Point><X>176.00199999999995</X><Y>-76.68</Y><Z>0</Z></Point>
+						<Point><X>123</X><Y>-76</Y><Z>0</Z></Point>
+						<Point><X>147.99800000000005</X><Y>-76.32</Y><Z>0</Z></Point>
+						<Point><X>123.207</X><Y>-100.999</Y><Z>0</Z></Point>
+						<Point><X>125</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>124.793</X><Y>-292.001</Y><Z>0</Z></Point>
+						<Point><X>125</X><Y>-277</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
+				<Wall>
+					<Id>1760983993689</Id>
+					<Name><![CDATA[wall3]]></Name>
+					<X>905.0000000000001</X><Y>937</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-16777216</LineColor>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>50</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>0.126</Y><Z>0</Z></Point>
+						<Point><X>-198</X><Y>1</Y><Z>0</Z></Point>
+						<Point><X>-173</X><Y>0.874</Y><Z>0</Z></Point>
+						<Point><X>-223</X><Y>0.896</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-413</X><Y>0.104</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-25</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-34</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-9</Y><Z>0</Z></Point>
+						<Point><X>-437.735</X><Y>-58.999</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435.265</X><Y>-292.001</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-277</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
+				<Wall>
+					<Id>1760984905065</Id>
+					<Name><![CDATA[wall4]]></Name>
+					<X>905</X><Y>937</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>20</Z>
+					<LineColor>-16777216</LineColor>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>50</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>24.999</X><Y>0.18100000000000005</Y><Z>0</Z></Point>
+						<Point><X>138</X><Y>1</Y><Z>0</Z></Point>
+						<Point><X>113.001</X><Y>0.819</Y><Z>0</Z></Point>
+						<Point><X>162.997</X><Y>0.5900000000000001</Y><Z>0</Z></Point>
+						<Point><X>199</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>174.00299999999993</X><Y>0.41000000000000014</Y><Z>0</Z></Point>
+						<Point><X>199.649</X><Y>-24.992</Y><Z>0</Z></Point>
+						<Point><X>201</X><Y>-77</Y><Z>0</Z></Point>
+						<Point><X>200.351</X><Y>-52.008</Y><Z>0</Z></Point>
+						<Point><X>176.00199999999995</X><Y>-76.68</Y><Z>0</Z></Point>
+						<Point><X>123</X><Y>-76</Y><Z>0</Z></Point>
+						<Point><X>147.99800000000005</X><Y>-76.32</Y><Z>0</Z></Point>
+						<Point><X>123.207</X><Y>-100.999</Y><Z>0</Z></Point>
+						<Point><X>125</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>124.793</X><Y>-292.001</Y><Z>0</Z></Point>
+						<Point><X>125</X><Y>-277</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
+				<Wall>
+					<Id>1760985051377</Id>
+					<Name><![CDATA[wall5]]></Name>
+					<X>905</X><Y>937</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>38</Z>
+					<LineColor>-16777216</LineColor>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>50</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>24.999</X><Y>0.18100000000000005</Y><Z>0</Z></Point>
+						<Point><X>138</X><Y>1</Y><Z>0</Z></Point>
+						<Point><X>113.001</X><Y>0.819</Y><Z>0</Z></Point>
+						<Point><X>162.997</X><Y>0.5900000000000001</Y><Z>0</Z></Point>
+						<Point><X>199</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>174.00299999999993</X><Y>0.41000000000000014</Y><Z>0</Z></Point>
+						<Point><X>199.649</X><Y>-24.992</Y><Z>0</Z></Point>
+						<Point><X>201</X><Y>-77</Y><Z>0</Z></Point>
+						<Point><X>200.351</X><Y>-52.008</Y><Z>0</Z></Point>
+						<Point><X>176.00199999999995</X><Y>-76.68</Y><Z>0</Z></Point>
+						<Point><X>123</X><Y>-76</Y><Z>0</Z></Point>
+						<Point><X>147.99800000000005</X><Y>-76.32</Y><Z>0</Z></Point>
+						<Point><X>123.207</X><Y>-100.999</Y><Z>0</Z></Point>
+						<Point><X>125</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>124.793</X><Y>-292.001</Y><Z>0</Z></Point>
+						<Point><X>125</X><Y>-277</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
+				<Wall>
+					<Id>1760985104473</Id>
+					<Name><![CDATA[wall6]]></Name>
+					<X>905</X><Y>937</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>20</Z>
+					<LineColor>-16777216</LineColor>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>50</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>0.126</Y><Z>0</Z></Point>
+						<Point><X>-198</X><Y>1</Y><Z>0</Z></Point>
+						<Point><X>-173</X><Y>0.874</Y><Z>0</Z></Point>
+						<Point><X>-223</X><Y>0.896</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-413</X><Y>0.104</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-25</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-34</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-9</Y><Z>0</Z></Point>
+						<Point><X>-437.735</X><Y>-58.999</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435.265</X><Y>-292.001</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-277</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
+				<Wall>
+					<Id>1760985126265</Id>
+					<Name><![CDATA[wall7]]></Name>
+					<X>905</X><Y>937</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>20</Z>
+					<LineColor>-16777216</LineColor>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>50</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>0.126</Y><Z>0</Z></Point>
+						<Point><X>-198</X><Y>1</Y><Z>0</Z></Point>
+						<Point><X>-173</X><Y>0.874</Y><Z>0</Z></Point>
+						<Point><X>-223</X><Y>0.896</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-413</X><Y>0.104</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-25</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-34</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-9</Y><Z>0</Z></Point>
+						<Point><X>-437.735</X><Y>-58.999</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435.265</X><Y>-292.001</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-277</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
+				<Wall>
+					<Id>1760985359010</Id>
+					<Name><![CDATA[wall8]]></Name>
+					<X>905</X><Y>937</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>38</Z>
+					<LineColor>-16777216</LineColor>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillingType>HATCHED_AREA</FillingType>
+					<ZHeight>20</ZHeight>
+					<Closed>false</Closed>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>50</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>0.126</Y><Z>0</Z></Point>
+						<Point><X>-198</X><Y>1</Y><Z>0</Z></Point>
+						<Point><X>-173</X><Y>0.874</Y><Z>0</Z></Point>
+						<Point><X>-223</X><Y>0.896</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-413</X><Y>0.104</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-25</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-34</Y><Z>0</Z></Point>
+						<Point><X>-438</X><Y>-9</Y><Z>0</Z></Point>
+						<Point><X>-437.735</X><Y>-58.999</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435.265</X><Y>-292.001</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-317</Y><Z>0</Z></Point>
+						<Point><X>-435</X><Y>-277</Y><Z>0</Z></Point>
+					</Points>
+				</Wall>
 			</Presentation>
 
 				</Level>
@@ -5010,21 +5265,16 @@ standing.setVisible(false);]]></EntryAction>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
-						<ClassName><![CDATA[3d/person.dae]]></ClassName>
+						<ClassName><![CDATA[3d/persona1.dae]]></ClassName>
 					</ResourceReference>
 					<ColorTable>
 						<ColorMapping>
-							<Name><![CDATA[Material__3__Surf]]></Name>
-							<OriginalColor>-3355444</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
 							<Name><![CDATA[Material__5__Surf]]></Name>
 							<OriginalColor>-3355444</OriginalColor>
-							<Color>-256</Color>
 						</ColorMapping>
 						<ColorMapping>
 							<Name><![CDATA[Material__6__Surf]]></Name>
-							<OriginalColor>-4083577</OriginalColor>
+							<OriginalColor>-4083321</OriginalColor>
 						</ColorMapping>
 						<ColorMapping>
 							<Name><![CDATA[Material__2__Surf]]></Name>
@@ -5036,7 +5286,7 @@ standing.setVisible(false);]]></EntryAction>
 						</ColorMapping>
 						<ColorMapping>
 							<Name><![CDATA[Material__1__Surf]]></Name>
-							<OriginalColor>-5279952</OriginalColor>
+							<OriginalColor>-5279695</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
@@ -5050,13 +5300,13 @@ standing.setVisible(false);]]></EntryAction>
 				<Figure3D>
 					<Id>1760540359463</Id>
 					<Name><![CDATA[luggage1]]></Name>
-					<X>-40</X><Y>5</Y>
+					<X>-10</X><Y>5</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>-40</X><Y>5</Y><Z>280</Z>
+					<X>-10</X><Y>5</Y><Z>250</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -20597,6 +20847,18 @@ public double getGroupsNumber() {
 		<Resource>
 			<Id>1760582404221</Id>
 			<Path><![CDATA[3d/airport-jetway3.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760982931941</Id>
+			<Path><![CDATA[3d/Sala de espera.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1760985212344</Id>
+			<Path><![CDATA[3d/persona1.dae]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
