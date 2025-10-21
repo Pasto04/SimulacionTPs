@@ -31,6 +31,7 @@
 }
 
 public enum BoardingMethod {
+  FIRST_IN_FIRST_OUT,
   BACK_TO_FRONT,
   FRONT_TO_BACK,
   WINDOWS_MIDDLE_AISLE
@@ -161,7 +162,7 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 					<Id>1760241577854</Id>
 					<Name><![CDATA[boardingList]]></Name>
 					<Unit></Unit> 
-					<X>-200</X><Y>160</Y>
+					<X>-200</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -213,6 +214,66 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[new java.text.SimpleDateFormat("HH:mm", Locale.ENGLISH);]]></Code>
 						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761055966514</Id>
+					<Name><![CDATA[totalBoardingTime]]></Name>
+					<X>100</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761055990768</Id>
+					<Name><![CDATA[boardingStartTime]]></Name>
+					<X>-200</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761056003603</Id>
+					<Name><![CDATA[boardingEndTime]]></Name>
+					<X>-200</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761059047470</Id>
+					<Name><![CDATA[averageTimeSeatedPerPed]]></Name>
+					<X>100</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761068338707</Id>
+					<Name><![CDATA[passengersInQueue]]></Name>
+					<X>100</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -319,7 +380,7 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[pedWait]]></ItemName>
+						<ItemName><![CDATA[waitingRoom]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
@@ -342,7 +403,7 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[pedWait]]></ItemName>
+						<ItemName><![CDATA[waitingRoom]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
@@ -521,8 +582,8 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1755763200000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+							<Code><![CDATA[15]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
@@ -531,16 +592,17 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[liberatedGroup = 1;
-for (Passenger p : pedWait.getPeds()) {
-    if (p.group == liberatedGroup) {
-        pedWait.free(p);
-    }
+for (Passenger p : waitingRoom.getPeds()) {
+    if (p.group == liberatedGroup && passengersInQueue < 21) {
+        waitingRoom.free(p);
+        passengersInQueue++;
+        }
 }]]></Action>
 				</Event>
 				<Event>
 					<Id>1760241489878</Id>
 					<Name><![CDATA[releaseBoardingQueue]]></Name>
-					<X>-200</X><Y>110</Y>
+					<X>-200</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -601,10 +663,11 @@ if (plane instanceof AirbusA320) {
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[switch (boardingMethod){
+	case FIRST_IN_FIRST_OUT:    return firstInFirstOut(seat,row);
 	case BACK_TO_FRONT:        return backToFront(seat, row);
 	case FRONT_TO_BACK:        return frontToBack(seat, row);
 	case WINDOWS_MIDDLE_AISLE: return windowsMiddleAisle(seat, row);
-	default: return backToFront(seat, row);
+	default: return firstInFirstOut(seat, row);
 }]]></Body>
 				</Function>
 				<Function AccessType="private" StaticFunction="false">
@@ -769,6 +832,32 @@ if (view == plane.airplaneView3D){
 }
 ]]></Body>
 				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1761055502356</Id>
+					<Name><![CDATA[firstInFirstOut]]></Name>
+					<X>-400</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[seat]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[row]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[BasePlane plane = getPlane();
+int rows  = plane.rowsNumber;
+int seats = plane.seatsNumber;
+double groups = plane.groupsNumber;
+int gsize  = plane.groupSize;
+
+return 1;]]></Body>
+				</Function>
 			</Functions>
 			<AgentLinks>
 				<AgentLink>
@@ -836,6 +925,9 @@ if (view == plane.airplaneView3D){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[arrivalType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.INTERARRIVAL_TIME]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[rate]]></Name>
@@ -846,6 +938,10 @@ if (view == plane.airplaneView3D){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[interarrivalTime]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[exponential(0.27)]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[rateSchedule]]></Name>
@@ -868,7 +964,7 @@ if (view == plane.airplaneView3D){
 						<Parameter>
 							<Name><![CDATA[maxArrivals]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[360]]></Code>
+								<Code><![CDATA[180]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1073,6 +1169,11 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[passengersInQueue--;
+
+getPlane().releaseNextGroup();]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onCancel]]></Name>
@@ -1196,7 +1297,7 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1755698236589</Id>
-					<Name><![CDATA[pedWait]]></Name>
+					<Name><![CDATA[waitingRoom]]></Name>
 					<X>410</X><Y>970</Y>
 					<Label><X>-15</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1849,7 +1950,10 @@ agent.inPlane = true;]]></Code>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[boardingList.remove((Passenger) ped);]]></Code>
+								<Code><![CDATA[boardingList.remove((Passenger) ped);
+if (boardingStartTime == 0){
+boardingStartTime = time();
+}]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2203,7 +2307,7 @@ agent.inPlane = true;]]></Code>
 				<RectangleNode>
 					<Id>1755087108069</Id>
 					<Name><![CDATA[boardingGate]]></Name>
-					<X>715</X><Y>355</Y>
+					<X>720</X><Y>355</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2318,8 +2422,8 @@ agent.inPlane = true;]]></Code>
 						<SlopeType>angle</SlopeType>	
 					</Slope>
 
-					<Width>40</Width>
-					<Height>30</Height>
+					<Width>35</Width>
+					<Height>50</Height>
 					<Rotation>90.0</Rotation>
 				</RectangleNode>
 				<RectangleNode>
@@ -2524,7 +2628,7 @@ agent.inPlane = true;]]></Code>
 				<TargetLine>
 					<Id>1760241753198</Id>
 					<Name><![CDATA[boardingQueueLine]]></Name>
-					<X>685</X><Y>365</Y>
+					<X>680</X><Y>375</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4156,7 +4260,7 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-4.11</X><Y>-24.659999999999997</Y><Z>0</Z></Point>
+						<Point><X>-3.690464056317269</X><Y>-24.726109177325704</Y><Z>0</Z></Point>
 						<Point><X>-1.847</X><Y>-24.932000000000002</Y><Z>0</Z></Point>
 						<Point><X>-10</X><Y>-135</Y><Z>0</Z></Point>
 						<Point><X>-8.153</X><Y>-110.068</Y><Z>0</Z></Point>
@@ -4169,7 +4273,10 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 						<Point><X>-65</X><Y>-300</Y><Z>0</Z></Point>
 						<Point><X>-50</X><Y>-300</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>-300</Y><Z>0</Z></Point>
-						<Point><X>-45.89002531736607</X><Y>-275.34015190419643</Y><Z>0</Z></Point>
+						<Point><X>-50</X><Y>-325</Y><Z>0</Z></Point>
+						<Point><X>-50</X><Y>-335</Y><Z>0</Z></Point>
+						<Point><X>-50</X><Y>-310</Y><Z>0</Z></Point>
+						<Point><X>-46.31</X><Y>-310.274</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -4503,10 +4610,8 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 			<Name><![CDATA[Passenger]]></Name>
 			<Import><![CDATA[import com.anylogic.libraries.modules.level_system.LevelSystemUtils;
 import org.uma.jmetal.util.ranking.impl.util.MNDSBitsetManager;]]></Import>
-			<StartupCode><![CDATA[hasLuggage = uniform() < 0.8;
-
-if (hasLuggage == false)
-	luggage.setVisible(false);]]></StartupCode>
+			<StartupCode><![CDATA[hasLuggage = bernoulli(0.9) == 1; //90% de prob. que tenga valija
+luggage.setVisible(hasLuggage);]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1755087430008</Id>
@@ -4756,6 +4861,30 @@ else {
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761058677628</Id>
+					<Name><![CDATA[startBoardingPed]]></Name>
+					<X>50</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761058793347</Id>
+					<Name><![CDATA[timeSeatedPed]]></Name>
+					<X>50</X><Y>640</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -4779,6 +4908,7 @@ else {
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="120" Height="50">
+						<EntryAction><![CDATA[startBoardingPed = time();]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -4809,7 +4939,8 @@ standing.setVisible(true);]]></EntryAction>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="120" Height="50">
 						<EntryAction><![CDATA[person.setVisible(false);
-isSeated = true;]]></EntryAction>
+isSeated = true;
+timeSeatedPed = time() - startBoardingPed]]></EntryAction>
 						<ExitAction><![CDATA[isSeated = false;]]></ExitAction>
 						<FillColor/>
 					</Properties>
@@ -5680,15 +5811,19 @@ main.liberatedGroup++;
 
 if (main.liberatedGroup > main.getPlane().groupsNumber){
 	main.startsBoardingGroup.suspend();
-	main.pedWait.freeAll();
-	return;
+	for (Passenger p : main.waitingRoom.getPeds()) {
+		if(main.passengersInQueue < 21) {
+			main.waitingRoom.free(p);
+        	main.passengersInQueue++;
+    	}
+    }
 }
 
-for (Passenger p : main.pedWait.getPeds()) {
-    if (p.group == main.liberatedGroup) {
-        main.pedWait.free(p);
-    }
-}]]></Body>
+for (Passenger p : main.waitingRoom.getPeds()) {
+    if (p.group == main.liberatedGroup && main.passengersInQueue < 21) {
+        main.passengersInQueue++;
+        main.waitingRoom.free(p);
+}}]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -9456,6 +9591,21 @@ for (int i = 0; i < 30; i++) {
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761067732672</Id>
+					<Name><![CDATA[totalPassTimeToSeat]]></Name>
+					<X>700</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 			<Connectors>
 				<Connector>
@@ -10426,7 +10576,8 @@ ped.setComfortableSpeed(0);
 
 if (seated.size() == passengersBoarding.countPeds()){
 	releaseNextGroup();
-}]]></Code>
+}
+]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -10434,8 +10585,15 @@ if (seated.size() == passengersBoarding.countPeds()){
 							<Value Class="CodeValue">
 								<Code><![CDATA[Row6Seats row = getRowAgent(ped);
 row.passengers.add(ped);
+totalPassTimeToSeat = totalPassTimeToSeat + ped.timeSeatedPed;
 send("seated", ped);
 send("seat" + ped.seatLetter + "Used", row);
+
+if(seated.size() == seatsNumber){
+	get_Main().boardingEndTime = time();
+	get_Main().totalBoardingTime = get_Main().boardingEndTime - get_Main().boardingStartTime;
+	get_Main().averageTimeSeatedPerPed = totalPassTimeToSeat/seatsNumber;
+}
 ]]></Code>
 							</Value>
 						</Parameter>
@@ -11222,7 +11380,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<AutoScale>true</AutoScale>
 					<Scale>17.4</Scale>
 					<Rotation>90.0</Rotation>
-					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
+					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
@@ -20685,11 +20843,12 @@ public double getGroupsNumber() {
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="36" Style="0"/>
-						<DefaultValueCode><![CDATA["BACK_TO_FRONT"]]></DefaultValueCode>
+						<DefaultValueCode><![CDATA["FIRST_IN_FIRST_OUT"]]></DefaultValueCode>
 						<Editable>false</Editable>
-						<Button><![CDATA[BACK_TO_FRONT]]></Button>
+						<Button><![CDATA[FIRST_IN_FIRST_OUT]]></Button>
 						<Button><![CDATA[FRONT_TO_BACK]]></Button>
 						<Button><![CDATA[WINDOWS_MIDDLE_AISLE]]></Button>
+						<Button><![CDATA[BACK_TO_FRONT]]></Button>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
 				</Control>
