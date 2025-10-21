@@ -31,6 +31,7 @@
 }
 
 public enum BoardingMethod {
+  FIRST_IN_FIRST_OUT,
   BACK_TO_FRONT,
   FRONT_TO_BACK,
   WINDOWS_MIDDLE_AISLE
@@ -213,6 +214,42 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[new java.text.SimpleDateFormat("HH:mm", Locale.ENGLISH);]]></Code>
 						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761055966514</Id>
+					<Name><![CDATA[totalBoardingTime]]></Name>
+					<X>300</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761055990768</Id>
+					<Name><![CDATA[timeStartBoarding]]></Name>
+					<X>300</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761056003603</Id>
+					<Name><![CDATA[timeEndBoarding]]></Name>
+					<X>300</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -601,10 +638,11 @@ if (plane instanceof AirbusA320) {
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[switch (boardingMethod){
+	case FIRST_IN_FIRST_OUT:    return firstInFirstOut(seat,row);
 	case BACK_TO_FRONT:        return backToFront(seat, row);
 	case FRONT_TO_BACK:        return frontToBack(seat, row);
 	case WINDOWS_MIDDLE_AISLE: return windowsMiddleAisle(seat, row);
-	default: return backToFront(seat, row);
+	default: return firstInFirstOut(seat, row);
 }]]></Body>
 				</Function>
 				<Function AccessType="private" StaticFunction="false">
@@ -769,6 +807,32 @@ if (view == plane.airplaneView3D){
 }
 ]]></Body>
 				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1761055502356</Id>
+					<Name><![CDATA[firstInFirstOut]]></Name>
+					<X>-400</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[seat]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[row]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[BasePlane plane = getPlane();
+int rows  = plane.rowsNumber;
+int seats = plane.seatsNumber;
+double groups = plane.groupsNumber;
+int gsize  = plane.groupSize;
+
+return 1;]]></Body>
+				</Function>
 			</Functions>
 			<AgentLinks>
 				<AgentLink>
@@ -868,7 +932,7 @@ if (view == plane.airplaneView3D){
 						<Parameter>
 							<Name><![CDATA[maxArrivals]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[360]]></Code>
+								<Code><![CDATA[180]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -20685,11 +20749,12 @@ public double getGroupsNumber() {
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="36" Style="0"/>
-						<DefaultValueCode><![CDATA["BACK_TO_FRONT"]]></DefaultValueCode>
+						<DefaultValueCode><![CDATA["FIRST_IN_FIRST_OUT"]]></DefaultValueCode>
 						<Editable>false</Editable>
-						<Button><![CDATA[BACK_TO_FRONT]]></Button>
+						<Button><![CDATA[FIRST_IN_FIRST_OUT]]></Button>
 						<Button><![CDATA[FRONT_TO_BACK]]></Button>
 						<Button><![CDATA[WINDOWS_MIDDLE_AISLE]]></Button>
+						<Button><![CDATA[BACK_TO_FRONT]]></Button>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
 				</Control>
