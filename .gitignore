@@ -175,3 +175,6 @@ cython_debug/
 
 # Images
 images/
+
+#Mac Os Specifics
+.DS_Store
