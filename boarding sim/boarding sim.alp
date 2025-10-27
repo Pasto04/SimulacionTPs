@@ -200,7 +200,7 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1761055966514</Id>
-					<Name><![CDATA[totalBoardingTime]]></Name>
+					<Name><![CDATA[totalBoardingTimeInMinutes]]></Name>
 					<X>100</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -236,7 +236,7 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1761059047470</Id>
-					<Name><![CDATA[averageTimeSeatedPerPed]]></Name>
+					<Name><![CDATA[avgSeatingTimeInSeconds]]></Name>
 					<X>100</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1389,7 +1389,7 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 				<EmbeddedObject>
 					<Id>1759843888440</Id>
 					<Name><![CDATA[boardPlane]]></Name>
-					<X>1090</X><Y>1110</Y>
+					<X>1050</X><Y>1110</Y>
 					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1941,7 +1941,7 @@ boardingStartTime = time();
 					<X>1089</X><Y>946</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -2126,128 +2126,6 @@ boardingStartTime = time();
 					<WaitForExit>false</WaitForExit>
 					<QueueChoicePolicy>CLOSEST_QUEUE_STRICT</QueueChoicePolicy>
 				</ServiceWithLine>
-				<RectangleNode>
-					<Id>1755089490469</Id>
-					<Name><![CDATA[wait_zone]]></Name>
-					<X>489</X><Y>816</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<EmbeddedObject>
-						<Id>1755089490468</Id>
-						<ActiveObjectClass>
-							<PackageName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></PackageName>
-							<ClassName><![CDATA[AreaNodeDescriptor]]></ClassName>
-						</ActiveObjectClass>
-						<GenericParameterSubstitute>
-							<GenericParameterSubstituteReference>
-								<PackageName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></PackageName>
-								<ClassName><![CDATA[AreaNodeDescriptor]]></ClassName>
-								<ItemName><![CDATA[1574694148121]]></ItemName>
-							</GenericParameterSubstituteReference>
-						</GenericParameterSubstitute>
-						<Parameters>
-							<Parameter>
-								<Name><![CDATA[appliedClass]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[speedRestricted]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[maxSpeed]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[accessRestricted]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[accessRestrictionType]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[accessRestrictionCondition]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[capacity]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[throughput]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[schedule]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[avoidedIfClosed]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[onEnter]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[onEnterDenied]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[onExit]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[onOpen]]></Name>
-							</Parameter>
-							<Parameter>
-								<Name><![CDATA[onClose]]></Name>
-							</Parameter>
-						</Parameters>
-						<ReplicationFlag>false</ReplicationFlag>
-						<Replication Class="CodeValue">
-							<Code><![CDATA[100]]></Code>
-						</Replication>
-						<CollectionType>ARRAY_LIST_BASED</CollectionType>
-						<InitialLocationType>XYZ</InitialLocationType>
-						<ColumnCode Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</ColumnCode>
-						<RowCode Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</RowCode>
-						<LocationNameCode Class="CodeValue">
-							<Code><![CDATA[""]]></Code>
-						</LocationNameCode>
-						<InitializationType>SPECIFIED_NUMBER</InitializationType>
-						<InitializationDatabaseTableQuery>
-							<Id>1755089490467</Id>
-							<TableReference>
-							</TableReference>
-						</InitializationDatabaseTableQuery>
-						<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
-						<QuantityColumn>
-						</QuantityColumn>
-					</EmbeddedObject>
-					<LineColor>-14774017</LineColor>
-					<FillColor/>
-					<LineWidth>1</LineWidth>
-					<LineMaterial>null</LineMaterial>
-					<FillMaterial>null</FillMaterial>
-					<LineStyle>DASHED</LineStyle>
-					<AttractorsLayout>random</AttractorsLayout>
-					<Sloped>false</Sloped>
-					<Slope>
-						<Id>1755089490471</Id>
-						<Name><![CDATA[wait_zone]]></Name>
-						<X>0</X><Y>10</Y>
-						<PublicFlag>false</PublicFlag>
-						<PresentationFlag>true</PresentationFlag>
-						<ShowLabel>true</ShowLabel>
-						<Dx>20</Dx>
-						<Dy>0</Dy>
-						<Dz>0</Dz>
-						<AngleX>30</AngleX>
-						<AngleZ>0</AngleZ>
-						<SlopeType>angle</SlopeType>	
-					</Slope>
-
-					<Width>520</Width>
-					<Height>130</Height>
-					<Rotation>0.0</Rotation>
-				</RectangleNode>
 				<Camera3D>
 					<Id>1758137857123</Id>
 					<Name><![CDATA[camera]]></Name>
@@ -4476,6 +4354,135 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 					<Width>26</Width>
 					<Height>14</Height>
 				</RectangleWall>
+				<PolygonNode>
+					<Id>1761604708013</Id>
+					<Name><![CDATA[wait_zone]]></Name>
+					<X>490</X><Y>710</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<EmbeddedObject>
+						<Id>1761604708017</Id>
+						<ActiveObjectClass>
+							<PackageName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></PackageName>
+							<ClassName><![CDATA[AreaNodeDescriptor]]></ClassName>
+						</ActiveObjectClass>
+						<GenericParameterSubstitute>
+							<GenericParameterSubstituteReference>
+								<PackageName><![CDATA[com.anylogic.libraries.modules.markup_descriptors]]></PackageName>
+								<ClassName><![CDATA[AreaNodeDescriptor]]></ClassName>
+								<ItemName><![CDATA[1574694148121]]></ItemName>
+							</GenericParameterSubstituteReference>
+						</GenericParameterSubstitute>
+						<Parameters>
+							<Parameter>
+								<Name><![CDATA[appliedClass]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[speedRestricted]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[maxSpeed]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[accessRestricted]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[accessRestrictionType]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[accessRestrictionCondition]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[capacity]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[throughput]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[schedule]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[avoidedIfClosed]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onEnter]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onEnterDenied]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onExit]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onOpen]]></Name>
+							</Parameter>
+							<Parameter>
+								<Name><![CDATA[onClose]]></Name>
+							</Parameter>
+						</Parameters>
+						<ReplicationFlag>false</ReplicationFlag>
+						<Replication Class="CodeValue">
+							<Code><![CDATA[100]]></Code>
+						</Replication>
+						<CollectionType>ARRAY_LIST_BASED</CollectionType>
+						<InitialLocationType>XYZ</InitialLocationType>
+						<ColumnCode Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</ColumnCode>
+						<RowCode Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</RowCode>
+						<LocationNameCode Class="CodeValue">
+							<Code><![CDATA[""]]></Code>
+						</LocationNameCode>
+						<InitializationType>SPECIFIED_NUMBER</InitializationType>
+						<InitializationDatabaseTableQuery>
+							<Id>1761604708016</Id>
+							<TableReference>
+							</TableReference>
+						</InitializationDatabaseTableQuery>
+						<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+						<QuantityColumn>
+						</QuantityColumn>
+					</EmbeddedObject>
+					<LineColor>-14774017</LineColor>
+					<FillColor/>
+					<LineWidth>1</LineWidth>
+					<LineMaterial>null</LineMaterial>
+					<FillMaterial>null</FillMaterial>
+					<LineStyle>DASHED</LineStyle>
+					<AttractorsLayout>random</AttractorsLayout>
+					<Sloped>false</Sloped>
+					<Slope>
+						<Id>1761604708011</Id>
+						<Name><![CDATA[wait_zone]]></Name>
+						<X>0</X><Y>10</Y>
+						<PublicFlag>false</PublicFlag>
+						<PresentationFlag>true</PresentationFlag>
+						<ShowLabel>true</ShowLabel>
+						<Dx>20</Dx>
+						<Dy>0</Dy>
+						<Dz>0</Dz>
+						<AngleX>30</AngleX>
+						<AngleZ>0</AngleZ>
+						<SlopeType>angle</SlopeType>	
+					</Slope>
+
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>290</Y></Point>
+						<Point><X>520</X><Y>290</Y></Point>
+						<Point><X>520</X><Y>0</Y></Point>
+						<Point><X>310</X><Y>0</Y></Point>
+						<Point><X>310</X><Y>130</Y></Point>
+						<Point><X>195</X><Y>130</Y></Point>
+						<Point><X>195</X><Y>0</Y></Point>
+					</Points>
+				</PolygonNode>
 			</Presentation>
 
 				</Level>
@@ -4583,9 +4590,9 @@ if (others.length != 0)
 }
 else {
 	if (walkingSince == 0)
-		walkingSince = time();
+		walkingSince = time(SECOND);
 	
-	if (time() - walkingSince > 1) {
+	if (time(SECOND) - walkingSince > 30 && currentRow > 0) {
 		AirbusA320 plane = (AirbusA320)main.getPlane();
 		if (plane.goToEntryPoint.contains(this))
 			plane.goToEntryPoint.cancel(this);
@@ -4812,7 +4819,7 @@ else {
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="120" Height="50">
-						<EntryAction><![CDATA[startBoardingPed = time();]]></EntryAction>
+						<EntryAction><![CDATA[startBoardingPed = time(SECOND);]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -4966,7 +4973,9 @@ standing.setVisible(false);]]></EntryAction>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1759930418416" Target="1759930441657" Trigger="message">
-						<Action><![CDATA[timeSeatedPed = time() - startBoardingPed]]></Action>
+						<Action><![CDATA[timeSeatedPed = time(SECOND) - startBoardingPed;
+get_Main().airbusA320.totalPassTimeToSeat += timeSeatedPed;
+]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
@@ -4999,7 +5008,9 @@ standing.setVisible(false);]]></EntryAction>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1759930404152" Target="1759930441657" Trigger="message">
-						<Action><![CDATA[timeSeatedPed = time() - startBoardingPed]]></Action>
+						<Action><![CDATA[timeSeatedPed = time(SECOND) - startBoardingPed;
+get_Main().airbusA320.totalPassTimeToSeat += timeSeatedPed;
+]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
@@ -5710,7 +5721,7 @@ return nearGate < inGateLimit && inGateNode == 0 ;]]></Body>
 					<X>850</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[Main main = getMain();
 main.liberatedGroup++;
@@ -6821,6 +6832,32 @@ return seat.getY() / rowScale * planeScale + row.getY();]]></Body>
 int row = p.seatRow;
 return rowEntries[row-1];]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[PolygonalNode]]></ReturnType>
+					<Id>1761604175350</Id>
+					<Name><![CDATA[getHelpRowEntryPoint]]></Name>
+					<X>500</X><Y>900</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[p]]></Name>
+						<Type><![CDATA[Passenger]]></Type>
+					</Parameter>
+					<Body><![CDATA[PolygonalNode[] rowEntries = {
+    row1Entry,  row2Entry,  row3Entry,  row4Entry,  row5Entry,
+    row6Entry,  row7Entry,  row8Entry,  row9Entry,  row10Entry,
+    row11Entry, row12Entry, row13Entry, row14Entry, row15Entry,
+    row16Entry, row17Entry, row18Entry, row19Entry, row20Entry,
+    row21Entry, row22Entry, row23Entry, row24Entry, row25Entry,
+    row26Entry, row27Entry, row28Entry, row29Entry, row30Entry
+};
+
+int row = p.currentRow;
+return rowEntries[row-1];]]></Body>
+				</Function>
 			</Functions>
 			<AgentLinks>
 				<AgentLink>
@@ -7226,14 +7263,16 @@ if (seated.size() == passengersBoarding.countPeds()){
 							<Value Class="CodeValue">
 								<Code><![CDATA[Row6Seats row = getRowAgent(ped);
 row.passengers.add(ped);
-totalPassTimeToSeat = totalPassTimeToSeat + ped.timeSeatedPed;
+
 send("seated", ped);
 send("seat" + ped.seatLetter + "Used", row);
 
-if(seated.size() == seatsNumber){
-	get_Main().boardingEndTime = time();
-	get_Main().totalBoardingTime = get_Main().boardingEndTime - get_Main().boardingStartTime;
-	get_Main().averageTimeSeatedPerPed = totalPassTimeToSeat/seatsNumber;
+
+Main main = get_Main();
+if (seated.size() == seatsNumber) {
+	main.boardingEndTime = time(MINUTE);
+	main.totalBoardingTimeInMinutes = main.boardingEndTime - main.boardingStartTime;
+	main.avgSeatingTimeInSeconds = totalPassTimeToSeat / seatsNumber;
 }
 ]]></Code>
 							</Value>
@@ -7762,6 +7801,9 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.LOCATION_NODE]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationLine]]></Name>
@@ -7778,7 +7820,7 @@ row.releaseSeatAccess(ped);]]></Code>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[getRowEntryPointByNumber(ped.currentRow);]]></Code>
+								<Code><![CDATA[getHelpRowEntryPoint(ped)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7792,10 +7834,6 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[reachTolerance]]></Name>
-							<Value Class="CodeUnitValue">
-								<Code><![CDATA[0]]></Code>
-								<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
@@ -7860,6 +7898,9 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.LOCATION_NODE]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationLine]]></Name>
@@ -7876,7 +7917,7 @@ row.releaseSeatAccess(ped);]]></Code>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[getRowEntryPointByNumber(ped.currentRow);]]></Code>
+								<Code><![CDATA[getHelpRowEntryPoint(ped)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7890,10 +7931,6 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[reachTolerance]]></Name>
-							<Value Class="CodeUnitValue">
-								<Code><![CDATA[0]]></Code>
-								<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
@@ -15269,29 +15306,13 @@ row.releaseSeatAccess(ped);]]></Code>
 						<Point><X>17</X><Y>0</Y></Point>
 					</Points>
 				</PolygonNode>
-				<TargetLine>
-					<Id>1760051070232</Id>
-					<Name><![CDATA[helpLine]]></Name>
-					<X>-1</X><Y>-287</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<LineColor>-16744448</LineColor>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>750</Y></Point>
-					</Points>
-				</TargetLine>
 				<RectangleNode>
 					<Id>1760271404505</Id>
 					<Name><![CDATA[planeGateNode]]></Name>
 					<X>46</X><Y>469</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -17368,7 +17389,7 @@ public double getGroupsNumber() {
 }]]></AdditionalClassCode>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>512</MaximumMemory>
-			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
+			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
