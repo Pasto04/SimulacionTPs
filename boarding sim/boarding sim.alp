@@ -17671,19 +17671,17 @@ else {
 		</SimulationExperiment>
 		<!--   =========  Parameter Variation Experiment   ========  -->
 		<ParamVariationExperiment ActiveObjectClassId="1755085745146">
-			<Id>1761743703638</Id>
-			<Name><![CDATA[MonteCarlo1]]></Name>
+			<Id>1761761507008</Id>
+			<Name><![CDATA[MultipleRuns]]></Name>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>512</MaximumMemory>
-			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
+			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
-			<BeforeEachExperimentRunCode><![CDATA[//histogram0_data.reset();
-//histogram1_data.reset();
+			<BeforeEachExperimentRunCode><![CDATA[cmbBoardingMethod.setEnabled(false);
+sldGroupsNumber.setEnabled(false);
 
-histogramFifo_4_groups_data.reset();
-histogramFront_Back_4_groups_data.reset();
-
-]]></BeforeEachExperimentRunCode>
+histogramBoardingTimeData.reset();
+histogramSeatingTimeData.reset();]]></BeforeEachExperimentRunCode>
 			<BeforeSimulationRunCode><![CDATA[System.out.println("Arrancando");
 System.out.println("Método de abordaje: " + root.boardingMethodNumber);
 System.out.println("Cantidad de grupos: " + root.groupsNumber);
@@ -17696,24 +17694,9 @@ System.out.println("avgSeatingTimeInSeconds: " + root.avgSeatingTimeInSeconds);
 System.out.println("seatedPassengers: " + root.seatedPassengers);
 System.out.println();
 
-//TODO
-switch (root.boardingMethodNumber)
-{
-	case 0:
-	histogramFront_Back_4_groups_data.add( root.totalBoardingTimeInMinutes  );
-		break;
-	case 1:
-	histogramWindows_4_groups_data2.add( root.totalBoardingTimeInMinutes  );
-		break;
-	case 2:
-	histogramBack_Front_4_groups_data1.add( root.totalBoardingTimeInMinutes  );
-		break;
-	case 3:
-	histogramFifo_4_groups_data.add( root.totalBoardingTimeInMinutes  );
-		break;
-}
-//histogram0_data.add( root.totalBoardingTimeInMinutes  );
-//histogram1_data.add( root.avgSeatingTimeInSeconds );
+
+histogramBoardingTimeData.add(root.totalBoardingTimeInMinutes);
+histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
 ]]></AfterSimulationRunCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
@@ -17721,16 +17704,16 @@ switch (root.boardingMethodNumber)
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
 			<AnalysisData>
     			<HistogramData>
-					<Id>1761743703655</Id>
-					<Name><![CDATA[histogramFifo_4_groups_data]]></Name>
-					<X>-350</X><Y>120</Y>
+					<Id>1761761665686</Id>
+					<Name><![CDATA[histogramBoardingTimeData]]></Name>
+					<X>-300</X><Y>100</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<AutoUpdate>false</AutoUpdate>
 					<RecurrenceProperties>
-						<Id>1761743703654</Id>
+						<Id>1761761665684</Id>
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1761811200000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
@@ -17755,152 +17738,16 @@ switch (root.boardingMethodNumber)
 					<Title><![CDATA[]]></Title>
 				</HistogramData>
     			<HistogramData>
-					<Id>1761743703663</Id>
-					<Name><![CDATA[histogram1_data]]></Name>
-					<X>-350</X><Y>430</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761743703662</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
-					<Value><![CDATA[]]></Value>
-					<NumberOfIntervals>10</NumberOfIntervals>
-					<MinMaxAutodetect>true</MinMaxAutodetect>
-					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
-					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
-					<InitialIntervalSize><![CDATA[5]]></InitialIntervalSize>
-					<CalculateCDF>true</CalculateCDF>
-					<CalculatePercentiles>false</CalculatePercentiles>
-					<LowPercent>10</LowPercent>
-					<HighPercent>10</HighPercent>
-					<Title><![CDATA[]]></Title>
-				</HistogramData>
-    			<HistogramData>
-					<Id>1761751217011</Id>
-					<Name><![CDATA[histogramFront_Back_4_groups_data]]></Name>
-					<X>-350</X><Y>150</Y>
+					<Id>1761761671496</Id>
+					<Name><![CDATA[histogramSeatingTimeData]]></Name>
+					<X>-300</X><Y>200</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<AutoUpdate>false</AutoUpdate>
 					<RecurrenceProperties>
-						<Id>1761751217009</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
-					<Value><![CDATA[]]></Value>
-					<NumberOfIntervals>10</NumberOfIntervals>
-					<MinMaxAutodetect>true</MinMaxAutodetect>
-					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
-					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
-					<InitialIntervalSize><![CDATA[5]]></InitialIntervalSize>
-					<CalculateCDF>true</CalculateCDF>
-					<CalculatePercentiles>false</CalculatePercentiles>
-					<LowPercent>10</LowPercent>
-					<HighPercent>10</HighPercent>
-					<Title><![CDATA[]]></Title>
-				</HistogramData>
-    			<HistogramData>
-					<Id>1761751228022</Id>
-					<Name><![CDATA[histogram1_data1]]></Name>
-					<X>-350</X><Y>465</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761751228020</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
-					<Value><![CDATA[]]></Value>
-					<NumberOfIntervals>10</NumberOfIntervals>
-					<MinMaxAutodetect>true</MinMaxAutodetect>
-					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
-					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
-					<InitialIntervalSize><![CDATA[5]]></InitialIntervalSize>
-					<CalculateCDF>true</CalculateCDF>
-					<CalculatePercentiles>false</CalculatePercentiles>
-					<LowPercent>10</LowPercent>
-					<HighPercent>10</HighPercent>
-					<Title><![CDATA[]]></Title>
-				</HistogramData>
-    			<HistogramData>
-					<Id>1761751310426</Id>
-					<Name><![CDATA[histogramBack_Front_4_groups_data1]]></Name>
-					<X>-350</X><Y>175</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761751310424</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
-					<Value><![CDATA[]]></Value>
-					<NumberOfIntervals>10</NumberOfIntervals>
-					<MinMaxAutodetect>true</MinMaxAutodetect>
-					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
-					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
-					<InitialIntervalSize><![CDATA[5]]></InitialIntervalSize>
-					<CalculateCDF>true</CalculateCDF>
-					<CalculatePercentiles>false</CalculatePercentiles>
-					<LowPercent>10</LowPercent>
-					<HighPercent>10</HighPercent>
-					<Title><![CDATA[]]></Title>
-				</HistogramData>
-    			<HistogramData>
-					<Id>1761751312953</Id>
-					<Name><![CDATA[histogramWindows_4_groups_data2]]></Name>
-					<X>-350</X><Y>200</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761751312951</Id>
+						<Id>1761761671494</Id>
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1761811200000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
@@ -17928,9 +17775,9 @@ switch (root.boardingMethodNumber)
 
 			<Presentation>
 				<Text>
-					<Id>1761743703640</Id>
+					<Id>1761761534008</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>40</X><Y>30</Y>
+					<X>60</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17940,235 +17787,118 @@ switch (root.boardingMethodNumber)
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12490271</Color>
-					<Text><![CDATA[boarding sim : MonteCarlo1]]></Text>
+					<Text><![CDATA[Multiple Runs Plane Boarding Simulation]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>24</Size>
+						<Size>48</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
 				<Text>
-					<Id>1761743703641</Id>
-					<Name><![CDATA[text1]]></Name>
-					<X>50</X><Y>80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Id>1761761534075</Id>
+					<Name><![CDATA[txtBoardingMethod]]></Name>
+					<X>70</X><Y>200</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
-					<Color>-12171190</Color>
-					<Text><![CDATA[Iterations completed:]]></Text>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Método de abordaje]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>12</Size>
+						<Size>36</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Text>
-					<Id>1761743703642</Id>
-					<Name><![CDATA[text2]]></Name>
-					<X>240</X><Y>80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+				<Control Type="ComboBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1761761534077</Id>
+					<Name><![CDATA[cmbBoardingMethod]]></Name>
+					<X>430</X><Y>200</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="510" Height="50">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor>-1</FillColor>
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[if (cmbBoardingMethod.getValue().equals("FIRST_IN_FIRST_OUT")) {
+	txtGroupsNumber.setVisible(false);
+	sldGroupsNumber.setVisible(false);
+}
+else {
+	txtGroupsNumber.setVisible(true);
+	sldGroupsNumber.setVisible(true);
+}]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="36" Style="0"/>
+						<DefaultValueCode><![CDATA["FRONT_TO_BACK"]]></DefaultValueCode>
+						<Editable>false</Editable>
+						<Button><![CDATA[FRONT_TO_BACK]]></Button>
+						<Button><![CDATA[WINDOWS_MIDDLE_AISLE]]></Button>
+						<Button><![CDATA[BACK_TO_FRONT]]></Button>
+						<Button><![CDATA[FIRST_IN_FIRST_OUT]]></Button>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1761761534083</Id>
+					<Name><![CDATA[txtGroupsNumber]]></Name>
+					<X>70</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
-					<Color>-12042869</Color>
-					<Text><![CDATA[?]]></Text>
-					<TextCode><![CDATA[format( getNumberOfCompletedIterations() )]]></TextCode>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Cantidad de grupos]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>RIGHT</Alignment>
-				</Text>
-				<Text>
-					<Id>1761743703643</Id>
-					<Name><![CDATA[text3]]></Name>
-					<X>50</X><Y>110</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12566464</Color>
-					<Text><![CDATA[Parameters]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Line>
-					<Id>1761743703644</Id>
-					<Name><![CDATA[line]]></Name>
-					<X>40</X><Y>130</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>2</LineWidth>
-					<LineColor>-12566464</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>210</Dx>
-					<Dy>0</Dy>
-					<Dz>0</Dz>
-				</Line>
-				<Text>
-					<Id>1761743703645</Id>
-					<Name><![CDATA[text4]]></Name>
-					<X>50</X><Y>150</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12171190</Color>
-					<Text><![CDATA[ColorMenuNotSelected]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
+						<Size>36</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Text>
-					<Id>1761743703646</Id>
-					<Name><![CDATA[text5]]></Name>
-					<X>240</X><Y>150</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1761761534085</Id>
+					<Name><![CDATA[sldGroupsNumber]]></Name>
+					<X>440</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12042869</Color>
-					<Text><![CDATA[?]]></Text>
-					<TextCode><![CDATA[//format( ColorMenuNotSelected )]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>RIGHT</Alignment>
-				</Text>
-				<Rectangle>
-					<Id>1761743703647</Id>
-					<Name><![CDATA[rectangle]]></Name>
-					<X>40</X><Y>170</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>210</Width>
-					<Height>30</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor>-657931</FillColor>
-					<FillMaterial>null</FillMaterial>
-				</Rectangle>
-				<Text>
-					<Id>1761743703648</Id>
-					<Name><![CDATA[text6]]></Name>
-					<X>50</X><Y>180</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12171190</Color>
-					<Text><![CDATA[ColorMenuSelected]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1761743703649</Id>
-					<Name><![CDATA[text7]]></Name>
-					<X>240</X><Y>180</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12042869</Color>
-					<Text><![CDATA[?]]></Text>
-					<TextCode><![CDATA[//format( ColorMenuSelected )]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>RIGHT</Alignment>
-				</Text>
-				<Text>
-					<Id>1761743703650</Id>
-					<Name><![CDATA[text8]]></Name>
-					<X>350</X><Y>110</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12566464</Color>
-					<Text><![CDATA[TotalBoardingTimeInMinutes]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
+					<BasicProperties Width="500" Height="50">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[4]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[4]]></MinValue>
+						<MaxValue><![CDATA[16]]></MaxValue>
+						<Step><![CDATA[1]]></Step>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
     			<Histogram>
-					<Id>1761743703652</Id>
-					<Name><![CDATA[TotalBoardingTimeInMinutes]]></Name>
-					<X>320</X><Y>110</Y>
+					<Id>1761761665681</Id>
+					<Name><![CDATA[histogramTotalBoardingTime]]></Name>
+					<X>100</X><Y>600</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18176,7 +17906,7 @@ switch (root.boardingMethodNumber)
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AutoUpdate>false</AutoUpdate>
 					<RecurrenceProperties>
-						<Id>1761743703651</Id>
+						<Id>1761761665679</Id>
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1761811200000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
@@ -18221,8 +17951,8 @@ switch (root.boardingMethodNumber)
 						<RelativeWidth>0.9</RelativeWidth>
 					</Bars>
 					<HistogramDataExpression>
-					<Id>1761743703657</Id>
-					<Expression><![CDATA[histogramFifo_4_groups_data]]></Expression>
+					<Id>1761761665678</Id>
+					<Expression><![CDATA[histogramBoardingTimeData]]></Expression>
 						<ColorPDF>-16776961</ColorPDF>
 						<ColorCDF>-16777216</ColorCDF>
 						<ColorLowPercent>-16777088</ColorLowPercent>
@@ -18232,31 +17962,10 @@ switch (root.boardingMethodNumber)
 						<Title><![CDATA[TotalBoardingTimeInMinutes]]></Title>							
 					</HistogramDataExpression>
     			</Histogram>
-				<Text>
-					<Id>1761743703658</Id>
-					<Name><![CDATA[text9]]></Name>
-					<X>350</X><Y>420</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-12566464</Color>
-					<Text><![CDATA[AvgSeatingTimeInSeconds]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>12</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
     			<Histogram>
-					<Id>1761743703660</Id>
+					<Id>1761761671492</Id>
 					<Name><![CDATA[histogramAvgSeatingTime]]></Name>
-					<X>320</X><Y>420</Y>
+					<X>880</X><Y>590</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18264,7 +17973,7 @@ switch (root.boardingMethodNumber)
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AutoUpdate>false</AutoUpdate>
 					<RecurrenceProperties>
-						<Id>1761743703659</Id>
+						<Id>1761761671490</Id>
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1761811200000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
@@ -18309,8 +18018,8 @@ switch (root.boardingMethodNumber)
 						<RelativeWidth>0.9</RelativeWidth>
 					</Bars>
 					<HistogramDataExpression>
-					<Id>1761743703665</Id>
-					<Expression><![CDATA[histogram1_data]]></Expression>
+					<Id>1761761671489</Id>
+					<Expression><![CDATA[histogramSeatingTimeData]]></Expression>
 						<ColorPDF>-16776961</ColorPDF>
 						<ColorCDF>-16777216</ColorCDF>
 						<ColorLowPercent>-16777088</ColorLowPercent>
@@ -18318,336 +18027,50 @@ switch (root.boardingMethodNumber)
 						<ColorMean>-7650029</ColorMean>
 						<LineWidth>1</LineWidth>						
 						<Title><![CDATA[data]]></Title>							
-					</HistogramDataExpression>
-    			</Histogram>
-    			<Histogram>
-					<Id>1761751163179</Id>
-					<Name><![CDATA[TotalBoardingTimeInMinutes1]]></Name>
-					<X>880</X><Y>100</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761751163177</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>590</Width>
-					<Height>290</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>30</XOffset>
-						<YOffset>20</YOffset>
-						<Width>500</Width>
-						<Height>210</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-9868951</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>false</ShowLegend>
-					<ShowPDF>true</ShowPDF>
-					<ShowCDF>false</ShowCDF>
-					<ShowMean>false</ShowMean>
-					<Bars>
-						<Direction>UP</Direction>
-						<RelativeWidth>0.9</RelativeWidth>
-					</Bars>
-					<HistogramDataExpression>
-					<Id>1761751163176</Id>
-					<Expression><![CDATA[histogramFront_Back_4_groups_data]]></Expression>
-						<ColorPDF>-16776961</ColorPDF>
-						<ColorCDF>-16777216</ColorCDF>
-						<ColorLowPercent>-16777088</ColorLowPercent>
-						<ColorHighPercent>-16711681</ColorHighPercent>
-						<ColorMean>-7650029</ColorMean>
-						<LineWidth>1</LineWidth>						
-						<Title><![CDATA[TotalBoardingTimeInMinutes]]></Title>							
-					</HistogramDataExpression>
-    			</Histogram>
-    			<Histogram>
-					<Id>1761751211004</Id>
-					<Name><![CDATA[histogramAvgSeatingTime1]]></Name>
-					<X>900</X><Y>400</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761751211002</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>590</Width>
-					<Height>290</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>30</XOffset>
-						<YOffset>20</YOffset>
-						<Width>500</Width>
-						<Height>210</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-9868951</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>false</ShowLegend>
-					<ShowPDF>true</ShowPDF>
-					<ShowCDF>false</ShowCDF>
-					<ShowMean>false</ShowMean>
-					<Bars>
-						<Direction>UP</Direction>
-						<RelativeWidth>0.9</RelativeWidth>
-					</Bars>
-					<HistogramDataExpression>
-					<Id>1761751211001</Id>
-					<Expression><![CDATA[histogram1_data]]></Expression>
-						<ColorPDF>-16776961</ColorPDF>
-						<ColorCDF>-16777216</ColorCDF>
-						<ColorLowPercent>-16777088</ColorLowPercent>
-						<ColorHighPercent>-16711681</ColorHighPercent>
-						<ColorMean>-7650029</ColorMean>
-						<LineWidth>1</LineWidth>						
-						<Title><![CDATA[data]]></Title>							
-					</HistogramDataExpression>
-    			</Histogram>
-    			<Histogram>
-					<Id>1761751360501</Id>
-					<Name><![CDATA[TotalBoardingTimeInMinutes2]]></Name>
-					<X>1460</X><Y>100</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761751360499</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>590</Width>
-					<Height>290</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>30</XOffset>
-						<YOffset>20</YOffset>
-						<Width>500</Width>
-						<Height>210</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-9868951</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>false</ShowLegend>
-					<ShowPDF>true</ShowPDF>
-					<ShowCDF>false</ShowCDF>
-					<ShowMean>false</ShowMean>
-					<Bars>
-						<Direction>UP</Direction>
-						<RelativeWidth>0.9</RelativeWidth>
-					</Bars>
-					<HistogramDataExpression>
-					<Id>1761751360498</Id>
-					<Expression><![CDATA[histogramBack_Front_4_groups_data1]]></Expression>
-						<ColorPDF>-16776961</ColorPDF>
-						<ColorCDF>-16777216</ColorCDF>
-						<ColorLowPercent>-16777088</ColorLowPercent>
-						<ColorHighPercent>-16711681</ColorHighPercent>
-						<ColorMean>-7650029</ColorMean>
-						<LineWidth>1</LineWidth>						
-						<Title><![CDATA[TotalBoardingTimeInMinutes]]></Title>							
-					</HistogramDataExpression>
-    			</Histogram>
-    			<Histogram>
-					<Id>1761751360506</Id>
-					<Name><![CDATA[TotalBoardingTimeInMinutes3]]></Name>
-					<X>2020</X><Y>90</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761751360504</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>590</Width>
-					<Height>290</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>30</XOffset>
-						<YOffset>20</YOffset>
-						<Width>500</Width>
-						<Height>210</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-9868951</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>false</ShowLegend>
-					<ShowPDF>true</ShowPDF>
-					<ShowCDF>false</ShowCDF>
-					<ShowMean>false</ShowMean>
-					<Bars>
-						<Direction>UP</Direction>
-						<RelativeWidth>0.9</RelativeWidth>
-					</Bars>
-					<HistogramDataExpression>
-					<Id>1761751360503</Id>
-					<Expression><![CDATA[histogramWindows_4_groups_data2]]></Expression>
-						<ColorPDF>-16776961</ColorPDF>
-						<ColorCDF>-16777216</ColorCDF>
-						<ColorLowPercent>-16777088</ColorLowPercent>
-						<ColorHighPercent>-16711681</ColorHighPercent>
-						<ColorMean>-7650029</ColorMean>
-						<LineWidth>1</LineWidth>						
-						<Title><![CDATA[TotalBoardingTimeInMinutes]]></Title>							
 					</HistogramDataExpression>
     			</Histogram>
 			</Presentation>
 
 			<AllowParallelEvaluations>true</AllowParallelEvaluations>
-			<UseFreeformParameters>false</UseFreeformParameters>
-			<NumberOfRuns>4</NumberOfRuns>
+			<UseFreeformParameters>true</UseFreeformParameters>
+			<NumberOfRuns>100</NumberOfRuns>
 			<FreeformParamValue>	
 				<Id>1761745852469</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[set("FRONT_TO_BACK", "BACK_TO_FRONT")]]></Code>
+					<Code><![CDATA[cmbBoardingMethod.getValueIndex();]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1761746439146</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[{2, 5, 8, 10}]]></Code>
+					<Code><![CDATA[(int)sldGroupsNumber.getValue();]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1761745852469</Id>
-				<Type>RANGE</Type>
-				<From Class="CodeValue">
-					<Code><![CDATA[0]]></Code>
-				</From>
-				<To Class="CodeValue">
-					<Code><![CDATA[3]]></Code>
-				</To>
-				<Step Class="CodeValue">
-					<Code><![CDATA[1]]></Code>
-				</Step>
+				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1761746439146</Id>
-				<Type>RANGE</Type>
-				<From Class="CodeValue">
-					<Code><![CDATA[4]]></Code>
-				</From>
-				<To Class="CodeValue">
-					<Code><![CDATA[4]]></Code>
-				</To>
-				<Step Class="CodeValue">
-					<Code><![CDATA[1]]></Code>
-				</Step>
+				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1755043200000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1757721600000]]></FinalDate>	
-				<FinalTime><![CDATA[100.0]]></FinalTime>	
+				<FinalDate><![CDATA[1755048600000]]></FinalDate>	
+				<FinalTime><![CDATA[90.0]]></FinalTime>	
 			</ModelTimeProperties>
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
-				<Title><![CDATA[boarding sim : MonteCarlo1]]></Title>
+				<Title><![CDATA[boarding sim : ParametersVariation]]></Title>
 				<EnableDeveloperPanel>true</EnableDeveloperPanel>
 				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 			</PresentationProperties>
 			<ReplicationsProperties>
-				<UseReplication>true</UseReplication>
+				<UseReplication>false</UseReplication>
 				<FixedReplicationsNumber>true</FixedReplicationsNumber>
-				<ReplicationPerIteration>5</ReplicationPerIteration>
+				<ReplicationPerIteration>10</ReplicationPerIteration>
 				<MinimumReplication>2</MinimumReplication>
 				<MaximumReplication>10</MaximumReplication>
 				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
