@@ -23,17 +23,17 @@
 }
 
 public enum BoardingMethod {
-  FIRST_IN_FIRST_OUT,
-  BACK_TO_FRONT,
   FRONT_TO_BACK,
-  WINDOWS_MIDDLE_AISLE
+  WINDOWS_MIDDLE_AISLE,
+  BACK_TO_FRONT,
+  FIRST_IN_FIRST_OUT
 }]]></AdditionalClassCode>
-			<StartupCode><![CDATA[Simulation exp = (Simulation)getExperiment();
-
-boardingMethod = BoardingMethod.valueOf(exp.getSelectedBoardingMethod());
+			<StartupCode><![CDATA[getEngine().setStopTime(5, HOUR);
 
 pedSource.set_maxArrivals(getPlane().seatsNumber);
-]]></StartupCode>
+airbusA320.groupsNumber = groupsNumber;
+
+boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1755085745151</Id>
@@ -157,18 +157,6 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1760273364310</Id>
-					<Name><![CDATA[boardingMethod]]></Name>
-					<X>100</X><Y>100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[BoardingMethod]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1760531534220</Id>
 					<Name><![CDATA[currentView]]></Name>
 					<X>-850</X><Y>150</Y>
@@ -258,24 +246,87 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
-				<Variable Class="Parameter">
-					<Id>1760531488370</Id>
+				<Variable Class="PlainVariable">
+					<Id>1761744863237</Id>
+					<Name><![CDATA[seatedPassengers]]></Name>
+					<X>100</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761745892754</Id>
+					<Name><![CDATA[ColorMenuSelected]]></Name>
+					<X>-850</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[Color]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[dodgerBlue]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761745895295</Id>
 					<Name><![CDATA[ColorMenuNotSelected]]></Name>
 					<X>-850</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[Color]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new Color( 129, 195, 255 )]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761748966665</Id>
+					<Name><![CDATA[boardingMethod]]></Name>
+					<X>100</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[BoardingMethod]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761753996503</Id>
+					<Name><![CDATA[deletedPassengers]]></Name>
+					<X>100</X><Y>610</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1761745852469</Id>
+					<Name><![CDATA[boardingMethodNumber]]></Name>
+					<X>100</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[Color]]></Type>
+						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new Color( 129, 195, 255 )]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
-							<Id>1760531488368</Id>
-							<EditorContolType>COLOR_PICKER</EditorContolType>
+							<Id>1761745852467</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<DelimeterType>NO_DELIMETER</DelimeterType>
@@ -283,23 +334,20 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1760531488376</Id>
-					<Name><![CDATA[ColorMenuSelected]]></Name>
-					<X>-850</X><Y>50</Y>
+					<Id>1761746439146</Id>
+					<Name><![CDATA[groupsNumber]]></Name>
+					<X>100</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[Color]]></Type>
+						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[dodgerBlue]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
-							<Id>1760531488374</Id>
-							<EditorContolType>COLOR_PICKER</EditorContolType>
+							<Id>1761746439144</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<DelimeterType>NO_DELIMETER</DelimeterType>
@@ -611,7 +659,7 @@ if (plane instanceof AirbusA320) {
 						<Name><![CDATA[row]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[switch (boardingMethod){
+					<Body><![CDATA[switch (boardingMethod) {
 	case FIRST_IN_FIRST_OUT:    return firstInFirstOut(seat,row);
 	case BACK_TO_FRONT:        return backToFront(seat, row);
 	case FRONT_TO_BACK:        return frontToBack(seat, row);
@@ -1235,6 +1283,9 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[//ped.setXYZ(614, 880,0);]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onBeginWait]]></Name>
@@ -4602,8 +4653,9 @@ else {
 		walkingSince = 0;
 	}
 	
-	person.setColor("Material__5__Surf", Color.GREEN);
+	
 	setComfortableSpeed(speed);
+	person.setColor("Material__5__Surf", Color.GREEN);
 }]]></BeforeStepCode>
 					<SpaceType>CONTINUOUS</SpaceType>
 					<WidthCode><![CDATA[500]]></WidthCode>
@@ -5392,8 +5444,6 @@ get_Main().airbusA320.totalPassTimeToSeat += timeSeatedPed;
 		<ActiveObjectClass>
 			<Id>1755699829168</Id>
 			<Name><![CDATA[BasePlane]]></Name>
-			<StartupCode><![CDATA[Simulation exp = (Simulation)getExperiment();
-groupsNumber = (int)exp.getGroupsNumber();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1755699829173</Id>
@@ -6106,7 +6156,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				</Parameter>
 			</Parameters>
 			<StartupCode><![CDATA[seatsNumber = 180;
-groupSize = (int) (seatsNumber / groupsNumber);
+groupSize = (int) (seatsNumber / get_Main().groupsNumber);
 rowsNumber = 30;
 
 String[] letters = {"A", "B", "C", "D", "E", "F"};
@@ -6885,7 +6935,7 @@ return rowEntries[row-1];]]></Body>
 				<ContainerLink>
 					<Id>1761595021883</Id>
 					<Name><![CDATA[main]]></Name>
-					<X>50</X><Y>-100</Y>
+					<X>850</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7248,33 +7298,33 @@ return rowEntries[row-1];]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[ped.walkingSince = 0;
-ped.setComfortableSpeed(0);
-
-if (seated.size() == passengersBoarding.countPeds()){
-	releaseNextGroup();
-}
-]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onBeginWait]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[Row6Seats row = getRowAgent(ped);
+								<Code><![CDATA[Main main = get_Main();
+Row6Seats row = getRowAgent(ped);
+
+ped.walkingSince = 0;
+ped.setComfortableSpeed(0);
+
+main.seatedPassengers++;
 row.passengers.add(ped);
 
 send("seated", ped);
 send("seat" + ped.seatLetter + "Used", row);
 
+if (seated.size() + main.deletedPassengers == passengersBoarding.countPeds()){
+	releaseNextGroup();
+}
 
-Main main = get_Main();
-if (seated.size() == seatsNumber) {
+if (seated.size() + main.deletedPassengers == seatsNumber) {
 	main.boardingEndTime = time(MINUTE);
 	main.totalBoardingTimeInMinutes = main.boardingEndTime - main.boardingStartTime;
 	main.avgSeatingTimeInSeconds = totalPassTimeToSeat / seatsNumber;
-}
-]]></Code>
+	
+	getEngine().setStopTime(time(SECOND) + 10, SECOND);
+}]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7286,7 +7336,8 @@ if (seated.size() == seatsNumber) {
 						<Parameter>
 							<Name><![CDATA[onCancel]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[ped.setComfortableSpeed(ped.speed);]]></Code>
+								<Code><![CDATA[ped.setComfortableSpeed(ped.speed);
+get_Main().seatedPassengers--;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7802,7 +7853,7 @@ row.releaseSeatAccess(ped);]]></Code>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.LOCATION_NODE]]></Code>
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7813,9 +7864,15 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getY()+10]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
@@ -7899,7 +7956,7 @@ row.releaseSeatAccess(ped);]]></Code>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.LOCATION_NODE]]></Code>
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7910,9 +7967,15 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getY()+10]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
@@ -8042,6 +8105,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_3D</DrawMode>
 					<X>0</X><Y>110</Y><Z>5</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
@@ -8092,7 +8156,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>105</X><Y>660</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_3D</DrawMode>
@@ -15451,6 +15515,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<X>0</X><Y>110</Y><Z>5</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
@@ -16369,13 +16434,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362370011</Id>
 					<Name><![CDATA[object3d6]]></Name>
-					<X>330</X><Y>45</Y>
+					<X>335</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>330</X><Y>45</Y><Z>0</Z>
+					<X>335</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16430,13 +16495,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362370714</Id>
 					<Name><![CDATA[object3d7]]></Name>
-					<X>275</X><Y>45</Y>
+					<X>280</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>275</X><Y>45</Y><Z>0</Z>
+					<X>280</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16491,13 +16556,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362348472</Id>
 					<Name><![CDATA[object3d5]]></Name>
-					<X>220</X><Y>45</Y>
+					<X>225</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>220</X><Y>45</Y><Z>0</Z>
+					<X>225</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16552,13 +16617,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362195894</Id>
 					<Name><![CDATA[object3d4]]></Name>
-					<X>21</X><Y>47</Y>
+					<X>13</X><Y>47</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>21</X><Y>47</Y><Z>0</Z>
+					<X>13</X><Y>47</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16613,13 +16678,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362170992</Id>
 					<Name><![CDATA[object3d3]]></Name>
-					<X>129</X><Y>45</Y>
+					<X>121</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>129</X><Y>45</Y><Z>0</Z>
+					<X>121</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16674,13 +16739,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362038577</Id>
 					<Name><![CDATA[object3d2]]></Name>
-					<X>75</X><Y>46</Y>
+					<X>67</X><Y>46</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>75</X><Y>46</Y><Z>0</Z>
+					<X>67</X><Y>46</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16735,7 +16800,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759800117914</Id>
 					<Name><![CDATA[seatF]]></Name>
-					<X>20</X><Y>20</Y>
+					<X>12</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16755,7 +16820,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801042312</Id>
 					<Name><![CDATA[seatC]]></Name>
-					<X>220</X><Y>20</Y>
+					<X>225</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16775,7 +16840,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801043208</Id>
 					<Name><![CDATA[seatB]]></Name>
-					<X>275</X><Y>20</Y>
+					<X>280</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16795,7 +16860,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801043750</Id>
 					<Name><![CDATA[seatA]]></Name>
-					<X>330</X><Y>20</Y>
+					<X>335</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16815,7 +16880,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801050587</Id>
 					<Name><![CDATA[seatD]]></Name>
-					<X>130</X><Y>20</Y>
+					<X>122</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16835,7 +16900,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801052337</Id>
 					<Name><![CDATA[seatE]]></Name>
-					<X>75</X><Y>20</Y>
+					<X>67</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16855,13 +16920,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759935623773</Id>
 					<Name><![CDATA[seated_person_F]]></Name>
-					<X>20</X><Y>10</Y>
+					<X>12</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>20</X><Y>10</Y><Z>0</Z>
+					<X>12</X><Y>10</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16904,13 +16969,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936372286</Id>
 					<Name><![CDATA[seated_person_E]]></Name>
-					<X>75</X><Y>10</Y>
+					<X>67</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>75</X><Y>10</Y><Z>0</Z>
+					<X>67</X><Y>10</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16953,13 +17018,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936385702</Id>
 					<Name><![CDATA[seated_person_D]]></Name>
-					<X>130</X><Y>9</Y>
+					<X>122</X><Y>9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>130</X><Y>9</Y><Z>0</Z>
+					<X>122</X><Y>9</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17002,13 +17067,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936405197</Id>
 					<Name><![CDATA[seated_person_C]]></Name>
-					<X>221</X><Y>9</Y>
+					<X>226</X><Y>9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>221</X><Y>9</Y><Z>0</Z>
+					<X>226</X><Y>9</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17051,13 +17116,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936405201</Id>
 					<Name><![CDATA[seated_person_B]]></Name>
-					<X>276</X><Y>9</Y>
+					<X>281</X><Y>9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>276</X><Y>9</Y><Z>0</Z>
+					<X>281</X><Y>9</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17100,13 +17165,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936405205</Id>
 					<Name><![CDATA[seated_person_A]]></Name>
-					<X>331</X><Y>9</Y>
+					<X>336</X><Y>9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>331</X><Y>9</Y><Z>0</Z>
+					<X>336</X><Y>9</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17154,6 +17219,7 @@ airbusA320.pedWait.free(passenger);
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_3D</DrawMode>
 					<X>10</X><Y>20</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
@@ -17239,6 +17305,7 @@ airbusA320.pedWait.free(passenger);
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_3D</DrawMode>
 					<X>340</X><Y>20</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
@@ -17376,17 +17443,6 @@ airbusA320.pedWait.free(passenger);
 		<SimulationExperiment ActiveObjectClassId="1755085745146">
 			<Id>1755085745154</Id>
 			<Name><![CDATA[Simulation]]></Name>
-			<AdditionalClassCode><![CDATA[public String getSelectedPlane() {
-    return cmbPlaneModel.getValue();
-}
-
-public String getSelectedBoardingMethod() {
-    return cmbBoardingMethod.getValue();
-}
-
-public double getGroupsNumber() {
-	return sldGroupsNumber.getValue();
-}]]></AdditionalClassCode>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>512</MaximumMemory>
 			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
@@ -17568,10 +17624,16 @@ else {
 
 			<Parameters>
 				<Parameter>
-					<ParameterName><![CDATA[ColorMenuNotSelected]]></ParameterName>
+					<ParameterName><![CDATA[boardingMethodNumber]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[cmbBoardingMethod.getValueIndex();]]></Code>
+					</ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[ColorMenuSelected]]></ParameterName>
+					<ParameterName><![CDATA[groupsNumber]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[(int)sldGroupsNumber.getValue();]]></Code>
+					</ParameterValue>
 				</Parameter>
 			</Parameters>
 			<PresentationProperties>
@@ -17590,7 +17652,416 @@ else {
 				<FinalTime><![CDATA[100.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>false</BypassInitialScreen>
-		</SimulationExperiment>	
+		</SimulationExperiment>
+		<!--   =========  Parameter Variation Experiment   ========  -->
+		<ParamVariationExperiment ActiveObjectClassId="1755085745146">
+			<Id>1761761507008</Id>
+			<Name><![CDATA[MultipleRuns]]></Name>
+			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<MaximumMemory>4096</MaximumMemory>
+			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<BeforeEachExperimentRunCode><![CDATA[cmbBoardingMethod.setEnabled(false);
+sldGroupsNumber.setEnabled(false);
+
+histogramBoardingTimeData.reset();
+histogramSeatingTimeData.reset();]]></BeforeEachExperimentRunCode>
+			<BeforeSimulationRunCode><![CDATA[System.out.println("Arrancando");
+System.out.println("Método de abordaje: " + root.boardingMethodNumber);
+System.out.println("Cantidad de grupos: " + root.groupsNumber);
+System.out.println();]]></BeforeSimulationRunCode>
+			<AfterSimulationRunCode><![CDATA[System.out.println("Método de abordaje: " + root.boardingMethodNumber);
+System.out.println("Cantidad de grupos: " + root.groupsNumber);
+
+System.out.println("totalBoardingTimeInMinutes: " + root.totalBoardingTimeInMinutes);
+System.out.println("avgSeatingTimeInSeconds: " + root.avgSeatingTimeInSeconds);
+System.out.println("seatedPassengers: " + root.seatedPassengers);
+System.out.println();
+
+
+histogramBoardingTimeData.add(root.totalBoardingTimeInMinutes);
+histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
+]]></AfterSimulationRunCode>
+			<SeedValue>1</SeedValue>
+			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
+			<VmArgs><![CDATA[]]></VmArgs>
+			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+			<AnalysisData>
+    			<HistogramData>
+					<Id>1761761665686</Id>
+					<Name><![CDATA[histogramBoardingTimeData]]></Name>
+					<X>-300</X><Y>100</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1761761665684</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1761811200000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<Value><![CDATA[]]></Value>
+					<NumberOfIntervals>10</NumberOfIntervals>
+					<MinMaxAutodetect>true</MinMaxAutodetect>
+					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
+					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
+					<InitialIntervalSize><![CDATA[5]]></InitialIntervalSize>
+					<CalculateCDF>true</CalculateCDF>
+					<CalculatePercentiles>false</CalculatePercentiles>
+					<LowPercent>10</LowPercent>
+					<HighPercent>10</HighPercent>
+					<Title><![CDATA[]]></Title>
+				</HistogramData>
+    			<HistogramData>
+					<Id>1761761671496</Id>
+					<Name><![CDATA[histogramSeatingTimeData]]></Name>
+					<X>-300</X><Y>200</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1761761671494</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1761811200000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<Value><![CDATA[]]></Value>
+					<NumberOfIntervals>10</NumberOfIntervals>
+					<MinMaxAutodetect>true</MinMaxAutodetect>
+					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
+					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
+					<InitialIntervalSize><![CDATA[5]]></InitialIntervalSize>
+					<CalculateCDF>true</CalculateCDF>
+					<CalculatePercentiles>false</CalculatePercentiles>
+					<LowPercent>10</LowPercent>
+					<HighPercent>10</HighPercent>
+					<Title><![CDATA[]]></Title>
+				</HistogramData>
+			</AnalysisData>
+
+			<Presentation>
+				<Text>
+					<Id>1761761534008</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>60</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12490271</Color>
+					<Text><![CDATA[Multiple Runs Plane Boarding Simulation]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>48</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1761761534075</Id>
+					<Name><![CDATA[txtBoardingMethod]]></Name>
+					<X>70</X><Y>200</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Método de abordaje]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>36</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="ComboBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1761761534077</Id>
+					<Name><![CDATA[cmbBoardingMethod]]></Name>
+					<X>430</X><Y>200</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="510" Height="50">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor>-1</FillColor>
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[if (cmbBoardingMethod.getValue().equals("FIRST_IN_FIRST_OUT")) {
+	txtGroupsNumber.setVisible(false);
+	sldGroupsNumber.setVisible(false);
+}
+else {
+	txtGroupsNumber.setVisible(true);
+	sldGroupsNumber.setVisible(true);
+}]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="36" Style="0"/>
+						<DefaultValueCode><![CDATA["FRONT_TO_BACK"]]></DefaultValueCode>
+						<Editable>false</Editable>
+						<Button><![CDATA[FRONT_TO_BACK]]></Button>
+						<Button><![CDATA[WINDOWS_MIDDLE_AISLE]]></Button>
+						<Button><![CDATA[BACK_TO_FRONT]]></Button>
+						<Button><![CDATA[FIRST_IN_FIRST_OUT]]></Button>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1761761534083</Id>
+					<Name><![CDATA[txtGroupsNumber]]></Name>
+					<X>70</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Cantidad de grupos]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>36</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1761761534085</Id>
+					<Name><![CDATA[sldGroupsNumber]]></Name>
+					<X>440</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="500" Height="50">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[4]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[4]]></MinValue>
+						<MaxValue><![CDATA[16]]></MaxValue>
+						<Step><![CDATA[1]]></Step>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+    			<Histogram>
+					<Id>1761761665681</Id>
+					<Name><![CDATA[histogramTotalBoardingTime]]></Name>
+					<X>100</X><Y>600</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>false</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1761761665679</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1761811200000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>590</Width>
+					<Height>290</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>30</XOffset>
+						<YOffset>20</YOffset>
+						<Width>500</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-9868951</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<ShowPDF>true</ShowPDF>
+					<ShowCDF>false</ShowCDF>
+					<ShowMean>false</ShowMean>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.9</RelativeWidth>
+					</Bars>
+					<HistogramDataExpression>
+					<Id>1761761665678</Id>
+					<Expression><![CDATA[histogramBoardingTimeData]]></Expression>
+						<ColorPDF>-16776961</ColorPDF>
+						<ColorCDF>-16777216</ColorCDF>
+						<ColorLowPercent>-16777088</ColorLowPercent>
+						<ColorHighPercent>-16711681</ColorHighPercent>
+						<ColorMean>-7650029</ColorMean>
+						<LineWidth>1</LineWidth>						
+						<Title><![CDATA[TotalBoardingTimeInMinutes]]></Title>							
+					</HistogramDataExpression>
+    			</Histogram>
+    			<Histogram>
+					<Id>1761761671492</Id>
+					<Name><![CDATA[histogramAvgSeatingTime]]></Name>
+					<X>880</X><Y>590</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>false</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1761761671490</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1761811200000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>590</Width>
+					<Height>290</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>30</XOffset>
+						<YOffset>20</YOffset>
+						<Width>500</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-9868951</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<ShowPDF>true</ShowPDF>
+					<ShowCDF>false</ShowCDF>
+					<ShowMean>false</ShowMean>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.9</RelativeWidth>
+					</Bars>
+					<HistogramDataExpression>
+					<Id>1761761671489</Id>
+					<Expression><![CDATA[histogramSeatingTimeData]]></Expression>
+						<ColorPDF>-16776961</ColorPDF>
+						<ColorCDF>-16777216</ColorCDF>
+						<ColorLowPercent>-16777088</ColorLowPercent>
+						<ColorHighPercent>-16711681</ColorHighPercent>
+						<ColorMean>-7650029</ColorMean>
+						<LineWidth>1</LineWidth>						
+						<Title><![CDATA[data]]></Title>							
+					</HistogramDataExpression>
+    			</Histogram>
+			</Presentation>
+
+			<AllowParallelEvaluations>true</AllowParallelEvaluations>
+			<UseFreeformParameters>true</UseFreeformParameters>
+			<NumberOfRuns>8</NumberOfRuns>
+			<FreeformParamValue>	
+				<Id>1761745852469</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[cmbBoardingMethod.getValueIndex();]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1761746439146</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[(int)sldGroupsNumber.getValue();]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<RangeVariationParamValue>	
+				<Id>1761745852469</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1761746439146</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<ModelTimeProperties>
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
+				<InitialDate><![CDATA[1755043200000]]></InitialDate>	
+				<InitialTime><![CDATA[0.0]]></InitialTime>	
+				<FinalDate><![CDATA[1755048600000]]></FinalDate>	
+				<FinalTime><![CDATA[90.0]]></FinalTime>	
+			</ModelTimeProperties>
+			<PresentationProperties>
+				<EnableZoomAndPanning>true</EnableZoomAndPanning>
+				<Title><![CDATA[boarding sim : ParametersVariation]]></Title>
+				<EnableDeveloperPanel>true</EnableDeveloperPanel>
+				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
+			</PresentationProperties>
+			<ReplicationsProperties>
+				<UseReplication>false</UseReplication>
+				<FixedReplicationsNumber>false</FixedReplicationsNumber>
+				<ReplicationPerIteration>10</ReplicationPerIteration>
+				<MinimumReplication>2</MinimumReplication>
+				<MaximumReplication>10</MaximumReplication>
+				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
+				<ErrorPercent>0.5</ErrorPercent>
+				<ExpressionForConfidenceComputation><![CDATA[0]]></ExpressionForConfidenceComputation>
+			</ReplicationsProperties>
+		</ParamVariationExperiment>	
 	</Experiments>
 	<ModelResources>
 		<Resource>
