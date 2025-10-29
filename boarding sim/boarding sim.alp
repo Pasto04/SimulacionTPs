@@ -28,7 +28,9 @@ public enum BoardingMethod {
   BACK_TO_FRONT,
   FIRST_IN_FIRST_OUT
 }]]></AdditionalClassCode>
-			<StartupCode><![CDATA[pedSource.set_maxArrivals(getPlane().seatsNumber);
+			<StartupCode><![CDATA[getEngine().setStopTime(5, HOUR);
+
+pedSource.set_maxArrivals(getPlane().seatsNumber);
 airbusA320.groupsNumber = groupsNumber;
 
 boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></StartupCode>
@@ -4658,6 +4660,7 @@ else {
 	}
 	
 	setComfortableSpeed(speed);
+	person.setColor("Material__5__Surf", Color.GREEN);
 }]]></BeforeStepCode>
 					<SpaceType>CONTINUOUS</SpaceType>
 					<WidthCode><![CDATA[500]]></WidthCode>
@@ -7315,34 +7318,33 @@ return rowEntries[row-1];]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[ped.walkingSince = 0;
-ped.setComfortableSpeed(0);
-get_Main().seatedPassengers++;
-
-if (seated.size() + main.deletedPassengers == passengersBoarding.countPeds()){
-	releaseNextGroup();
-}
-]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onBeginWait]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[Row6Seats row = getRowAgent(ped);
+								<Code><![CDATA[Main main = get_Main();
+Row6Seats row = getRowAgent(ped);
+
+ped.walkingSince = 0;
+ped.setComfortableSpeed(0);
+
+main.seatedPassengers++;
 row.passengers.add(ped);
 
 send("seated", ped);
 send("seat" + ped.seatLetter + "Used", row);
 
+if (seated.size() + main.deletedPassengers == passengersBoarding.countPeds()){
+	releaseNextGroup();
+}
 
-Main main = get_Main();
 if (seated.size() + main.deletedPassengers == seatsNumber) {
 	main.boardingEndTime = time(MINUTE);
 	main.totalBoardingTimeInMinutes = main.boardingEndTime - main.boardingStartTime;
 	main.avgSeatingTimeInSeconds = totalPassTimeToSeat / seatsNumber;
-}
-]]></Code>
+	
+	getEngine().setStopTime(time(SECOND) + 10, SECOND);
+}]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
