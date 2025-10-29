@@ -1284,7 +1284,7 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[ped.setXYZ(614, 880,0);]]></Code>
+								<Code><![CDATA[//ped.setXYZ(614, 880,0);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4653,11 +4653,6 @@ else {
 		walkingSince = 0;
 	}
 	
-	if (inHelpSince != 0 && time(SECOND) - inHelpSince > 10){
-		System.out.println("eliminado");
-		get_Main().remove_passengers(this);
-		get_Main().deletedPassengers++;
-	}
 	
 	setComfortableSpeed(speed);
 	person.setColor("Material__5__Surf", Color.GREEN);
@@ -4851,21 +4846,6 @@ else {
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1761752727171</Id>
-					<Name><![CDATA[inHelpSince]]></Name>
-					<X>-150</X><Y>500</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</InitialValue>
 					</Properties>
 				</Variable>
 			</Variables>
@@ -6955,7 +6935,7 @@ return rowEntries[row-1];]]></Body>
 				<ContainerLink>
 					<Id>1761595021883</Id>
 					<Name><![CDATA[main]]></Name>
-					<X>50</X><Y>-100</Y>
+					<X>850</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7873,7 +7853,7 @@ row.releaseSeatAccess(ped);]]></Code>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.LOCATION_NODE]]></Code>
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7884,9 +7864,15 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getY()+10]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
@@ -7908,15 +7894,9 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[ped.inHelpSince = time(SECOND);]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[ped.inHelpSince = 0;]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onCancel]]></Name>
@@ -7976,7 +7956,7 @@ row.releaseSeatAccess(ped);]]></Code>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.LOCATION_NODE]]></Code>
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7987,9 +7967,15 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getY()+10]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
@@ -8011,15 +7997,9 @@ row.releaseSeatAccess(ped);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[ped.inHelpSince = time(SECOND);]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[ped.inHelpSince = 0;]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onCancel]]></Name>
@@ -8125,6 +8105,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_3D</DrawMode>
 					<X>0</X><Y>110</Y><Z>5</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
@@ -8175,7 +8156,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<X>105</X><Y>660</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_3D</DrawMode>
@@ -15534,6 +15515,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<X>0</X><Y>110</Y><Z>5</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
@@ -16452,13 +16434,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362370011</Id>
 					<Name><![CDATA[object3d6]]></Name>
-					<X>330</X><Y>45</Y>
+					<X>335</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>330</X><Y>45</Y><Z>0</Z>
+					<X>335</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16513,13 +16495,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362370714</Id>
 					<Name><![CDATA[object3d7]]></Name>
-					<X>275</X><Y>45</Y>
+					<X>280</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>275</X><Y>45</Y><Z>0</Z>
+					<X>280</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16574,13 +16556,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362348472</Id>
 					<Name><![CDATA[object3d5]]></Name>
-					<X>220</X><Y>45</Y>
+					<X>225</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>220</X><Y>45</Y><Z>0</Z>
+					<X>225</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16635,13 +16617,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362195894</Id>
 					<Name><![CDATA[object3d4]]></Name>
-					<X>21</X><Y>47</Y>
+					<X>13</X><Y>47</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>21</X><Y>47</Y><Z>0</Z>
+					<X>13</X><Y>47</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16696,13 +16678,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362170992</Id>
 					<Name><![CDATA[object3d3]]></Name>
-					<X>129</X><Y>45</Y>
+					<X>121</X><Y>45</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>129</X><Y>45</Y><Z>0</Z>
+					<X>121</X><Y>45</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16757,13 +16739,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1760362038577</Id>
 					<Name><![CDATA[object3d2]]></Name>
-					<X>75</X><Y>46</Y>
+					<X>67</X><Y>46</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>75</X><Y>46</Y><Z>0</Z>
+					<X>67</X><Y>46</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16818,7 +16800,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759800117914</Id>
 					<Name><![CDATA[seatF]]></Name>
-					<X>20</X><Y>20</Y>
+					<X>12</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16838,7 +16820,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801042312</Id>
 					<Name><![CDATA[seatC]]></Name>
-					<X>220</X><Y>20</Y>
+					<X>225</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16858,7 +16840,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801043208</Id>
 					<Name><![CDATA[seatB]]></Name>
-					<X>275</X><Y>20</Y>
+					<X>280</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16878,7 +16860,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801043750</Id>
 					<Name><![CDATA[seatA]]></Name>
-					<X>330</X><Y>20</Y>
+					<X>335</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16898,7 +16880,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801050587</Id>
 					<Name><![CDATA[seatD]]></Name>
-					<X>130</X><Y>20</Y>
+					<X>122</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16918,7 +16900,7 @@ airbusA320.pedWait.free(passenger);
 				<PointNode>
 					<Id>1759801052337</Id>
 					<Name><![CDATA[seatE]]></Name>
-					<X>75</X><Y>20</Y>
+					<X>67</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -16938,13 +16920,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759935623773</Id>
 					<Name><![CDATA[seated_person_F]]></Name>
-					<X>20</X><Y>10</Y>
+					<X>12</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>20</X><Y>10</Y><Z>0</Z>
+					<X>12</X><Y>10</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -16987,13 +16969,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936372286</Id>
 					<Name><![CDATA[seated_person_E]]></Name>
-					<X>75</X><Y>10</Y>
+					<X>67</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>75</X><Y>10</Y><Z>0</Z>
+					<X>67</X><Y>10</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17036,13 +17018,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936385702</Id>
 					<Name><![CDATA[seated_person_D]]></Name>
-					<X>130</X><Y>9</Y>
+					<X>122</X><Y>9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>130</X><Y>9</Y><Z>0</Z>
+					<X>122</X><Y>9</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17085,13 +17067,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936405197</Id>
 					<Name><![CDATA[seated_person_C]]></Name>
-					<X>221</X><Y>9</Y>
+					<X>226</X><Y>9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>221</X><Y>9</Y><Z>0</Z>
+					<X>226</X><Y>9</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17134,13 +17116,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936405201</Id>
 					<Name><![CDATA[seated_person_B]]></Name>
-					<X>276</X><Y>9</Y>
+					<X>281</X><Y>9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>276</X><Y>9</Y><Z>0</Z>
+					<X>281</X><Y>9</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17183,13 +17165,13 @@ airbusA320.pedWait.free(passenger);
 				<Figure3D>
 					<Id>1759936405205</Id>
 					<Name><![CDATA[seated_person_A]]></Name>
-					<X>331</X><Y>9</Y>
+					<X>336</X><Y>9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>331</X><Y>9</Y><Z>0</Z>
+					<X>336</X><Y>9</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ResourceReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
@@ -17237,6 +17219,7 @@ airbusA320.pedWait.free(passenger);
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_3D</DrawMode>
 					<X>10</X><Y>20</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
@@ -17322,6 +17305,7 @@ airbusA320.pedWait.free(passenger);
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
 					<DrawMode>SHAPE_DRAW_3D</DrawMode>
 					<X>340</X><Y>20</Y><Z>0</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
@@ -17674,7 +17658,7 @@ else {
 			<Id>1761761507008</Id>
 			<Name><![CDATA[MultipleRuns]]></Name>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
-			<MaximumMemory>512</MaximumMemory>
+			<MaximumMemory>4096</MaximumMemory>
 			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
 			<BeforeEachExperimentRunCode><![CDATA[cmbBoardingMethod.setEnabled(false);
@@ -18033,7 +18017,7 @@ else {
 
 			<AllowParallelEvaluations>true</AllowParallelEvaluations>
 			<UseFreeformParameters>true</UseFreeformParameters>
-			<NumberOfRuns>100</NumberOfRuns>
+			<NumberOfRuns>8</NumberOfRuns>
 			<FreeformParamValue>	
 				<Id>1761745852469</Id>
 				<Expression Class="CodeValue">
@@ -18069,7 +18053,7 @@ else {
 			</PresentationProperties>
 			<ReplicationsProperties>
 				<UseReplication>false</UseReplication>
-				<FixedReplicationsNumber>true</FixedReplicationsNumber>
+				<FixedReplicationsNumber>false</FixedReplicationsNumber>
 				<ReplicationPerIteration>10</ReplicationPerIteration>
 				<MinimumReplication>2</MinimumReplication>
 				<MaximumReplication>10</MaximumReplication>
