@@ -4784,10 +4784,11 @@ Passenger[] frontPassengers = main.passengers.stream()
     .filter(p -> p.currentRow > 0)
     .filter(p -> p.currentRow <= currentRow + 2)
     .filter(p -> p.currentRow > currentRow)
-    .filter(p -> p.seatRow <= seatRow)
+    .filter(p -> p.currentRow <= seatRow)
     .toArray(Passenger[]::new);
 
-//TODO tener en cuenta si me está dando a mí allowingOtherPassengerToEnter
+// NOTE quizás haya que tener en cuenta si el pasajero
+// que bloquea le está danto paso en la fila a este pasajero
 
 if (frontPassengers.length != 0) // tiene alguien delante
 {
@@ -4795,7 +4796,7 @@ if (frontPassengers.length != 0) // tiene alguien delante
 	person.setColor("Material__5__Surf", Color.RED);
 	setComfortableSpeed(0);
 }
-else //puede avanzar
+else // puede avanzar
 {
 	if (walkingSince == 0)
 		walkingSince = time(SECOND);
@@ -17867,7 +17868,9 @@ import com.anylogic.engine.analysis.*;]]></Import>
 sldGroupsNumber.setEnabled(false);
 
 histogramBoardingTimeData.reset();
-histogramSeatingTimeData.reset();]]></BeforeEachExperimentRunCode>
+histogramSeatingTimeData.reset();
+standingPassengersCount = 0;
+avgTimesStandUp = 0;]]></BeforeEachExperimentRunCode>
 			<BeforeSimulationRunCode><![CDATA[System.out.println("Arrancando");
 System.out.println("Método de abordaje: " + root.boardingMethodNumber);
 System.out.println("Cantidad de grupos: " + root.groupsNumber);
@@ -17892,8 +17895,10 @@ for (double t = 0; t <= T; t += dt) {
 }
 runs.add(ds);
 
-//ACTUALIZAR CON NUMERO TOTAL DE CORRIDAS
-avgTimesStandUp = avgTimesStandUp + (root.totalTimesStandUp/2);
+
+// ACTUALIZAR CON NUMERO TOTAL DE CORRIDAS
+standingPassengersCount += root.totalTimesStandUp;
+avgTimesStandUp = standingPassengersCount / (this.getRunCount() + 1);
 
 //-----------------------------------------
 histogramBoardingTimeData.add(root.totalBoardingTimeInMinutes);
@@ -17934,6 +17939,21 @@ histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1761831965321</Id>
+					<Name><![CDATA[standingPassengersCount]]></Name>
+					<X>-300</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 			<AnalysisData>
     			<HistogramData>
@@ -17963,7 +17983,7 @@ histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
 					<MinMaxAutodetect>true</MinMaxAutodetect>
 					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
 					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
-					<InitialIntervalSize><![CDATA[2]]></InitialIntervalSize>
+					<InitialIntervalSize><![CDATA[1]]></InitialIntervalSize>
 					<CalculateCDF>true</CalculateCDF>
 					<CalculatePercentiles>false</CalculatePercentiles>
 					<LowPercent>10</LowPercent>
@@ -18381,9 +18401,7 @@ for (int i = 0; i < m; i++) {
         sum += y;
     }
     avg.add(t, sum / runs.size());
-}
-
-]]></AfterExperimentCode>
+}]]></AfterExperimentCode>
 			<AllowParallelEvaluations>true</AllowParallelEvaluations>
 			<UseFreeformParameters>true</UseFreeformParameters>
 			<NumberOfRuns>35</NumberOfRuns>
