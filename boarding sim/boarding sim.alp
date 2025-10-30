@@ -7026,32 +7026,6 @@ return seat.getY() / rowScale * planeScale + row.getY();]]></Body>
 int row = p.seatRow;
 return rowEntries[row-1];]]></Body>
 				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[PolygonalNode]]></ReturnType>
-					<Id>1761604175350</Id>
-					<Name><![CDATA[getHelpRowEntryPoint]]></Name>
-					<X>500</X><Y>900</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[p]]></Name>
-						<Type><![CDATA[Passenger]]></Type>
-					</Parameter>
-					<Body><![CDATA[PolygonalNode[] rowEntries = {
-    row1Entry,  row2Entry,  row3Entry,  row4Entry,  row5Entry,
-    row6Entry,  row7Entry,  row8Entry,  row9Entry,  row10Entry,
-    row11Entry, row12Entry, row13Entry, row14Entry, row15Entry,
-    row16Entry, row17Entry, row18Entry, row19Entry, row20Entry,
-    row21Entry, row22Entry, row23Entry, row24Entry, row25Entry,
-    row26Entry, row27Entry, row28Entry, row29Entry, row30Entry
-};
-
-int row = p.currentRow;
-return rowEntries[row-1];]]></Body>
-				</Function>
 			</Functions>
 			<AgentLinks>
 				<AgentLink>
@@ -17997,7 +17971,7 @@ else {
 			<Import><![CDATA[import java.util.*;
 import com.anylogic.engine.analysis.*;]]></Import>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
-			<InitialSetupCode><![CDATA[averagePlot.setFixedVerticalScale(0, 110);
+			<InitialSetupCode><![CDATA[startExcelFile();
 ]]></InitialSetupCode>
 			<MaximumMemory>4096</MaximumMemory>
 			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
@@ -18013,55 +17987,25 @@ avgTimesStandUp = 0;]]></BeforeEachExperimentRunCode>
 System.out.println("Método de abordaje: " + root.boardingMethodNumber);
 System.out.println("Cantidad de grupos: " + root.groupsNumber);
 System.out.println();]]></BeforeSimulationRunCode>
-			<AfterSimulationRunCode><![CDATA[System.out.println("Método de abordaje: " + root.boardingMethodNumber);
-System.out.println("Cantidad de grupos: " + root.groupsNumber);
-
-System.out.println("totalBoardingTimeInMinutes: " + root.totalBoardingTimeInMinutes);
+			<AfterSimulationRunCode><![CDATA[System.out.println("totalBoardingTimeInMinutes: " + root.totalBoardingTimeInMinutes);
 System.out.println("avgSeatingTimeInSeconds: " + root.avgSeatingTimeInSeconds);
 System.out.println("seatedPassengers: " + root.seatedPassengers);
 System.out.println("totalTimesStandUp: " + root.totalTimesStandUp);
 System.out.println();
 
-double dt = 1.0; 
-double T  = getEngine().time();
-int capacity = (int) Math.ceil(T / dt) + 1;
 
-DataSet ds = new DataSet(capacity);
-
-for (double t = 0; t <= T; t += dt) {
-    ds.add(t, root.seatedPassengers);
-}
-runs.add(ds);
-
-
-// ACTUALIZAR CON NUMERO TOTAL DE CORRIDAS
 standingPassengersCount += root.totalTimesStandUp;
 avgTimesStandUp = standingPassengersCount / (this.getRunCount() + 1);
-
-//-----------------------------------------
 histogramBoardingTimeData.add(root.totalBoardingTimeInMinutes);
 histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
-]]></AfterSimulationRunCode>
+
+
+saveRunDataToExcel(root);]]></AfterSimulationRunCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
 			<VmArgs><![CDATA[]]></VmArgs>
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
 			<Variables>
-				<Variable Class="PlainVariable">
-					<Id>1761780401918</Id>
-					<Name><![CDATA[runs]]></Name>
-					<X>-300</X><Y>300</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[ArrayList<DataSet>]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new ArrayList<DataSet>()]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1761788212363</Id>
 					<Name><![CDATA[avgTimesStandUp]]></Name>
@@ -18080,7 +18024,7 @@ histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
 				<Variable Class="PlainVariable">
 					<Id>1761831965321</Id>
 					<Name><![CDATA[standingPassengersCount]]></Name>
-					<X>-300</X><Y>500</Y>
+					<X>-300</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -18093,11 +18037,73 @@ histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
 					</Properties>
 				</Variable>
 			</Variables>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1761851622695</Id>
+					<Name><![CDATA[startExcelFile]]></Name>
+					<X>-300</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[excelFile.readFile();
+
+excelFile.setCellValue("Run", 1, 1, 1);
+excelFile.setCellValue("Total Stand Up Events", 1, 1, 2);
+excelFile.setCellValue("Total Boarding Time (min)", 1, 1, 3);
+excelFile.setCellValue("Avg Seating Time (sec)", 1, 1, 4);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1761851780379</Id>
+					<Name><![CDATA[saveRunDataToExcel]]></Name>
+					<X>-300</X><Y>450</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[root]]></Name>
+						<Type><![CDATA[Main]]></Type>
+					</Parameter>
+					<Body><![CDATA[int runNumber = getRunCount() + 1; 
+
+//value, hoja, fila, columna
+excelFile.setCellValue(runNumber, 1, runNumber+1, 1);
+
+excelFile.setCellValue(root.totalTimesStandUp, 1, runNumber+1, 2);
+
+excelFile.setCellValue(root.totalBoardingTimeInMinutes, 1, runNumber+1, 3);
+
+excelFile.setCellValue(root.avgSeatingTimeInSeconds, 1, runNumber+1, 4);]]></Body>
+				</Function>
+			</Functions>
+			<Connectivity>
+				<ExcelFile>
+					<Id>1761850898967</Id>
+					<Name><![CDATA[excelFile]]></Name>
+					<X>-300</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[boarding_sim]]></PackageName>
+						<ClassName><![CDATA[results.xlsx]]></ClassName>
+					</ResourceReference>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>true</SaveOnDispose>
+				</ExcelFile>
+			</Connectivity>
 			<AnalysisData>
     			<HistogramData>
 					<Id>1761761665686</Id>
 					<Name><![CDATA[histogramBoardingTimeData]]></Name>
-					<X>-300</X><Y>100</Y>
+					<X>-300</X><Y>50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -18131,7 +18137,7 @@ histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
     			<HistogramData>
 					<Id>1761761671496</Id>
 					<Name><![CDATA[histogramSeatingTimeData]]></Name>
-					<X>-300</X><Y>200</Y>
+					<X>-300</X><Y>100</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -18165,7 +18171,7 @@ histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
     			<DataSet>
 					<Id>1761780714395</Id>
 					<Name><![CDATA[avg]]></Name>
-					<X>-300</X><Y>400</Y>
+					<X>-300</X><Y>200</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -18314,7 +18320,7 @@ else {
     			<Histogram>
 					<Id>1761761665681</Id>
 					<Name><![CDATA[histogramTotalBoardingTime]]></Name>
-					<X>100</X><Y>600</Y>
+					<X>110</X><Y>700</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18381,7 +18387,7 @@ else {
     			<Histogram>
 					<Id>1761761671492</Id>
 					<Name><![CDATA[histogramAvgSeatingTime]]></Name>
-					<X>880</X><Y>590</Y>
+					<X>800</X><Y>700</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18445,104 +18451,57 @@ else {
 						<Title><![CDATA[data]]></Title>							
 					</HistogramDataExpression>
     			</Histogram>
-    			<TimePlot>
-					<Id>1761780913732</Id>
-					<Name><![CDATA[averagePlot]]></Name>
-					<X>180</X><Y>960</Y>
+				<Text>
+					<Id>1761852217678</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>370</X><Y>640</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>false</AutoUpdate>
-					<RecurrenceProperties>
-						<Id>1761780913730</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1761811200000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-						</RecurrenceCode>
-					</RecurrenceProperties>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>260</Width>
-					<Height>210</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>180</Width>
-						<Height>120</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-16777216</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MINUTE</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
-					<DrawLine>true</DrawLine>
-					<Interpolation>LINEAR</Interpolation>
-					<DatasetExpression>  
-						<Title><![CDATA[Title]]></Title>
-					<Id>1761780914076</Id>
-					<Expression><![CDATA[avg]]></Expression>
-					<Color>-7667573</Color>
-					<Expression2><![CDATA[0]]></Expression2>
-					<Expression2Flag>false</Expression2Flag>
-						<PointStyle>NONE</PointStyle>
-						<LineWidth>1.0</LineWidth>
-					</DatasetExpression>
-					<SamplesToKeep>100</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
-					<FillAreaUnderLine>false</FillAreaUnderLine>
-					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
-    			</TimePlot>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Tiempo Total de
+Abordaje al Avión (en minutos)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>26</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1761852281559</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>1080</X><Y>640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Tiempo Promedio para Sentarse
+por Pasajero (en segundos)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>26</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
 			</Presentation>
 
-			<AfterExperimentCode><![CDATA[final double FILL = 100.0; 
-
-if (runs == null || runs.isEmpty()) return;
-
-
-int m = 0;
-int idxRef = 0;
-for (int k = 0; k < runs.size(); k++) {
-    int sz = runs.get(k).size();
-    if (sz > m) { m = sz; idxRef = k; }
-}
-
-DataSet ref = runs.get(idxRef);
-
-for (int i = 0; i < m; i++) {
-    double t = ref.getX(i);     
-    double sum = 0.0;
-    for (DataSet ds : runs) {
-        double y = (i < ds.size()) ? ds.getY(i) : FILL;
-        sum += y;
-    }
-    avg.add(t, sum / runs.size());
-}]]></AfterExperimentCode>
+			<AfterExperimentCode><![CDATA[excelFile.writeFile();
+excelFile.close();]]></AfterExperimentCode>
 			<AllowParallelEvaluations>true</AllowParallelEvaluations>
 			<UseFreeformParameters>true</UseFreeformParameters>
-			<NumberOfRuns>35</NumberOfRuns>
+			<NumberOfRuns>3</NumberOfRuns>
 			<FreeformParamValue>	
 				<Id>1761745852469</Id>
 				<Expression Class="CodeValue">
@@ -18689,6 +18648,12 @@ for (int i = 0; i < m; i++) {
 		<Resource>
 			<Id>1761776534932</Id>
 			<Path><![CDATA[sueloA320.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1761852724401</Id>
+			<Path><![CDATA[results.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>

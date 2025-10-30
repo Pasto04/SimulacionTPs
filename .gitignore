@@ -178,3 +178,6 @@ images/
 
 #Mac Os Specifics
 .DS_Store
+
+#Excel file
+*.xlsx
