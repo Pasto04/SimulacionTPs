@@ -4728,7 +4728,8 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 			<Name><![CDATA[Passenger]]></Name>
 			<Import><![CDATA[import com.anylogic.libraries.modules.level_system.LevelSystemUtils;
 import org.uma.jmetal.util.ranking.impl.util.MNDSBitsetManager;]]></Import>
-			<StartupCode><![CDATA[hasLuggage = bernoulli(0.9) == 1; //90% de prob. que tenga valija
+			<StartupCode><![CDATA[// 90% de prob. que tenga valija
+hasLuggage = bernoulli(0.9) == 1;
 luggage.setVisible(hasLuggage);]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -15892,7 +15893,7 @@ en su asiento]]></Text>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -15936,7 +15937,7 @@ en su asiento]]></Text>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -15958,7 +15959,7 @@ en su asiento]]></Text>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -16044,7 +16045,7 @@ equipaje de mano]]></Text>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
