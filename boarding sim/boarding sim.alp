@@ -4776,10 +4776,9 @@ luggage.setVisible(hasLuggage);]]></StartupCode>
 						<Code><![CDATA[500]]></Code>
 						<Unit Class="TimeUnits"><![CDATA[MILLISECOND]]></Unit>
 					</StepDurationCode>
-					<BeforeStepCode><![CDATA[if (statechart.getState() == inTerminal)
-	return;
+					<BeforeStepCode><![CDATA[statechart_state state = statechart.getState();
 
-if (statechart.getState() == allowingOtherPassengerToEnter)
+if (state == inTerminal || state == seated || state == allowingOtherPassengerToEnter)
 	return;
 
 Passenger[] others = main.passengers.stream()
@@ -4791,13 +4790,15 @@ Passenger[] others = main.passengers.stream()
     .toArray(Passenger[]::new);
 
 //TODO tener en cuenta si me está dando a mí allowingOtherPassengerToEnter
-if (others.length != 0)
+
+if (others.length != 0) // tiene alguien delante
 {
 	walkingSince = 0;
 	person.setColor("Material__5__Surf", Color.RED);
 	setComfortableSpeed(0);
 }
-else {
+else //puede avanzar
+{
 	if (walkingSince == 0)
 		walkingSince = time(SECOND);
 	
@@ -5335,9 +5336,9 @@ get_Main().airbusA320.totalPassTimeToSeat += timeSeatedPed;
 				<Function AccessType="public" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[String]]></ReturnType>
-					<Id>1759841776069</Id>
+					<Id>1761797822740</Id>
 					<Name><![CDATA[toString]]></Name>
-					<X>50</X><Y>250</Y>
+					<X>50</X><Y>750</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5347,7 +5348,13 @@ get_Main().airbusA320.totalPassTimeToSeat += timeSeatedPed;
 	"hasLuggage = " + hasLuggage + "\n" +
 	"seatLetter = " + seatLetter + "\n" +
 	"seatRow = " + seatRow + "\n" +
-	"currentRow = " + currentRow;]]></Body>
+	"currentRow = " + currentRow + "\n" +
+	"speed = " + speed + "\n" +
+	"walkingSince = " + walkingSince + "\n" +
+	"isSeated = " + isSeated + "\n" +
+	"inPlane = " + inPlane + "\n" +
+	"startBoardingPed = " + startBoardingPed + "\n" +
+	"timeSeatedPed = " + timeSeatedPed;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
