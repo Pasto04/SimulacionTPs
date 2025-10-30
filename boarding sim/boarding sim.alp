@@ -1371,9 +1371,6 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[//ped.setXYZ(614, 880,0);]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onBeginWait]]></Name>
@@ -4778,10 +4775,11 @@ luggage.setVisible(hasLuggage);]]></StartupCode>
 					</StepDurationCode>
 					<BeforeStepCode><![CDATA[statechart_state state = statechart.getState();
 
-if (state == inTerminal || state == seated || state == allowingOtherPassengerToEnter)
+if (state == inTerminal || state == storing
+	|| state == seated || state == allowingOtherPassengerToEnter)
 	return;
 
-Passenger[] others = main.passengers.stream()
+Passenger[] frontPassengers = main.passengers.stream()
     .filter(p -> p.statechart.getState() != seated)
     .filter(p -> p.currentRow > 0)
     .filter(p -> p.currentRow <= currentRow + 2)
@@ -4791,7 +4789,7 @@ Passenger[] others = main.passengers.stream()
 
 //TODO tener en cuenta si me está dando a mí allowingOtherPassengerToEnter
 
-if (others.length != 0) // tiene alguien delante
+if (frontPassengers.length != 0) // tiene alguien delante
 {
 	walkingSince = 0;
 	person.setColor("Material__5__Surf", Color.RED);
@@ -4804,12 +4802,13 @@ else //puede avanzar
 	
 	if (time(SECOND) - walkingSince > 30 && currentRow > 0) {
 		AirbusA320 plane = (AirbusA320)main.getPlane();
+
 		if (plane.goToEntryPoint.contains(this))
 			plane.goToEntryPoint.cancel(this);
-		else
+		else if (plane.goToSeat.contains(this))
 			plane.goToSeat.cancel(this);
-		
-		walkingSince = 0;
+
+		walkingSince = time(SECOND);
 	}
 	
 	
@@ -5091,7 +5090,8 @@ main.totalTimesStandUp++;]]></EntryAction>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="120" Height="50">
 						<EntryAction><![CDATA[storingLuggage.setVisible(true);
-standing.setVisible(false);]]></EntryAction>
+standing.setVisible(false);
+walkingSince = 0;]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -17963,7 +17963,7 @@ histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
 					<MinMaxAutodetect>true</MinMaxAutodetect>
 					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
 					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
-					<InitialIntervalSize><![CDATA[5]]></InitialIntervalSize>
+					<InitialIntervalSize><![CDATA[2]]></InitialIntervalSize>
 					<CalculateCDF>true</CalculateCDF>
 					<CalculatePercentiles>false</CalculatePercentiles>
 					<LowPercent>10</LowPercent>
@@ -18386,7 +18386,7 @@ for (int i = 0; i < m; i++) {
 ]]></AfterExperimentCode>
 			<AllowParallelEvaluations>true</AllowParallelEvaluations>
 			<UseFreeformParameters>true</UseFreeformParameters>
-			<NumberOfRuns>2</NumberOfRuns>
+			<NumberOfRuns>35</NumberOfRuns>
 			<FreeformParamValue>	
 				<Id>1761745852469</Id>
 				<Expression Class="CodeValue">
